@@ -1,0 +1,35 @@
+{
+  "name": "ragebytetech",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node -e \"try { fs.rmSync('.next', { recursive: true, force: true }); } catch (e) {}\"",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "ui:search": "python tools/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/search.py",
+    "ui:design-system": "python tools/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/search.py --design-system"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.2.0",
+    "lucide-react": "^1.44.0",
+    "next": "14.2.35",
+    "react": "^18",
+    "react-dom": "^18",
+    "resend": "^6.27.0",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
