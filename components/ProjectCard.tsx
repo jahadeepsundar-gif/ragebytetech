@@ -16,7 +16,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const displayName = project.name.replace(" [Demo Project]", "").replace(" [Demo]", "");
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/80 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(0,245,160,0.2)]">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/80 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(244,44,29,0.2)]">
       {/* Visual Thumbnail Frame */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-subtle">
         <Image

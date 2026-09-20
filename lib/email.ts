@@ -36,8 +36,8 @@ export async function sendContactEmail(data: ContactFormData): Promise<{
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #111; background-color: #f9f9fb; padding: 24px; }
           .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 8px; border: 1px solid #e5e7eb; padding: 32px; }
-          .header { border-bottom: 2px solid #00f5a0; padding-bottom: 16px; margin-bottom: 24px; }
-          .badge { display: inline-block; background: #090a0f; color: #00f5a0; font-size: 12px; font-weight: bold; padding: 4px 8px; border-radius: 4px; }
+          .header { border-bottom: 2px solid #F42C1D; padding-bottom: 16px; margin-bottom: 24px; }
+          .badge { display: inline-block; background: #070709; color: #F42C1D; font-size: 12px; font-weight: bold; padding: 4px 8px; border-radius: 4px; }
           .field { margin-bottom: 16px; }
           .field-label { font-size: 12px; text-transform: uppercase; color: #6b7280; font-weight: 600; margin-bottom: 4px; }
           .field-value { font-size: 15px; color: #111827; }

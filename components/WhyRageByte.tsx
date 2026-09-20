@@ -157,13 +157,13 @@ export function WhyRageByte() {
             return (
               <div
                 key={item.title}
-                className={`group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(0,245,160,0.15)] ${
+                className={`group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(244,44,29,0.15)] ${
                   isWide ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-background text-accent transition-all duration-300 group-hover:border-accent/50 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(0,245,160,0.25)]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-background text-accent transition-all duration-300 group-hover:border-accent/50 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(244,44,29,0.25)]">
                       <Icon className="h-6 w-6 transition-transform group-hover:scale-110" />
                     </div>
                     <span className="font-mono text-xs font-bold text-muted-foreground group-hover:text-accent transition-colors">

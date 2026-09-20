@@ -59,7 +59,7 @@ export function TrustStats() {
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface hover:shadow-[0_12px_32px_-8px_rgba(0,245,160,0.15)]"
+                    className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface hover:shadow-[0_12px_32px_-8px_rgba(244,44,29,0.15)]"
                   >
                     {/* Top corner crosshair aesthetic marker */}
                     <div className="absolute top-3 right-3 font-mono text-[10px] text-zinc-600 group-hover:text-accent transition-colors">
@@ -72,7 +72,7 @@ export function TrustStats() {
                         <span className="font-mono text-xs font-bold tracking-widest text-muted-foreground group-hover:text-accent transition-colors">
                           [{indexFormatted}]
                         </span>
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-background p-2 transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(0,245,160,0.2)]">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-background p-2 transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(244,44,29,0.2)]">
                           <Icon className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
                         </div>
                       </div>

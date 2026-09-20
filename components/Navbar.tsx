@@ -53,7 +53,7 @@ export function Navbar() {
           aria-label="RageByte Home"
           className="group flex items-center gap-3 transition-opacity hover:opacity-95"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-surface/80 p-2 shadow-inner transition-all duration-200 group-hover:border-accent/50 group-hover:shadow-[0_0_16px_rgba(0,245,160,0.2)]">
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-surface/80 p-2 shadow-inner transition-all duration-200 group-hover:border-accent/50 group-hover:shadow-[0_0_16px_rgba(244,44,29,0.25)]">
             <Terminal className="h-5 w-5 text-accent transition-transform duration-200 group-hover:scale-110" />
             <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
@@ -103,7 +103,7 @@ export function Navbar() {
 
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(0,245,160,0.4)] hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(244,44,29,0.4)] hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Start a Project</span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

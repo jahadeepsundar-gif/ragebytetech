@@ -144,7 +144,7 @@ export function ContactForm() {
       <div className="rounded-3xl border border-accent/40 bg-surface/90 p-8 sm:p-14 text-center shadow-2xl backdrop-blur-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 h-48 w-48 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/40 bg-accent/10 text-accent shadow-[0_0_24px_rgba(0,245,160,0.3)]">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/40 bg-accent/10 text-accent shadow-[0_0_24px_rgba(244,44,29,0.3)]">
           <CheckCircle className="h-8 w-8" />
         </div>
 
@@ -212,7 +212,7 @@ export function ContactForm() {
                 onClick={() => handleSelectField("serviceType", type)}
                 className={`flex items-center justify-between rounded-xl px-4 py-3 text-xs font-mono transition-all border text-left ${
                   isSelected
-                    ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_16px_rgba(0,245,160,0.15)]"
+                    ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_16px_rgba(244,44,29,0.15)]"
                     : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
                 }`}
               >
@@ -328,7 +328,7 @@ export function ContactForm() {
                   onClick={() => handleSelectField("budget", range)}
                   className={`rounded-xl px-3 py-3 text-xs font-mono text-center transition-all border ${
                     isSelected
-                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(0,245,160,0.12)]"
+                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(244,44,29,0.12)]"
                       : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
                   }`}
                 >
@@ -354,7 +354,7 @@ export function ContactForm() {
                   onClick={() => handleSelectField("timeline", opt)}
                   className={`rounded-xl px-3 py-3 text-xs font-mono text-center transition-all border ${
                     isSelected
-                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(0,245,160,0.12)]"
+                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(244,44,29,0.12)]"
                       : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
                   }`}
                 >
@@ -417,7 +417,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_24px_rgba(0,245,160,0.35)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_rgba(0,245,160,0.5)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
+          className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_24px_rgba(244,44,29,0.35)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_rgba(244,44,29,0.5)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
         >
           {isSubmitting ? (
             <>

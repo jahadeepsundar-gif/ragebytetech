@@ -30,7 +30,7 @@ export function TeamCard({ member }: TeamCardProps) {
   const displayName = member.name.replace(" [Demo Profile]", "").replace(" [Demo]", "");
 
   return (
-    <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-surface-border bg-surface/80 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(0,245,160,0.15)]">
+    <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-surface-border bg-surface/80 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(244,44,29,0.15)]">
       {/* Top Corner Marker */}
       <div className="absolute top-3 right-3 font-mono text-[10px] text-zinc-600 transition-colors group-hover:text-accent">
         +

@@ -164,7 +164,7 @@ export function Process() {
                   <span
                     className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-bold transition-all ${
                       isActive
-                        ? "bg-accent text-background shadow-[0_0_12px_rgba(0,245,160,0.4)]"
+                        ? "bg-accent text-background shadow-[0_0_12px_rgba(244,44,29,0.4)]"
                         : isCompleted
                         ? "bg-surface-elevated text-accent border border-accent/40"
                         : "bg-surface text-muted-foreground border border-surface-border"
@@ -192,7 +192,7 @@ export function Process() {
                 {isActive && (
                   <motion.div
                     layoutId="activeProcessUnderline"
-                    className="absolute -bottom-6 left-0 right-0 h-0.5 bg-accent shadow-[0_0_8px_rgba(0,245,160,0.8)]"
+                    className="absolute -bottom-6 left-0 right-0 h-0.5 bg-accent shadow-[0_0_8px_rgba(244,44,29,0.8)]"
                   />
                 )}
               </button>

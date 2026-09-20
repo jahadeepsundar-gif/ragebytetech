@@ -4,7 +4,7 @@ import { ArrowRight, Code2, Users, Layers } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { TrustStats } from "@/components/TrustStats";
 import { ProjectCard } from "@/components/ProjectCard";
-import { ServiceCard } from "@/components/ServiceCard";
+import { BookshelfServices } from "@/components/BookshelfServices";
 import { WhyRageByte } from "@/components/WhyRageByte";
 import { TechStack } from "@/components/TechStack";
 import { Process } from "@/components/Process";
@@ -12,7 +12,6 @@ import { TeamCard } from "@/components/TeamCard";
 import { Testimonials } from "@/components/Testimonial";
 import { CTA } from "@/components/CTA";
 import { projects } from "@/data/projects";
-import { services } from "@/data/services";
 import { teamMembers } from "@/data/team";
 import { testimonials } from "@/data/testimonials";
 
@@ -100,11 +99,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, idx) => (
-              <ServiceCard key={service.title} service={service} index={idx} />
-            ))}
-          </div>
+          <BookshelfServices />
         </div>
       </section>
 

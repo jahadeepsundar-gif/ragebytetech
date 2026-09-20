@@ -32,7 +32,7 @@ export function Footer() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(0,245,160,0.35)] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(244,44,29,0.35)] active:scale-[0.98]"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="h-4 w-4" />

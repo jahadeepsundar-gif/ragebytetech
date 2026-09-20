@@ -76,7 +76,7 @@ export default function ServicesPage() {
             {services.map((service, idx) => (
               <div
                 key={service.title}
-                className="group relative flex flex-col justify-between rounded-3xl border border-surface-border bg-surface/80 p-8 sm:p-12 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(0,245,160,0.15)]"
+                className="group relative flex flex-col justify-between rounded-3xl border border-surface-border bg-surface/80 p-8 sm:p-12 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(244,44,29,0.15)]"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-surface-border/60 pb-5">
@@ -126,7 +126,7 @@ export default function ServicesPage() {
                 <div className="mt-10 border-t border-surface-border/60 pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <Link
                     href={`/contact?service=${encodeURIComponent(service.title)}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-xs font-mono font-semibold text-background hover:bg-accent-hover transition-all shadow-[0_0_16px_rgba(0,245,160,0.2)]"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-xs font-mono font-semibold text-background hover:bg-accent-hover transition-all shadow-[0_0_16px_rgba(244,44,29,0.2)]"
                   >
                     <span>Request Proposal for {service.title}</span>
                     <ArrowUpRight className="h-3.5 w-3.5" />

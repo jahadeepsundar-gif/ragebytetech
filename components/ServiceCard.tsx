@@ -38,7 +38,7 @@ export function ServiceCard({
   const specCode = `0${index + 1}`;
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface hover:shadow-[0_16px_36px_-10px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(0,245,160,0.15)]">
+    <div className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface hover:shadow-[0_16px_36px_-10px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(244,44,29,0.15)]">
       {/* Subtle top corner marker */}
       <div className="absolute top-4 right-4 font-mono text-[11px] text-zinc-600 transition-colors group-hover:text-accent">
         +
@@ -47,7 +47,7 @@ export function ServiceCard({
       <div>
         {/* Card Header: Icon & Monospace Spec Code */}
         <div className="flex items-center justify-between">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-background/80 text-accent transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(0,245,160,0.25)]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface-border bg-background/80 text-accent transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(244,44,29,0.25)]">
             <IconComponent className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
           </div>
           <span className="font-mono text-xs font-bold tracking-wider text-muted-foreground group-hover:text-accent transition-colors">

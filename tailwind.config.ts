@@ -30,6 +30,14 @@ const config: Config = {
           glow: "var(--accent-glow)",
           subtle: "var(--accent-subtle)",
         },
+        brand: {
+          bg: "#070709",
+          "dark-brown": "#4B2D2E",
+          "muted-brown": "#824334",
+          accent: "#F42C1D",
+          "deep-red": "#AE1918",
+          "red-brown": "#701C1A",
+        },
         muted: {
           DEFAULT: "var(--text-muted)",
           foreground: "var(--text-muted)",

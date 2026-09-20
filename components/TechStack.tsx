@@ -119,7 +119,7 @@ export function TechStack() {
                   return (
                     <div
                       key={item.name}
-                      className="group rounded-xl border border-surface-border bg-surface/80 p-4 transition-all duration-300 hover:border-accent/40 hover:bg-surface-elevated hover:shadow-[0_8px_24px_-6px_rgba(0,245,160,0.15)]"
+                      className="group rounded-xl border border-surface-border bg-surface/80 p-4 transition-all duration-300 hover:border-accent/40 hover:bg-surface-elevated hover:shadow-[0_8px_24px_-6px_rgba(244,44,29,0.15)]"
                     >
                       <div className="flex items-center gap-2.5">
                         <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-surface-border bg-background text-accent transition-colors group-hover:border-accent">

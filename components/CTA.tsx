@@ -43,7 +43,7 @@ export function CTA() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_28px_-4px_rgba(0,245,160,0.4)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(0,245,160,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_28px_-4px_rgba(244,44,29,0.4)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(244,44,29,0.55)] hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -116,7 +116,7 @@ Do not invoke tools unnecessarily for trivial edits (e.g., text edits, typo fixe
 ## 8. Brand Identity Preservation
 
 Every future modification must maintain the **RageByte Identity**:
-* Dark charcoal / near-black digital studio aesthetic (`#090a0f`)
+* Dark architectural aesthetic (`#070709`, `#4B2D2E`, `#701C1A`)
 * Bold display headings (`Space Grotesk`, `Geist`) and legible body copy (`Inter`)
-* Centralized accent color token (`--accent: #00f5a0`)
+* Centralized primary accent red token (`--accent: #F42C1D`, `--accent-hover: #AE1918`)
 * Refined, purposeful animations and high-performance server-first architecture

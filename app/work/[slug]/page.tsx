@@ -106,7 +106,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background shadow-[0_0_20px_rgba(0,245,160,0.3)] hover:bg-accent-hover transition-all"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background shadow-[0_0_20px_rgba(244,44,29,0.3)] hover:bg-accent-hover transition-all"
                 >
                   <span>Visit Live Prototype</span>
                   <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
