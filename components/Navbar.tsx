@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, Sparkles, Terminal } from "lucide-react";
+import { Menu, X, ArrowUpRight, Terminal } from "lucide-react";
 
 interface NavItem {
   label: string;
@@ -53,40 +53,40 @@ export function Navbar() {
           aria-label="RageByte Home"
           className="group flex items-center gap-3 transition-opacity hover:opacity-95"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-surface/80 p-2 shadow-inner transition-all duration-200 group-hover:border-accent/50 group-hover:shadow-[0_0_16px_rgba(244,44,29,0.25)]">
-            <Terminal className="h-5 w-5 text-accent transition-transform duration-200 group-hover:scale-110" />
-            <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+          <div className="relative flex h-9 w-9 items-center justify-center border border-surface-border bg-surface/80 p-2 transition-all duration-200 group-hover:border-accent/60">
+            <Terminal className="h-4 w-4 text-accent transition-transform duration-200 group-hover:scale-110" />
+            <span className="absolute -top-1 -right-1 flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="font-heading text-lg font-extrabold tracking-tight text-foreground sm:text-xl">
+            <span className="font-display text-2xl font-black uppercase tracking-[-0.03em] text-foreground leading-none">
               RAGE<span className="text-accent">BYTE</span>
             </span>
-            <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
-              Web Studio
+            <span className="font-mono text-[9px] tracking-widest text-zinc-500 uppercase mt-0.5">
+              TECHNICAL STUDIO
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav aria-label="Main navigation" className="hidden items-center gap-1 rounded-full border border-surface-border/80 bg-surface/70 px-4 py-1.5 backdrop-blur-md md:flex shadow-sm">
+        {/* Desktop Navigation Links (Editorial Monospace Links) */}
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 border-b border-white/10 pb-1 md:flex">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 rounded-full ${
+                className={`relative font-mono text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
                   isActive
-                    ? "text-accent bg-surface-elevated font-semibold shadow-inner"
-                    : "text-muted-foreground hover:text-foreground hover:bg-surface-subtle"
+                    ? "text-accent"
+                    : "text-zinc-400 hover:text-white"
                 }`}
               >
-                {item.label}
+                <span>{item.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-4 rounded-full bg-accent" />
+                  <span className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-accent" />
                 )}
               </Link>
             );
@@ -96,17 +96,17 @@ export function Navbar() {
         {/* Right Action Hub (Desktop) */}
         <div className="hidden items-center gap-4 md:flex">
           {/* Availability Status Badge */}
-          <div className="hidden lg:flex items-center gap-2 rounded-full border border-surface-border/80 bg-surface/50 px-3 py-1 text-xs text-muted-foreground font-mono">
-            <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-            <span>Available for Projects</span>
+          <div className="hidden lg:flex items-center gap-2 border border-surface-border bg-background/80 px-3 py-1 text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span>OPEN FOR SPRINT</span>
           </div>
 
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs sm:text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(244,44,29,0.4)] hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative inline-flex items-center gap-2 bg-accent px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-widest text-background transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
           >
             <span>Start a Project</span>
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
 
@@ -124,41 +124,38 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="animate-in fade-in slide-in-from-top-4 duration-200 border-b border-surface-border bg-background/95 backdrop-blur-2xl px-6 py-6 md:hidden">
-          <nav className="flex flex-col space-y-3">
+        <div className="animate-in fade-in slide-in-from-top-4 duration-200 border-b border-white/10 bg-[#070709]/95 backdrop-blur-2xl px-6 py-8 md:hidden">
+          <nav className="flex flex-col space-y-4">
             {navItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
-                    isActive
-                      ? "bg-surface text-accent font-semibold border border-surface-border"
-                      : "text-foreground hover:bg-surface/50 hover:text-accent"
+                  className={`flex items-center justify-between border-b border-white/10 pb-3 transition-colors ${
+                    isActive ? "text-[#F42C1D]" : "text-white hover:text-[#F42C1D]"
                   }`}
                 >
-                  <span>{item.label}</span>
+                  <span className="font-display uppercase text-2xl font-black tracking-tight">{item.label}</span>
                   {isActive ? (
-                    <span className="h-2 w-2 rounded-full bg-accent" />
+                    <span className="h-2 w-2 bg-[#F42C1D]" />
                   ) : (
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-50" />
+                    <ArrowUpRight className="h-4 w-4 text-zinc-600" />
                   )}
                 </Link>
               );
             })}
 
-            <div className="pt-4 border-t border-surface-border/80">
-              <div className="mb-4 flex items-center gap-2 rounded-lg bg-surface/60 px-3 py-2 text-xs font-mono text-muted-foreground">
-                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span>Available for New Projects</span>
+            <div className="pt-4">
+              <div className="mb-4 flex items-center gap-2 border border-white/10 bg-black/60 px-3 py-2 text-xs font-mono text-zinc-400">
+                <span className="h-1.5 w-1.5 bg-[#F42C1D] animate-pulse" />
+                <span>OPEN FOR SPRINT // 2026</span>
               </div>
 
               <Link
                 href="/contact"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3.5 text-sm font-semibold text-background shadow-lg shadow-accent/20 transition-all hover:bg-accent-hover active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 bg-[#F42C1D] px-5 py-3.5 font-mono text-xs uppercase tracking-widest font-bold text-white transition-colors hover:bg-[#ff3b2c]"
               >
-                <Sparkles className="h-4 w-4" />
                 <span>Start a Project</span>
                 <ArrowUpRight className="h-4 w-4" />
               </Link>

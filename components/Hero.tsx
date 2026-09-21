@@ -7,11 +7,6 @@ import { TypographyVortexCanvas } from "@/components/typography-vortex/Typograph
 import {
   ArrowRight,
   ArrowUpRight,
-  Code2,
-  Layers,
-  Palette,
-  Smartphone,
-  Sparkles,
 } from "lucide-react";
 
 export function Hero() {
@@ -46,59 +41,50 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pointer-events-none">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* 2. Elevated Studio Status Pill */}
+        <div className="mx-auto max-w-5xl text-center">
+          {/* 2. Editorial Studio Status Annotation */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full border border-surface-border bg-surface/90 px-4 py-1.5 text-xs text-muted-foreground backdrop-blur-md shadow-sm transition-all hover:border-accent/40"
+            className="pointer-events-auto inline-flex items-center gap-2.5 sm:gap-3.5 border-b border-surface-border/80 pb-2 text-[10px] sm:text-xs font-mono tracking-widest text-zinc-400 uppercase"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            <span className="flex items-center gap-1.5 text-accent font-semibold">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              [SYS.ACTIVE // 2026]
             </span>
-            <span className="font-mono text-xs font-medium text-foreground tracking-wide">
-              Engineering-First Web Studio
-            </span>
-            <span className="text-surface-border">/</span>
-            <span className="flex items-center gap-1 text-accent font-medium">
-              <Sparkles className="h-3 w-3" /> Available for New Projects
-            </span>
+            <span className="text-white/20">|</span>
+            <span className="text-zinc-300">TECHNICAL WEB DEVELOPMENT STUDIO</span>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <span className="text-accent hidden sm:inline">NEW ENGAGEMENTS OPEN</span>
           </motion.div>
 
-          {/* 3. High-Contrast Editorial Display Headline */}
+          {/* 3. Bold Editorial Condensed Display Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-8 font-heading text-4xl font-extrabold tracking-[-0.035em] text-foreground sm:text-6xl lg:text-7xl leading-[1.06]"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mt-8 font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]"
           >
-            Technically Strong Web Development.{" "}
-            <span className="relative whitespace-nowrap block sm:inline mt-1 sm:mt-0">
-              <span className="bg-gradient-to-r from-white via-zinc-100 to-accent bg-clip-text text-transparent">
-                Built to Perform.
-              </span>
-              <span
-                aria-hidden="true"
-                className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent"
-              />
+            <span className="block text-white">Technically Strong</span>
+            <span className="block mt-1 sm:mt-2 text-white/95">Web Development.</span>
+            <span className="block mt-1 sm:mt-2 text-accent">
+              Built to Perform.
             </span>
           </motion.h1>
 
-          {/* 4. Balanced Technical Subcopy */}
+          {/* 4. Balanced Editorial Technical Subcopy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-sans"
+            className="mt-8 text-sm sm:text-base lg:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto font-sans font-normal"
           >
-            RageByte is a small, specialized team building custom Next.js web applications,
-            headless storefronts, and performance-driven digital platforms. Zero templates,
-            zero account-manager bureaucracy — direct access to senior engineers.
+            Bespoke Next.js web applications, headless storefronts, and high-throughput edge systems.
+            Direct access to senior architects — zero templates, zero account-manager layers.
           </motion.p>
 
-          {/* 5. Premium Action Controls (CTAs) */}
+          {/* 5. Minimalist Editorial Action Controls */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,7 +93,7 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_28px_-4px_rgba(244,44,29,0.4)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(244,44,29,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative inline-flex items-center gap-3 rounded-none border border-accent bg-accent px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-background shadow-[0_0_24px_-4px_rgba(244,44,29,0.35)] transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -115,36 +101,39 @@ export function Hero() {
 
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 rounded-xl border border-surface-border bg-surface/80 px-7 py-4 text-sm font-medium text-foreground backdrop-blur-md transition-all duration-200 hover:border-surface-border-hover hover:bg-surface-subtle active:scale-[0.98]"
+              className="inline-flex items-center gap-3 rounded-none border border-white/20 bg-background/60 px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-foreground backdrop-blur-md transition-all duration-200 hover:border-white/50 hover:bg-surface-elevated active:scale-[0.98]"
             >
-              <span>View Selected Work</span>
+              <span>Selected Work</span>
               <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
-          {/* 6. Factual Technical Stack Strip */}
+          {/* 6. Technical Stack Hairline Strip */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="pointer-events-auto mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono text-muted-foreground"
+            className="pointer-events-auto mt-16 pt-8 border-t border-white/10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] font-mono tracking-wider text-zinc-400 uppercase"
           >
-            <div className="flex items-center gap-1.5 rounded-lg border border-surface-border/70 bg-surface/70 px-3 py-1.5 backdrop-blur-sm">
-              <Layers className="h-3.5 w-3.5 text-accent" />
-              <span>Next.js App Router</span>
-            </div>
-            <div className="flex items-center gap-1.5 rounded-lg border border-surface-border/70 bg-surface/70 px-3 py-1.5 backdrop-blur-sm">
-              <Code2 className="h-3.5 w-3.5 text-accent" />
-              <span>TypeScript</span>
-            </div>
-            <div className="flex items-center gap-1.5 rounded-lg border border-surface-border/70 bg-surface/70 px-3 py-1.5 backdrop-blur-sm">
-              <Palette className="h-3.5 w-3.5 text-accent" />
-              <span>Tailwind CSS</span>
-            </div>
-            <div className="flex items-center gap-1.5 rounded-lg border border-surface-border/70 bg-surface/70 px-3 py-1.5 backdrop-blur-sm">
-              <Smartphone className="h-3.5 w-3.5 text-accent" />
-              <span>Mobile-First &amp; Responsive</span>
-            </div>
+            <span className="flex items-center gap-2">
+              <span className="h-1 w-1 rounded-full bg-accent" />
+              NEXT.JS 14 APP ROUTER
+            </span>
+            <span className="text-white/10 hidden sm:inline">/</span>
+            <span className="flex items-center gap-2">
+              <span className="h-1 w-1 rounded-full bg-accent" />
+              STRICT TYPESCRIPT
+            </span>
+            <span className="text-white/10 hidden sm:inline">/</span>
+            <span className="flex items-center gap-2">
+              <span className="h-1 w-1 rounded-full bg-accent" />
+              TAILWIND TOKENS
+            </span>
+            <span className="text-white/10 hidden sm:inline">/</span>
+            <span className="flex items-center gap-2">
+              <span className="h-1 w-1 rounded-full bg-accent" />
+              EDGE RUNTIME
+            </span>
           </motion.div>
         </div>
       </div>

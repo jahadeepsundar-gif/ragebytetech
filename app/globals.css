@@ -131,6 +131,21 @@ body {
     background: linear-gradient(135deg, rgba(75, 45, 46, 0.6) 0%, rgba(28, 15, 17, 0.85) 100%);
     box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.8), 0 0 24px -6px var(--accent-subtle);
   }
+
+  @keyframes detailsPanelEnter {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-details-enter {
+    animation: detailsPanelEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
 }
 
 /* Reduced motion support */

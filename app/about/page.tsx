@@ -5,14 +5,7 @@ import { TeamCard } from "@/components/TeamCard";
 import { TechStack } from "@/components/TechStack";
 import { WhyRageByte } from "@/components/WhyRageByte";
 import { CTA } from "@/components/CTA";
-import {
-  Code2,
-  Gauge,
-  Layers,
-  Sparkles,
-  Users,
-  Terminal,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us — Mission, Team & Engineering Philosophy",
@@ -29,92 +22,104 @@ export default function AboutPage() {
   const isDemoTeam = teamMembers.some((m) => m.name.includes("[Demo"));
 
   return (
-    <div className="flex flex-col bg-background">
+    <div className="flex flex-col bg-[#070709]">
       {/* Editorial Header */}
-      <section className="relative py-24 border-b border-surface-border bg-background-secondary overflow-hidden">
-        {/* Background glow and mesh */}
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+        {/* Background mesh */}
         <div 
           aria-hidden="true" 
-          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-30 radial-mask" 
+          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
         />
-        <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-surface px-3 py-1 text-xs font-mono font-medium text-accent border border-surface-border mb-6">
-              <Terminal className="h-3.5 w-3.5" />
-              <span>THE STUDIO MANIFESTO</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
-              We Build Web Software{" "}
-              <span className="bg-gradient-to-r from-white via-zinc-100 to-accent bg-clip-text text-transparent">
-                That Performs.
+          {/* Editorial Section Marker */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+                [01] // STUDIO MANIFESTO
               </span>
+            </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [SYS.PHILOSOPHY // 2026]
+            </span>
+          </div>
+
+          <div className="max-w-4xl">
+            <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
+              WE BUILD WEB SOFTWARE{" "}
+              <span className="text-[#F42C1D]">THAT PERFORMS.</span>
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              RageByte was founded on a simple conviction: businesses don&apos;t need generic templates,
-              bureaucracy, or account-management overhead. They need senior engineers who understand
-              modern web architecture, write clean TypeScript, and ship code that converts.
+            <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
+              RageByte was founded on a simple conviction: businesses don&apos;t need generic templates, bureaucracy, or account-management overhead. They need senior engineers who understand modern web architecture, write clean TypeScript, and ship code that converts.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
+              <span className="text-[#F42C1D] font-bold">[ENGINEERING FIRST]</span>
+              <span className="text-zinc-600">{"//"}</span>
+              <span>ZERO ACCOUNT MANAGERS</span>
+              <span className="text-zinc-600">{"//"}</span>
+              <span>100% REPO OWNERSHIP</span>
+              <span className="text-zinc-600">{"//"}</span>
+              <span>STRICT TYPESCRIPT</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Mission & Studio Philosophy */}
-      <section className="py-24 bg-background relative">
+      <section className="py-20 sm:py-28 bg-[#070709] relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 items-center">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 items-start">
             {/* Left Narrative */}
             <div className="lg:col-span-6 space-y-6">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                Our Operational Model
-              </span>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-                Earn Trust Through Real Engineering.
+              <div className="flex items-center gap-3 border-b border-white/10 pb-3">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F42C1D]">
+                  [OPERATIONAL DISCIPLINE]
+                </span>
+              </div>
+              <h2 className="font-display uppercase text-3xl sm:text-5xl font-black text-white leading-[0.92]">
+                EARN CONFIDENCE THROUGH REAL ENGINEERING.
               </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Our objective is simple: establish deep client confidence through transparent technical capability,
-                and then exceed every expectation throughout execution. We do not inflate scopes or make unverified claims.
+              <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
+                Our objective is simple: establish deep client confidence through transparent technical capability, and then exceed every expectation throughout execution. We do not inflate scopes, introduce artificial complexity, or make unverified claims.
               </p>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                By focusing strictly on modern, proven web technologies — Next.js 14, React 18,
-                TypeScript, and Tailwind CSS — we eliminate the bloat, speed penalties, and maintenance headaches
-                inherent in legacy CMS platforms.
+              <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
+                By focusing strictly on modern, proven web technologies — Next.js 14, React 18, TypeScript, and Tailwind CSS — we eliminate the bloat, speed penalties, and maintenance headaches inherent in legacy CMS platforms.
               </p>
             </div>
 
             {/* Right Pillars Matrix */}
             <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-surface-border bg-surface/80 p-6 backdrop-blur-md transition-colors hover:border-accent/40">
-                <Gauge className="h-6 w-6 text-accent mb-3" />
-                <h3 className="font-heading text-base font-bold text-foreground">Speed by Default</h3>
-                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              <div className="border border-white/10 bg-[#0C0C0E] p-6">
+                <span className="font-mono text-xs font-black text-[#F42C1D] block mb-2">01</span>
+                <h3 className="font-display uppercase text-xl font-black text-white mb-2">Speed by Default</h3>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
                   Sub-second LCP, zero layout shifts, and streaming edge responses on every page.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-surface-border bg-surface/80 p-6 backdrop-blur-md transition-colors hover:border-accent/40">
-                <Code2 className="h-6 w-6 text-accent mb-3" />
-                <h3 className="font-heading text-base font-bold text-foreground">Strict TypeScript</h3>
-                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              <div className="border border-white/10 bg-[#0C0C0E] p-6">
+                <span className="font-mono text-xs font-black text-[#F42C1D] block mb-2">02</span>
+                <h3 className="font-display uppercase text-xl font-black text-white mb-2">Strict TypeScript</h3>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
                   End-to-end schema validation, robust typings, and zero undefined runtime bugs.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-surface-border bg-surface/80 p-6 backdrop-blur-md transition-colors hover:border-accent/40">
-                <Layers className="h-6 w-6 text-accent mb-3" />
-                <h3 className="font-heading text-base font-bold text-foreground">Zero Bloatware</h3>
-                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              <div className="border border-white/10 bg-[#0C0C0E] p-6">
+                <span className="font-mono text-xs font-black text-[#F42C1D] block mb-2">03</span>
+                <h3 className="font-display uppercase text-xl font-black text-white mb-2">Zero Bloatware</h3>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
                   Handcrafted modular codebases with 100% client repository ownership.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-surface-border bg-surface/80 p-6 backdrop-blur-md transition-colors hover:border-accent/40">
-                <Users className="h-6 w-6 text-accent mb-3" />
-                <h3 className="font-heading text-base font-bold text-foreground">Direct Dev Pairing</h3>
-                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+              <div className="border border-white/10 bg-[#0C0C0E] p-6">
+                <span className="font-mono text-xs font-black text-[#F42C1D] block mb-2">04</span>
+                <h3 className="font-display uppercase text-xl font-black text-white mb-2">Direct Dev Pairing</h3>
+                <p className="text-xs text-zinc-400 font-sans leading-relaxed">
                   Direct communication with the technical architects building your platform.
                 </p>
               </div>
@@ -124,27 +129,34 @@ export default function AboutPage() {
       </section>
 
       {/* Full Team Directory */}
-      <section className="py-24 border-t border-surface-border bg-background-secondary relative overflow-hidden">
+      <section className="py-24 sm:py-32 border-t border-white/10 bg-[#070709] relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-surface-border/60 pb-8">
-            <div>
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                Core Engineering Roster
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+                [02] // CORE ENGINEERING ROSTER
               </span>
-              <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
-                Meet the Creators
-              </h2>
-              <p className="mt-3 max-w-xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-                A specialized team of full-stack engineers, UI/UX systems designers, and cloud architects.
-              </p>
-
-              {isDemoTeam && (
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-surface-border bg-surface/90 px-3.5 py-1 text-xs text-muted-foreground">
-                  <Sparkles className="h-3.5 w-3.5 text-accent" />
-                  <span>Demo team roster for UI verification — pending production team profiles</span>
-                </div>
-              )}
             </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [COLLECTIVE // ACTIVE ARCHITECTS]
+            </span>
+          </div>
+
+          <div className="mb-14 max-w-3xl">
+            <h2 className="font-display uppercase text-4xl sm:text-6xl font-black text-white leading-[0.92]">
+              MEET THE CREATORS
+            </h2>
+            <p className="mt-4 text-base text-zinc-400 font-sans">
+              A specialized team of full-stack engineers, UI/UX systems designers, and cloud architects building high-velocity web platforms.
+            </p>
+
+            {isDemoTeam && (
+              <div className="mt-4 border border-white/10 bg-[#0C0C0E] px-3.5 py-1 text-xs text-zinc-400 font-mono inline-flex items-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-[#F42C1D]" />
+                <span>Demo team roster for UI verification — pending production team profiles</span>
+              </div>
+            )}
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

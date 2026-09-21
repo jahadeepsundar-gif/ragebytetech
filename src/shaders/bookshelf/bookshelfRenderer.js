@@ -96,7 +96,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         motifKey: "caret",
         paletteLabel: "Citron · ink · off-white",
         color: "#afc400",
-        foil: "#171a16",
+        foil: "#f0f2c9",
         palette: {
           paper: "#c3cf21",
           paperDeep: "#9eaa16",
@@ -713,11 +713,20 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.letterSpacing = "4px";
       ctx.fillText(`WORKING VOLUMES  /  ${book.roman}`, canvasTexture.width / 2, 92);
 
-      const titleSize = book.title.length > 18 ? 44 : book.title.length > 10 ? 64 : 88;
-      ctx.font = `400 ${titleSize}px "Iowan Old Style", Baskerville, Georgia, serif`;
+      const titleSize = 40;
+      ctx.save();
+      ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetY = 2;
+      ctx.fillStyle = "#ffffff";
+      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+      ctx.letterSpacing = "1.6px";
       ctx.fillText(book.title, canvasTexture.width / 2, canvasTexture.height * 0.72);
-      ctx.font = '500 16px Inter, "Helvetica Neue", Arial, sans-serif';
+      ctx.fillStyle = "#f0ebe1";
+      ctx.font = '600 16px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.letterSpacing = "2.6px";
       ctx.fillText(book.discipline.toUpperCase(), canvasTexture.width / 2, canvasTexture.height * 0.79);
+      ctx.restore();
 
       return configureCanvasTexture(new THREE.CanvasTexture(canvasTexture));
     }
@@ -746,12 +755,54 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.stroke();
       ctx.globalAlpha = 1;
 
-      const titleSize = book.title.length > 18 ? 42 : book.title.length > 10 ? 56 : 78;
-      ctx.font = `400 ${titleSize}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.fillText(book.title, 58, 1020);
-      ctx.font = '500 14px Inter, "Helvetica Neue", Arial, sans-serif';
-      ctx.letterSpacing = "2.4px";
-      ctx.fillText(book.discipline.toUpperCase(), 60, 1066);
+      // Soft, subtle contrast backing gradient behind the title label zone to guarantee readability against any background
+      const textBackdrop = ctx.createLinearGradient(0, 945, 0, 1095);
+      textBackdrop.addColorStop(0, "rgba(0, 0, 0, 0)");
+      textBackdrop.addColorStop(0.25, "rgba(7, 7, 9, 0.42)");
+      textBackdrop.addColorStop(0.85, "rgba(7, 7, 9, 0.52)");
+      textBackdrop.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = textBackdrop;
+      ctx.fillRect(40, 945, foilCanvas.width - 80, 150);
+
+      // Book title: Crisp high-contrast off-white with multi-layer shadow for guaranteed legibility
+      const titleSize = 38;
+      ctx.save();
+      ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 2;
+      ctx.fillStyle = "#ffffff";
+      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+      ctx.letterSpacing = "1.6px";
+      ctx.fillText(book.title, 58, 1010);
+      ctx.restore();
+
+      // Second crisp pass to ensure vibrant off-white text
+      ctx.save();
+      ctx.fillStyle = "#fdfcf9";
+      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+      ctx.letterSpacing = "1.6px";
+      ctx.fillText(book.title, 58, 1010);
+      ctx.restore();
+
+      // Discipline / Service name: Distinct, contrasting light ivory/bone with shadow
+      ctx.save();
+      ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 1.5;
+      ctx.fillStyle = "#f0ebe1";
+      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.letterSpacing = "2.6px";
+      ctx.fillText(book.discipline.toUpperCase(), 60, 1056);
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = "#f0ebe1";
+      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.letterSpacing = "2.6px";
+      ctx.fillText(book.discipline.toUpperCase(), 60, 1056);
+      ctx.restore();
 
       return configureCanvasTexture(new THREE.CanvasTexture(foilCanvas));
     }
@@ -1388,8 +1439,12 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.save();
       ctx.translate(foilCanvas.width * 0.5, foilCanvas.height * 0.5);
       ctx.rotate(Math.PI / 2);
-      ctx.font = `400 ${book.title.length > 18 ? 40 : book.title.length > 10 ? 58 : 68}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.letterSpacing = "0px";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetY = 1;
+      ctx.fillStyle = "#fdfcf9";
+      ctx.font = '600 24px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.letterSpacing = "2px";
       ctx.fillText(book.title, 0, 0);
       ctx.restore();
 
@@ -1486,12 +1541,21 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.lineTo(548, 574);
       ctx.stroke();
 
-      ctx.font = `400 ${book.title.length > 10 ? 52 : 62}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.letterSpacing = "0px";
+      ctx.save();
+      ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetY = 2;
+      ctx.fillStyle = "#fdfcf9";
+      ctx.font = '600 36px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.letterSpacing = "1.6px";
       ctx.fillText(book.title, 68, 956);
-      ctx.font = '500 15px Inter, "Helvetica Neue", Arial, sans-serif';
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetY = 1.5;
+      ctx.fillStyle = "#f0ebe1";
+      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
       ctx.letterSpacing = "2.6px";
       ctx.fillText(book.discipline.toUpperCase(), 70, 1004);
+      ctx.restore();
       ctx.globalAlpha = 0.68;
       ctx.fillRect(68, 1040, 632, 1.5);
       ctx.globalAlpha = 1;
@@ -1602,15 +1666,14 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         transparent: true
       });
       const foilArt = new THREE.MeshPhysicalMaterial({
-        color: book.foil,
+        color: 0xffffff,
         map: foilTexture,
-        alphaMap: foilTexture,
         bumpMap: foilEmbossTexture,
-        bumpScale: 0.016,
-        roughness: book.id === "cursor" ? 0.22 : 0.2,
-        metalness: book.id === "cursor" ? 0.34 : 0.94,
-        clearcoat: 0.18,
-        clearcoatRoughness: 0.12,
+        bumpScale: 0.014,
+        roughness: 0.3,
+        metalness: 0.08,
+        clearcoat: 0.35,
+        clearcoatRoughness: 0.16,
         transparent: true,
         depthWrite: false,
         polygonOffset: true,
@@ -1631,15 +1694,14 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         side: THREE.DoubleSide
       });
       const spineFoilArt = new THREE.MeshPhysicalMaterial({
-        color: book.foil,
+        color: 0xffffff,
         map: spineFoilTexture,
-        alphaMap: spineFoilTexture,
         bumpMap: spineEmbossTexture,
-        bumpScale: 0.017,
-        roughness: 0.19,
-        metalness: 0.92,
-        clearcoat: 0.16,
-        clearcoatRoughness: 0.13,
+        bumpScale: 0.015,
+        roughness: 0.3,
+        metalness: 0.08,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.16,
         transparent: true,
         depthWrite: false,
         polygonOffset: true,
@@ -1661,15 +1723,14 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         side: THREE.DoubleSide
       });
       const backFoilArt = new THREE.MeshPhysicalMaterial({
-        color: book.foil,
+        color: 0xffffff,
         map: backFoilTexture,
-        alphaMap: backFoilTexture,
         bumpMap: backEmbossTexture,
-        bumpScale: 0.016,
-        roughness: 0.21,
-        metalness: 0.9,
-        clearcoat: 0.14,
-        clearcoatRoughness: 0.14,
+        bumpScale: 0.014,
+        roughness: 0.3,
+        metalness: 0.08,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.16,
         transparent: true,
         depthWrite: false,
         polygonOffset: true,

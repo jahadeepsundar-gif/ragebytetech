@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CTA } from "@/components/CTA";
-import { Code2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Selected Work & Engineering Case Studies",
@@ -18,48 +18,52 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#070709]">
       {/* Editorial Page Header */}
-      <section className="relative py-24 border-b border-surface-border bg-background-secondary overflow-hidden">
-        {/* Background glow and mesh */}
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+        {/* Background mesh */}
         <div 
           aria-hidden="true" 
-          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-30 radial-mask" 
+          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
         />
-        <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-surface px-3 py-1 text-xs font-mono font-medium text-accent border border-surface-border mb-6">
-              <Code2 className="h-3.5 w-3.5" />
-              <span>CASE STUDY REPOSITORY</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
-              Selected Work &amp;{" "}
-              <span className="bg-gradient-to-r from-white via-zinc-100 to-accent bg-clip-text text-transparent">
-                Architecture.
+          {/* Editorial Section Marker */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+                [01] // ARCHIVE INDEX
               </span>
+            </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [SYS.CASE_STUDIES // {projects.length} ACTIVE]
+            </span>
+          </div>
+
+          <div className="max-w-4xl">
+            <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
+              SELECTED WORK &amp;{" "}
+              <span className="text-[#F42C1D]">ARCHITECTURE.</span>
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              Every build is a study in speed, type safety, and architectural discipline.
-              Explore our recent web applications, performance overhauls, and headless systems.
+            <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
+              Every build is a study in sub-second speed, end-to-end type safety, and architectural discipline. Explore our archive of production web applications, performance overhauls, and headless systems.
             </p>
 
             {/* Filter / Meta Pills */}
             <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-mono">
-              <span className="rounded-lg border border-accent/40 bg-accent/10 px-3 py-1.5 text-accent font-semibold">
-                All Projects ({projects.length})
+              <span className="border border-[#F42C1D] bg-[#F42C1D]/15 px-3 py-1.5 text-white font-bold">
+                [ALL PROJECTS ({projects.length})]
               </span>
-              <span className="rounded-lg border border-surface-border bg-surface px-3 py-1.5 text-muted-foreground">
-                Headless E-commerce
+              <span className="border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
+                [HEADLESS E-COMMERCE]
               </span>
-              <span className="rounded-lg border border-surface-border bg-surface px-3 py-1.5 text-muted-foreground">
-                Cloud Dashboards
+              <span className="border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
+                [CLOUD DASHBOARDS]
               </span>
-              <span className="rounded-lg border border-surface-border bg-surface px-3 py-1.5 text-muted-foreground">
-                Fintech Portals
+              <span className="border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
+                [FINTECH PORTALS]
               </span>
             </div>
           </div>
@@ -67,22 +71,22 @@ export default function WorkPage() {
       </section>
 
       {/* Projects Grid Section */}
-      <section className="py-24 bg-background relative">
+      <section className="py-20 sm:py-28 bg-[#070709] relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Demo Testing Disclosure Note */}
-          <div className="mb-12 rounded-2xl border border-surface-border bg-surface/60 p-4 sm:p-5 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3 text-xs text-muted-foreground">
-              <Sparkles className="h-4 w-4 text-accent shrink-0" />
+          <div className="mb-12 border border-white/10 bg-[#0C0C0E] p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-xs text-zinc-400">
+              <Sparkles className="h-4 w-4 text-[#F42C1D] shrink-0" />
               <span>
-                <strong className="text-foreground">Interactive Demo Case Studies:</strong> These projects represent realistic architectural reference implementations designed to test case study layouts, performance benchmarks, and dynamic routes.
+                <strong className="text-white font-mono uppercase tracking-wider">Interactive Reference Studies:</strong> Architectural reference implementations designed to test case study layouts, performance benchmarks, and dynamic routes.
               </span>
             </div>
-            <span className="shrink-0 rounded-md border border-surface-border bg-background px-2.5 py-1 text-[11px] font-mono text-accent">
-              RSC &amp; ISR Enabled
+            <span className="shrink-0 border border-white/15 bg-black px-2.5 py-1 text-[11px] font-mono text-[#F42C1D]">
+              [RSC &amp; ISR ENABLED]
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {projects.map((project, idx) => (
               <ProjectCard key={project.slug} project={project} priority={idx < 2} />
             ))}

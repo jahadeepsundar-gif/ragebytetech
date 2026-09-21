@@ -8,7 +8,6 @@ import { CTA } from "@/components/CTA";
 import {
   ArrowLeft,
   ArrowRight,
-  CheckCircle2,
   ExternalLink,
   Sparkles,
   TrendingUp,
@@ -60,42 +59,47 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
   const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
 
   return (
-    <article className="flex flex-col bg-background">
+    // Production Case Study View
+    <article className="flex flex-col bg-[#070709]">
       {/* Case Study Header & Hero */}
-      <header className="relative border-b border-surface-border bg-background-secondary py-16 sm:py-24 overflow-hidden">
-        {/* Background glow and mesh */}
+      <header className="relative border-b border-white/10 bg-[#070709] py-16 sm:py-24 overflow-hidden">
+        {/* Background mesh */}
         <div 
           aria-hidden="true" 
-          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-30 radial-mask" 
+          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
         />
-        <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground mb-8">
-            <Link href="/" className="hover:text-accent transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/work" className="hover:text-accent transition-colors">
-              Work
-            </Link>
-            <span>/</span>
-            <span className="text-accent truncate">{displayName}</span>
+          {/* Breadcrumb Navigation & Editorial Marker */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+            <div className="flex items-center gap-2 font-mono text-xs text-zinc-500">
+              <Link href="/" className="hover:text-white transition-colors">
+                HOME
+              </Link>
+              <span>/</span>
+              <Link href="/work" className="hover:text-white transition-colors">
+                WORK
+              </Link>
+              <span>/</span>
+              <span className="text-[#F42C1D] uppercase truncate">{displayName}</span>
+            </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [SYS.CASE_SPEC // ARCHIVE]
+            </span>
           </div>
 
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               {isDemo && (
-                <div className="inline-flex items-center gap-2 rounded-md border border-surface-border bg-surface px-3 py-1 font-mono text-xs text-accent mb-4">
+                <div className="inline-flex items-center gap-2 border border-white/15 bg-black px-3 py-1 font-mono text-xs text-[#F42C1D] mb-4">
                   <Sparkles className="h-3.5 w-3.5" />
-                  <span>DEMO CASE STUDY &bull; REFERENCE ARCHITECTURE</span>
+                  <span>DEMO CASE STUDY // REFERENCE ARCHITECTURE</span>
                 </div>
               )}
-              <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
+              <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
                 {displayName}
               </h1>
-              <p className="mt-5 text-base sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="mt-5 text-base sm:text-xl text-zinc-400 font-sans leading-relaxed max-w-2xl">
                 {project.description}
               </p>
             </div>
@@ -106,15 +110,15 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background shadow-[0_0_20px_rgba(244,44,29,0.3)] hover:bg-accent-hover transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-[#F42C1D] px-6 py-3.5 font-mono text-xs uppercase tracking-wider font-bold text-white hover:bg-[#ff3b2c] transition-colors"
                 >
                   <span>Visit Live Prototype</span>
-                  <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ExternalLink className="h-4 w-4" />
                 </a>
               )}
               <Link
                 href="/work"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-surface-border bg-surface/80 px-6 py-3.5 text-sm font-medium text-foreground hover:border-surface-border-hover hover:bg-surface-elevated transition-colors font-mono text-xs"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 bg-transparent px-6 py-3.5 font-mono text-xs uppercase tracking-wider text-white hover:border-[#F42C1D] hover:text-[#F42C1D] transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>All Case Studies</span>
@@ -123,32 +127,32 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
           </div>
 
           {/* Metadata Architecture Strip */}
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-surface-border/80 pt-8 font-mono text-xs">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-8 font-mono text-xs">
             <div>
-              <span className="text-muted-foreground block mb-1">Architecture</span>
-              <span className="font-semibold text-foreground">Next.js 14 App Router</span>
+              <span className="text-zinc-500 block mb-1 uppercase tracking-wider">Architecture</span>
+              <span className="font-bold text-white">Next.js 14 App Router</span>
             </div>
             <div>
-              <span className="text-muted-foreground block mb-1">Language</span>
-              <span className="font-semibold text-foreground">TypeScript (Strict)</span>
+              <span className="text-zinc-500 block mb-1 uppercase tracking-wider">Language</span>
+              <span className="font-bold text-white">TypeScript (Strict)</span>
             </div>
             <div>
-              <span className="text-muted-foreground block mb-1">Rendering Strategy</span>
-              <span className="font-semibold text-accent">React Server Components</span>
+              <span className="text-zinc-500 block mb-1 uppercase tracking-wider">Rendering Strategy</span>
+              <span className="font-bold text-[#F42C1D]">React Server Components</span>
             </div>
             <div>
-              <span className="text-muted-foreground block mb-1">Deployment</span>
-              <span className="font-semibold text-foreground">Vercel Edge Network</span>
+              <span className="text-zinc-500 block mb-1 uppercase tracking-wider">Deployment</span>
+              <span className="font-bold text-white">Vercel Edge Network</span>
             </div>
           </div>
 
           {/* Tech Stack Pills */}
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono text-muted-foreground mr-1">Stack:</span>
+            <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider mr-1">Stack:</span>
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="rounded-md border border-surface-border bg-surface px-2.5 py-1 font-mono text-xs text-zinc-300"
+                className="border border-white/10 bg-black px-2.5 py-1 font-mono text-xs text-zinc-300"
               >
                 {t}
               </span>
@@ -158,9 +162,9 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
       </header>
 
       {/* Hero Cover Image Mockup */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-[#070709]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-surface-border bg-surface-subtle shadow-2xl shadow-black/90">
+          <div className="relative aspect-[16/9] w-full overflow-hidden border border-white/10 bg-black">
             <Image
               src={project.coverImage}
               alt={`Cover preview of ${displayName}`}
@@ -169,37 +173,36 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
       </section>
 
       {/* Deep-Dive Analysis: The Problem vs The Solution */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-[#070709]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* The Challenge */}
-            <div className="rounded-3xl border border-surface-border bg-surface/80 p-8 sm:p-12 backdrop-blur-md relative overflow-hidden">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-rose-400">
-                [01] The Technical Bottleneck
+            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-12 relative">
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-400">
+                [01] // THE BOTTLENECK
               </span>
-              <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-bold text-foreground">
-                The Architectural Challenge
+              <h2 className="mt-3 font-display uppercase text-2xl sm:text-3xl font-black text-white">
+                ARCHITECTURAL CHALLENGE
               </h2>
-              <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed">
+              <p className="mt-5 text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
                 {project.challenge}
               </p>
             </div>
 
             {/* The Solution */}
-            <div className="rounded-3xl border border-accent/40 bg-surface/90 p-8 sm:p-12 backdrop-blur-md shadow-xl shadow-accent/5 relative overflow-hidden">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                [02] The Engineered Execution
+            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-12 relative">
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#F42C1D]">
+                [02] // ENGINEERED EXECUTION
               </span>
-              <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-bold text-foreground">
-                The Implemented Solution
+              <h2 className="mt-3 font-display uppercase text-2xl sm:text-3xl font-black text-white">
+                IMPLEMENTED SOLUTION
               </h2>
-              <p className="mt-5 text-sm sm:text-base text-zinc-300 leading-relaxed">
+              <p className="mt-5 text-sm sm:text-base text-zinc-300 font-sans leading-relaxed">
                 {project.solution}
               </p>
             </div>
@@ -208,16 +211,16 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
       </section>
 
       {/* Key Architectural Deliverables Checklist */}
-      <section className="py-20 border-t border-surface-border bg-background-secondary relative overflow-hidden">
+      <section className="py-20 border-t border-white/10 bg-[#070709] relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-12">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-              Core Capabilities Shipped
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#F42C1D]">
+              [DELIVERABLE SPEC]
             </span>
-            <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-extrabold text-foreground">
-              Key Features &amp; Deliverables
+            <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
+              KEY DELIVERABLES &amp; PATTERNS
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-sm text-zinc-400 font-sans">
               Specific architectural patterns and engineering components implemented for this project.
             </p>
           </div>
@@ -226,10 +229,10 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             {project.features.map((feat, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 rounded-2xl border border-surface-border bg-surface/80 p-6 backdrop-blur-md transition-colors hover:border-accent/40"
+                className="flex items-start gap-3 border border-white/10 bg-[#0C0C0E] p-6"
               >
-                <CheckCircle2 className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                <span className="text-xs sm:text-sm text-zinc-200 leading-relaxed font-medium">
+                <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-2" />
+                <span className="text-xs sm:text-sm text-zinc-200 leading-relaxed font-sans font-medium">
                   {feat}
                 </span>
               </div>
@@ -240,16 +243,16 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
       {/* Multi-Device Visual Artifacts */}
       {project.screenshots && project.screenshots.length > 0 && (
-        <section className="py-24 border-t border-surface-border bg-background">
+        <section className="py-24 border-t border-white/10 bg-[#070709]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-14">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-accent">
-                Responsive Previews
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#F42C1D]">
+                [VIEWPORT AUDIT]
               </span>
-              <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-extrabold text-foreground">
-                Multi-Viewport Artifacts
+              <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
+                MULTI-VIEWPORT ARTIFACTS
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground font-mono">
+              <p className="mt-2 text-sm text-zinc-400 font-mono">
                 Engineered for pixel perfection across physical desktop &amp; mobile handheld screens.
               </p>
             </div>
@@ -258,14 +261,12 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               {project.screenshots.map((shot, idx) => (
                 <div key={idx} className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-center">
                   {/* Desktop Preview */}
-                  <div className="lg:col-span-8 overflow-hidden rounded-2xl border border-surface-border bg-surface-subtle shadow-2xl shadow-black/80">
-                    <div className="flex items-center gap-2 border-b border-surface-border/80 bg-background/90 px-4 py-3">
-                      <div className="h-3 w-3 rounded-full bg-red-500/60" />
-                      <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                      <div className="h-3 w-3 rounded-full bg-green-500/60" />
-                      <span className="ml-3 font-mono text-[11px] text-muted-foreground flex items-center gap-1">
-                        <Terminal className="h-3.5 w-3.5 text-accent" />
-                        Desktop Viewport (1920x1080)
+                  <div className="lg:col-span-8 overflow-hidden border border-white/15 bg-black">
+                    <div className="flex items-center gap-2 border-b border-white/10 bg-black/90 px-4 py-3">
+                      <div className="h-2 w-2 bg-[#F42C1D]" />
+                      <span className="ml-2 font-mono text-[11px] text-zinc-400 flex items-center gap-1">
+                        <Terminal className="h-3.5 w-3.5 text-[#F42C1D]" />
+                        DESKTOP VIEWPORT // 1920x1080
                       </span>
                     </div>
                     <div className="relative aspect-[16/10] w-full">
@@ -281,9 +282,9 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
                   {/* Mobile Preview Frame */}
                   <div className="lg:col-span-4 flex justify-center">
-                    <div className="w-[280px] overflow-hidden rounded-[2.5rem] border-[6px] border-surface-border bg-surface-subtle shadow-2xl shadow-black/90">
-                      <div className="h-5 bg-surface-border flex justify-center items-center">
-                        <div className="h-1 w-14 rounded-full bg-surface" />
+                    <div className="w-[280px] overflow-hidden border border-white/15 bg-black">
+                      <div className="border-b border-white/10 bg-black/90 px-4 py-2 font-mono text-[10px] text-zinc-500 uppercase tracking-wider text-center">
+                        MOBILE VIEWPORT
                       </div>
                       <div className="relative aspect-[9/18] w-full">
                         <Image
@@ -305,18 +306,17 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
       {/* Measurable Performance Results Card */}
       {project.result && (
-        <section className="py-20 border-t border-surface-border bg-background-secondary">
+        <section className="py-20 border-t border-white/10 bg-[#070709]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-accent/40 bg-surface/90 p-8 sm:p-14 shadow-2xl backdrop-blur-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 h-64 w-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="flex items-center gap-2 text-accent font-mono text-xs font-semibold uppercase tracking-widest">
+            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-14 relative">
+              <div className="flex items-center gap-2 text-[#F42C1D] font-mono text-xs font-bold uppercase tracking-widest">
                 <TrendingUp className="h-4 w-4" />
-                <span>BENCHMARK IMPACT</span>
+                <span>[BENCHMARK IMPACT]</span>
               </div>
-              <h2 className="mt-3 font-heading text-2xl sm:text-4xl font-extrabold text-foreground">
-                Measurable Technical Performance
+              <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
+                MEASURABLE TECHNICAL PERFORMANCE
               </h2>
-              <p className="mt-4 text-sm sm:text-lg text-zinc-300 leading-relaxed max-w-3xl">
+              <p className="mt-4 text-sm sm:text-lg text-zinc-300 font-sans leading-relaxed max-w-3xl">
                 {project.result}
               </p>
             </div>
@@ -324,22 +324,22 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         </section>
       )}
 
-      {/* Next / Previous Project Carousel Navigation */}
-      <section className="border-t border-surface-border bg-background py-12">
+      {/* Next / Previous Project Navigation */}
+      <section className="border-t border-white/10 bg-[#070709] py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-xs">
           <Link
             href={`/work/${prevProject.slug}`}
-            className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-2 text-zinc-400 hover:text-[#F42C1D] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Prev: {prevProject.name.replace(" [Demo Project]", "")}</span>
+            <span>PREV: {prevProject.name.replace(" [Demo Project]", "").toUpperCase()}</span>
           </Link>
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-2 text-zinc-400 hover:text-[#F42C1D] transition-colors"
           >
-            <span>Next: {nextProject.name.replace(" [Demo Project]", "")}</span>
+            <span>NEXT: {nextProject.name.replace(" [Demo Project]", "").toUpperCase()}</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -37,3 +37,7 @@ next-env.d.ts
 
 # external ui/ux tooling
 /tools/
+
+# scratch directory
+scratch/
+

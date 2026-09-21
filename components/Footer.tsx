@@ -15,31 +15,31 @@ export function Footer() {
 
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8">
         {/* Top Direct Engagement Banner */}
-        <div className="mb-16 rounded-2xl border border-surface-border bg-surface/60 p-8 sm:p-12 backdrop-blur-md relative overflow-hidden">
-          <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+        <div className="mb-16 border border-surface-border/80 bg-surface/30 p-8 sm:p-12 backdrop-blur-md relative overflow-hidden">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
-              <span className="font-mono text-xs font-semibold tracking-wider text-accent uppercase">
-                Direct Senior Engineering
+              <span className="font-mono text-[11px] font-semibold tracking-widest text-accent uppercase flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                [DIRECT SENIOR ENGAGEMENT]
               </span>
-              <h2 className="mt-2 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground">
+              <h2 className="mt-3 font-display text-3xl sm:text-5xl font-black uppercase tracking-tight text-foreground leading-[0.95]">
                 Have an ambitious web project in mind?
               </h2>
-              <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-                We take on a limited number of high-impact engagements each quarter. Direct developer access, zero account-manager layers.
+              <p className="mt-3 text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed">
+                We take on a limited number of high-stakes engagements each quarter. Direct developer access, zero account-manager layers.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-background transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_24px_rgba(244,44,29,0.35)] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 bg-accent px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-widest text-background transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <a
                 href="mailto:hello@ragebyte.tech"
-                className="inline-flex items-center gap-2 rounded-xl border border-surface-border bg-surface px-6 py-3.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-surface-border-hover hover:bg-surface-elevated active:scale-[0.98]"
+                className="inline-flex items-center gap-2 border border-white/20 bg-background/80 px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-widest text-foreground transition-all duration-200 hover:border-white/50 active:scale-[0.98]"
               >
                 <Mail className="h-4 w-4 text-accent" />
                 <span>hello@ragebyte.tech</span>
@@ -54,20 +54,20 @@ export function Footer() {
           <div className="md:col-span-2 space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2.5 text-xl font-bold tracking-tight text-foreground group"
+              className="inline-flex items-center gap-2.5 group"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-surface-border bg-surface p-1.5 transition-colors group-hover:border-accent">
+              <div className="flex h-8 w-8 items-center justify-center border border-surface-border bg-surface p-1.5 transition-colors group-hover:border-accent">
                 <Terminal className="h-4 w-4 text-accent" />
               </div>
-              <span className="font-heading text-xl font-extrabold tracking-tight">
+              <span className="font-display text-3xl font-black uppercase tracking-tight text-foreground">
                 RAGE<span className="text-accent">BYTE</span>
               </span>
             </Link>
-            <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
-              A small, technically strong web development studio building custom Next.js applications,
+            <p className="max-w-sm text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
+              A specialized, technically strong web development studio building custom Next.js applications,
               headless e-commerce platforms, and performance-driven digital tools.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-zinc-400">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -155,15 +155,15 @@ export function Footer() {
               Architecture
             </h3>
             <div className="mt-4 space-y-2 text-xs font-mono text-muted-foreground">
-              <div className="rounded-lg border border-surface-border bg-surface/50 p-2.5">
+              <div className="border border-surface-border bg-surface/50 p-2.5">
                 <span className="text-accent font-semibold block">Next.js 14+</span>
                 <span className="text-[11px] text-zinc-400">App Router &amp; Server Components</span>
               </div>
-              <div className="rounded-lg border border-surface-border bg-surface/50 p-2.5">
+              <div className="border border-surface-border bg-surface/50 p-2.5">
                 <span className="text-accent font-semibold block">TypeScript</span>
                 <span className="text-[11px] text-zinc-400">Strict End-to-End Type Safety</span>
               </div>
-              <div className="rounded-lg border border-surface-border bg-surface/50 p-2.5">
+              <div className="border border-surface-border bg-surface/50 p-2.5">
                 <span className="text-accent font-semibold block">Tailwind CSS</span>
                 <span className="text-[11px] text-zinc-400">Zero-Runtime Design Tokens</span>
               </div>

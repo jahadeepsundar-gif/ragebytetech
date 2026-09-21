@@ -30,18 +30,18 @@ export function TeamCard({ member }: TeamCardProps) {
   const displayName = member.name.replace(" [Demo Profile]", "").replace(" [Demo]", "");
 
   return (
-    <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-surface-border bg-surface/80 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(244,44,29,0.15)]">
+    <article className="group relative flex flex-col justify-between border border-white/10 bg-[#0C0C0E] p-7 transition-colors duration-300 hover:border-white/30">
       {/* Top Corner Marker */}
-      <div className="absolute top-3 right-3 font-mono text-[10px] text-zinc-600 transition-colors group-hover:text-accent">
+      <div className="absolute top-3 right-3 font-mono text-xs text-zinc-600 transition-colors group-hover:text-[#F42C1D]">
         +
       </div>
 
       <div>
         {/* Header: Photo, Role Badges & Social Links */}
         <div className="flex items-start justify-between gap-4">
-          <div className="relative h-20 w-20 overflow-hidden rounded-2xl border border-surface-border bg-surface-subtle shadow-inner">
+          <div className="relative h-20 w-20 overflow-hidden border border-white/15 bg-black">
             <Image
-              src={member.photo}
+              src={member.photo || member.image}
               alt={`Photo of ${displayName}`}
               fill
               sizes="80px"
@@ -56,7 +56,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${displayName}'s GitHub`}
-                className="flex h-8 w-8 items-center justify-center rounded-xl border border-surface-border bg-background text-muted-foreground transition-all hover:border-accent/50 hover:text-accent hover:bg-surface-elevated"
+                className="flex h-8 w-8 items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-[#F42C1D] hover:text-[#F42C1D]"
               >
                 <GithubIcon className="h-4 w-4" />
               </a>
@@ -67,7 +67,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${displayName}'s LinkedIn`}
-                className="flex h-8 w-8 items-center justify-center rounded-xl border border-surface-border bg-background text-muted-foreground transition-all hover:border-accent/50 hover:text-accent hover:bg-surface-elevated"
+                className="flex h-8 w-8 items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-[#F42C1D] hover:text-[#F42C1D]"
               >
                 <LinkedinIcon className="h-4 w-4" />
               </a>
@@ -77,36 +77,36 @@ export function TeamCard({ member }: TeamCardProps) {
 
         {/* Member Details */}
         <div className="mt-6">
-          <div className="flex items-center gap-2">
-            <h3 className="font-heading text-lg font-bold text-foreground transition-colors group-hover:text-white">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3 className="font-display uppercase text-2xl font-black text-white tracking-tight">
               {displayName}
             </h3>
             {isDemo && (
-              <span className="rounded-md border border-surface-border bg-background/80 px-2 py-0.5 font-mono text-[10px] text-accent">
-                Demo Profile
+              <span className="border border-white/15 bg-black px-2 py-0.5 font-mono text-[10px] text-[#F42C1D] uppercase">
+                DEMO PROFILE
               </span>
             )}
           </div>
-          <p className="mt-1 font-mono text-xs font-semibold text-accent">
-            {member.role}
+          <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-[#F42C1D]">
+            {member.role || member.designation}
           </p>
 
-          <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <p className="mt-3 text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
             {member.bio}
           </p>
         </div>
       </div>
 
       {/* Engineering Skills / Specializations */}
-      <div className="mt-6 border-t border-surface-border/60 pt-4">
-        <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider block mb-2">
-          Specializations
+      <div className="mt-6 border-t border-white/10 pt-4">
+        <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.2em] block mb-2">
+          [SPECIALIZATIONS]
         </span>
         <div className="flex flex-wrap gap-1.5">
           {member.skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-md border border-surface-border bg-background/80 px-2 py-0.5 font-mono text-[10px] text-zinc-300 transition-colors group-hover:border-surface-border-hover group-hover:text-foreground"
+              className="border border-white/10 bg-black/60 px-2 py-0.5 font-mono text-[10px] text-zinc-300"
             >
               {skill}
             </span>

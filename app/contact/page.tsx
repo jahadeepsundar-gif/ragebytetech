@@ -2,14 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { FAQ } from "@/components/FAQ";
-import {
-  Clock,
-  Mail,
-  ShieldCheck,
-  CheckCircle2,
-  Terminal,
-  ArrowUpRight,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Start a Project — Project Enquiry & Architecture Review",
@@ -24,57 +17,68 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col bg-background">
+    <div className="flex flex-col bg-[#070709]">
       {/* Editorial Header */}
-      <section className="relative py-24 border-b border-surface-border bg-background-secondary overflow-hidden">
-        {/* Background glow and mesh */}
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+        {/* Background mesh */}
         <div 
           aria-hidden="true" 
-          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-30 radial-mask" 
+          className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
         />
-        <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-surface px-3 py-1 text-xs font-mono font-medium text-accent border border-surface-border mb-6">
-              <Terminal className="h-3.5 w-3.5" />
-              <span>DIRECT DEVELOPER ACCESS</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.08]">
-              Start a Project with{" "}
-              <span className="bg-gradient-to-r from-white via-zinc-100 to-accent bg-clip-text text-transparent">
-                RageByte.
+          {/* Editorial Section Marker */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+                [01] // INTAKE PROTOCOL
               </span>
+            </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [SYS.ACTIVE_INTAKE // 2026]
+            </span>
+          </div>
+
+          <div className="max-w-4xl">
+            <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
+              START A PROJECT WITH{" "}
+              <span className="text-[#F42C1D]">RAGEBYTE.</span>
             </h1>
 
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              Tell us what you&apos;re looking to build. Whether you have a detailed technical specification
-              or just an initial product concept, our senior engineering team will review your requirements
-              and provide honest technical feedback within 24 business hours.
+            <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
+              Submit your technical specifications or initial product roadmap. Senior engineers review your scope, dependencies, and architectural requirements with an honest review within 24 business hours.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
+              <span className="text-[#F42C1D] font-bold">[RESPONSE // 24H SLA]</span>
+              <span className="text-zinc-600">{"//"}</span>
+              <span>DIRECT DEVELOPER ACCESS</span>
+              <span className="text-zinc-600">{"//"}</span>
+              <span>100% IP OWNERSHIP</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Form & Sidebar Section */}
-      <section className="py-24 bg-background relative">
+      <section className="py-20 sm:py-28 bg-[#070709] relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* Form Column (Cols 1-8) */}
             <div className="lg:col-span-8">
-              <div className="rounded-3xl border border-surface-border bg-surface/80 p-8 sm:p-12 backdrop-blur-xl shadow-2xl shadow-black/80">
-                <div className="mb-10 border-b border-surface-border/80 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="border border-white/10 bg-[#0C0C0E] p-6 sm:p-10 lg:p-12">
+                <div className="mb-8 border-b border-white/10 pb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <div>
-                    <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
-                      Project Configurator
+                    <h2 className="font-display uppercase text-3xl sm:text-4xl font-black text-white tracking-tight">
+                      PROJECT CONFIGURATOR
                     </h2>
-                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground font-mono">
-                      Step-by-step engineering intake form
+                    <p className="mt-1 text-xs text-zinc-500 font-mono uppercase tracking-wider">
+                      SPECIFICATION INTAKE PIPELINE
                     </p>
                   </div>
-                  <span className="text-[11px] font-mono text-accent bg-accent/10 border border-accent/30 rounded-md px-2.5 py-1 self-start sm:self-auto">
-                    Direct Senior Review
+                  <span className="font-mono text-xs text-[#F42C1D] uppercase tracking-wider">
+                    [DIRECT SENIOR REVIEW]
                   </span>
                 </div>
 
@@ -83,71 +87,83 @@ export default function ContactPage() {
             </div>
 
             {/* Sidebar Column (Cols 9-12) */}
-            <div className="lg:col-span-4 space-y-6">
+            <div className="lg:col-span-4 space-y-8">
               {/* Card 1: What Happens Next */}
-              <div className="rounded-3xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md">
-                <h3 className="font-heading text-base font-bold text-foreground flex items-center gap-2 mb-4">
-                  <Clock className="h-4 w-4 text-accent" />
-                  <span>The Next 48 Hours</span>
+              <div className="border border-white/10 bg-[#0C0C0E] p-6 sm:p-8">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#F42C1D]">
+                    [PROTOCOL]
+                  </span>
+                  <span className="font-mono text-xs text-zinc-500">48-HOUR TIMELINE</span>
+                </div>
+                <h3 className="font-display uppercase text-2xl font-black text-white tracking-tight mb-5">
+                  THE NEXT 48 HOURS
                 </h3>
-                <ul className="space-y-4 text-xs sm:text-sm text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <span className="font-mono font-bold text-accent shrink-0 mt-0.5">01.</span>
+                <ul className="space-y-5 text-xs sm:text-sm text-zinc-400">
+                  <li className="flex items-start gap-4">
+                    <span className="font-mono font-black text-[#F42C1D] shrink-0 text-base leading-none">01</span>
                     <span>A senior engineer reviews your technical requirements within 24 business hours.</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="font-mono font-bold text-accent shrink-0 mt-0.5">02.</span>
+                  <li className="flex items-start gap-4">
+                    <span className="font-mono font-black text-[#F42C1D] shrink-0 text-base leading-none">02</span>
                     <span>If the scope aligns, we schedule a focused 20-minute technical discovery session.</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="font-mono font-bold text-accent shrink-0 mt-0.5">03.</span>
+                  <li className="flex items-start gap-4">
+                    <span className="font-mono font-black text-[#F42C1D] shrink-0 text-base leading-none">03</span>
                     <span>We deliver a fixed-scope milestone proposal with guaranteed staged deadlines.</span>
                   </li>
                 </ul>
               </div>
 
               {/* Card 2: Studio Commitments */}
-              <div className="rounded-3xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md">
-                <h3 className="font-heading text-base font-bold text-foreground flex items-center gap-2 mb-4">
-                  <ShieldCheck className="h-4 w-4 text-accent" />
-                  <span>Studio Commitments</span>
+              <div className="border border-white/10 bg-[#0C0C0E] p-6 sm:p-8">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-6">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#F42C1D]">
+                    [TERMS]
+                  </span>
+                  <span className="font-mono text-xs text-zinc-500">STANDARDS</span>
+                </div>
+                <h3 className="font-display uppercase text-2xl font-black text-white tracking-tight mb-5">
+                  STUDIO COMMITMENTS
                 </h3>
-                <ul className="space-y-3 text-xs sm:text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
-                    <span>Direct contact with creators (zero sales reps)</span>
+                <ul className="space-y-3.5 text-xs sm:text-sm text-zinc-400 font-sans">
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0" />
+                    <span className="text-zinc-300">Direct contact with creators (zero sales reps)</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
-                    <span>No aggressive sales calls or marketing spam</span>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0" />
+                    <span className="text-zinc-300">No aggressive sales calls or marketing spam</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
-                    <span>Mutual NDA compliance upon request</span>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0" />
+                    <span className="text-zinc-300">Mutual NDA compliance upon request</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
-                    <span>100% full codebase &amp; IP ownership</span>
+                  <li className="flex items-center gap-3">
+                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0" />
+                    <span className="text-zinc-300">100% full codebase &amp; IP ownership</span>
                   </li>
                 </ul>
               </div>
 
               {/* Card 3: Direct Email Desk */}
-              <div className="rounded-3xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md">
-                <h3 className="font-heading text-base font-bold text-foreground flex items-center gap-2 mb-2">
-                  <Mail className="h-4 w-4 text-accent" />
-                  <span>Direct Communication Desk</span>
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Have an existing RFP, Figma link, or architecture deck? Email us directly:
+              <div className="border border-white/10 bg-[#0C0C0E] p-6 sm:p-8">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#F42C1D]">
+                    [DIRECT DESK]
+                  </span>
+                  <span className="font-mono text-xs text-zinc-500">RFP // FIGMA</span>
+                </div>
+                <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+                  Have an existing RFP, Figma link, or architecture deck? Reach our technical leads directly:
                 </p>
-                <div className="mt-4 pt-3 border-t border-surface-border/60">
+                <div className="mt-4 pt-3 border-t border-white/10">
                   <a
                     href="mailto:hello@ragebyte.tech"
-                    className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-accent hover:underline"
+                    className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider font-bold text-white hover:text-[#F42C1D] transition-colors"
                   >
                     <span>hello@ragebyte.tech</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[#F42C1D]" />
                   </a>
                 </div>
               </div>

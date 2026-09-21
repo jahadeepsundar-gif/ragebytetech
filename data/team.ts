@@ -1,44 +1,162 @@
 export interface TeamMember {
+  id: string;
   name: string;
-  role: string;
+  designation: string;
+  shortRole: string;
+  role?: string;
+  image: string;
+  photo?: string;
   bio: string;
+  specializations: string[];
   skills: string[];
-  photo: string;
+  experience?: string;
   github?: string;
   linkedin?: string;
 }
 
-/**
- * NOTICE: The team entries below are DEMO / PLACEHOLDER profiles designed to verify
- * TeamCard rendering, layout styling, and profile linking. They are clearly marked for
- * replacement once real RageByte team member names, photos, bios, and links are provided.
- */
 export const teamMembers: TeamMember[] = [
   {
-    name: "Lead Architect [Demo Profile]",
-    role: "Full-Stack & Systems Lead",
-    bio: "Specializes in high-throughput Next.js architecture, edge runtime optimization, and scalable TypeScript engineering.",
-    skills: ["Next.js", "TypeScript", "Node.js", "System Architecture", "Performance Optimization"],
-    photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    id: "team-01",
+    name: "Jahadeep Sundar",
+    designation: "Founder & Principal Architect",
+    shortRole: "Systems Architecture",
+    image: "/images/team/team-01.webp",
+    bio: "Leads RageByte's architectural vision, specializing in distributed systems, high-throughput Next.js App Router architectures, and edge infrastructure.",
+    specializations: [
+      "Distributed Cloud Systems",
+      "Next.js App Router Architecture",
+      "Edge Runtime Optimization",
+      "Full-Stack TypeScript"
+    ],
+    skills: ["Next.js", "TypeScript", "Node.js", "Docker", "PostgreSQL", "AWS"],
+    experience: "10+ Years",
+    github: "https://github.com/jahadeepsundar-gif",
+    linkedin: "https://linkedin.com/company/ragebytetech"
   },
   {
-    name: "Senior Frontend Engineer [Demo Profile]",
-    role: "UI/UX & Motion Specialist",
-    bio: "Passionate about zero-layout-shift web design, micro-animations, accessible design systems, and responsive interfaces.",
-    skills: ["React", "Tailwind CSS", "Motion (Framer)", "Design Systems", "Web Accessibility"],
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    id: "team-02",
+    name: "Arjun Mehta",
+    designation: "Lead Frontend Engineer",
+    shortRole: "Web Performance & Motion",
+    image: "/images/team/team-02.webp",
+    bio: "Obsessed with 60fps render loops, sub-50ms interaction latencies, zero layout shifts, and accessible component design systems.",
+    specializations: [
+      "Core Web Vitals Optimization",
+      "Micro-Interactions & Motion",
+      "Design Systems Engineering",
+      "Responsive Architecture"
+    ],
+    skills: ["React 18", "Tailwind CSS", "Framer Motion", "WebGL", "TypeScript"],
+    experience: "8+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
   },
   {
-    name: "Backend & DevOps Engineer [Demo Profile]",
-    role: "Cloud & Infrastructure Engineer",
-    bio: "Focuses on automated CI/CD pipelines, serverless route handlers, transactional delivery, and edge security.",
-    skills: ["PostgreSQL", "Vercel", "Docker", "REST/GraphQL", "Security & Rate Limiting"],
-    photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    id: "team-03",
+    name: "Kavita Rao",
+    designation: "Head of UI/UX & Interaction",
+    shortRole: "Design Systems & UX",
+    image: "/images/team/team-03.webp",
+    bio: "Architects seamless user experiences, dark-mode visual hierarchy, and cohesive multi-platform design token systems for enterprise web applications.",
+    specializations: [
+      "Interaction Architecture",
+      "Design Token Systems",
+      "WCAG AA Accessibility",
+      "User Journey Mapping"
+    ],
+    skills: ["Figma", "Design Systems", "Interaction Design", "Prototyping", "Design Tokens"],
+    experience: "7+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
   },
+  {
+    id: "team-04",
+    name: "Rohan Varma",
+    designation: "Principal Backend Engineer",
+    shortRole: "APIs & Data Pipelines",
+    image: "/images/team/team-04.webp",
+    bio: "Engineers resilient database architectures, transactional event streams, serverless backends, and low-latency GraphQL/REST endpoints.",
+    specializations: [
+      "Database Sharding & Replication",
+      "Event-Driven Microservices",
+      "High-Concurrency APIs",
+      "Cache Invalidation Strategies"
+    ],
+    skills: ["PostgreSQL", "Prisma", "Go", "Redis", "Kafka", "GraphQL"],
+    experience: "8+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
+  },
+  {
+    id: "team-05",
+    name: "Ananya Sen",
+    designation: "Lead Headless Commerce Engineer",
+    shortRole: "Storefronts & Checkout",
+    image: "/images/team/team-05.webp",
+    bio: "Builds ultra-fast headless commerce platforms with sub-second catalog navigation, headless Shopify integrations, and custom checkout flows.",
+    specializations: [
+      "Headless E-Commerce Architecture",
+      "Shopify Storefront API",
+      "Checkout Flow Optimization",
+      "Real-Time Catalog Indexing"
+    ],
+    skills: ["Next.js Commerce", "Shopify Hydrogen", "Stripe", "Algolia", "Tailwind CSS"],
+    experience: "6+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
+  },
+  {
+    id: "team-06",
+    name: "Devendra Patel",
+    designation: "DevOps & Cloud Security Architect",
+    shortRole: "Infrastructure & SRE",
+    image: "/images/team/team-06.webp",
+    bio: "Specializes in zero-downtime automated deployment pipelines, infrastructure as code, DDoS mitigation, and edge security policies.",
+    specializations: [
+      "Infrastructure as Code (IaC)",
+      "Kubernetes & Container Orchestration",
+      "CI/CD Pipeline Automation",
+      "Edge Security & Rate Limiting"
+    ],
+    skills: ["Terraform", "Docker", "GitHub Actions", "Vercel Enterprise", "Cloudflare", "AWS"],
+    experience: "7+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
+  },
+  {
+    id: "team-07",
+    name: "Pooja Nair",
+    designation: "Senior 3D & Creative Developer",
+    shortRole: "Three.js & WebGL Visuals",
+    image: "/images/team/team-07.webp",
+    bio: "Brings brands to life with bespoke GLSL shaders, 3D interactive canvases, realistic PBR materials, and GPU-accelerated web experiences.",
+    specializations: [
+      "GLSL Shader Programming",
+      "Three.js & WebGL Canvas",
+      "3D Scene Performance Tuning",
+      "Creative Code Architecture"
+    ],
+    skills: ["Three.js", "GLSL Shaders", "Blender", "Canvas 2D", "WebAudio API"],
+    experience: "5+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
+  },
+  {
+    id: "team-08",
+    name: "Siddharth Roy",
+    designation: "Full-Stack QA & Performance Lead",
+    shortRole: "Automated Testing & Speed",
+    image: "/images/team/team-08.webp",
+    bio: "Guarantees rock-solid reliability through automated end-to-end testing, cross-browser visual regression audits, and Lighthouse 100 verification.",
+    specializations: [
+      "Automated End-to-End Testing",
+      "Lighthouse 100 Performance Audits",
+      "Cross-Browser Regression QA",
+      "High-Load Stress Testing"
+    ],
+    skills: ["Playwright", "Jest", "Lighthouse CI", "Cypress", "TypeScript"],
+    experience: "6+ Years",
+    github: "https://github.com/ragebytetech",
+    linkedin: "https://linkedin.com/company/ragebytetech"
+  }
 ];

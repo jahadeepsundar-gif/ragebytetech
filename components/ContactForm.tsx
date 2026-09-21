@@ -141,31 +141,33 @@ export function ContactForm() {
   // Success Confirmation Card
   if (submitStatus.type === "success") {
     return (
-      <div className="rounded-3xl border border-accent/40 bg-surface/90 p-8 sm:p-14 text-center shadow-2xl backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 h-48 w-48 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-accent/40 bg-accent/10 text-accent shadow-[0_0_24px_rgba(244,44,29,0.3)]">
-          <CheckCircle className="h-8 w-8" />
+      <div className="border border-[#F42C1D]/40 bg-[#0C0C0E] p-8 sm:p-14 text-center backdrop-blur-xl relative overflow-hidden">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center border border-[#F42C1D]/40 bg-[#F42C1D]/10 text-[#F42C1D]">
+          <CheckCircle className="h-7 w-7" />
         </div>
 
-        <h3 className="mt-6 font-heading text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+        <span className="font-mono text-xs text-[#F42C1D] uppercase tracking-[0.2em] block mt-6">
+          [TRANSMISSION SUCCESS]
+        </span>
+
+        <h3 className="mt-2 font-display uppercase text-3xl sm:text-4xl font-black tracking-tight text-white">
           Enquiry Received
         </h3>
 
-        <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-md mx-auto leading-relaxed">
+        <p className="mt-4 text-sm sm:text-base text-zinc-400 max-w-md mx-auto leading-relaxed font-sans">
           {submitStatus.message} A senior engineer will review your architecture specifications and reply within 24 business hours.
         </p>
 
         {submitStatus.configured === false && (
-          <div className="mt-8 rounded-2xl border border-surface-border bg-background/80 p-5 text-xs text-muted-foreground text-left max-w-lg mx-auto flex items-start gap-3.5">
-            <Info className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+          <div className="mt-8 border border-white/10 bg-black/60 p-5 text-xs text-zinc-400 text-left max-w-lg mx-auto flex items-start gap-3.5">
+            <Info className="h-4 w-4 text-[#F42C1D] shrink-0 mt-0.5" />
             <div>
-              <strong className="text-foreground font-mono">Development Note:</strong> The contact submission pipeline has completed end-to-end Zod validation. To route emails directly to your active team mailbox, configure{" "}
-              <code className="rounded bg-surface px-1.5 py-0.5 font-mono text-accent">
+              <strong className="text-white font-mono">Development Note:</strong> The contact submission pipeline has completed end-to-end Zod validation. To route emails directly to your active team mailbox, configure{" "}
+              <code className="bg-white/10 px-1.5 py-0.5 font-mono text-[#F42C1D]">
                 RESEND_API_KEY
               </code>{" "}
               and{" "}
-              <code className="rounded bg-surface px-1.5 py-0.5 font-mono text-accent">
+              <code className="bg-white/10 px-1.5 py-0.5 font-mono text-[#F42C1D]">
                 CONTACT_RECEIVER_EMAIL
               </code>{" "}
               in your environment variables.
@@ -177,9 +179,9 @@ export function ContactForm() {
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-2 rounded-xl border border-surface-border bg-surface px-6 py-3 text-xs font-mono font-semibold text-foreground hover:bg-surface-elevated hover:border-accent/40 transition-all"
+            className="inline-flex items-center gap-2 border border-white/20 bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-widest text-white hover:border-[#F42C1D] hover:text-[#F42C1D] transition-colors"
           >
-            <RefreshCw className="h-3.5 w-3.5 text-accent" />
+            <RefreshCw className="h-3.5 w-3.5" />
             <span>Submit Another Project Inquiry</span>
           </button>
         </div>
@@ -191,7 +193,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} noValidate className="space-y-8">
       {/* General Error Alert */}
       {submitStatus.type === "error" && (
-        <div className="flex items-start gap-3 rounded-2xl border border-red-500/30 bg-red-500/10 p-5 text-xs text-red-400">
+        <div className="flex items-start gap-3 border border-red-500/30 bg-red-500/10 p-5 text-xs text-red-400 font-mono">
           <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
           <span>{submitStatus.message}</span>
         </div>
@@ -199,10 +201,10 @@ export function ContactForm() {
 
       {/* Field Group 1: Service Type Segmented Pills */}
       <div>
-        <label className="block font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-3">
-          1. Select Primary Service Discipline <span className="text-red-400">*</span>
+        <label className="block font-mono text-xs font-bold text-[#F42C1D] uppercase tracking-[0.2em] mb-3">
+          [01] // SELECT SERVICE DISCIPLINE <span className="text-red-400">*</span>
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {serviceTypes.map((type) => {
             const isSelected = formData.serviceType === type;
             return (
@@ -210,14 +212,14 @@ export function ContactForm() {
                 key={type}
                 type="button"
                 onClick={() => handleSelectField("serviceType", type)}
-                className={`flex items-center justify-between rounded-xl px-4 py-3 text-xs font-mono transition-all border text-left ${
+                className={`flex items-center justify-between px-3.5 py-3 text-xs font-mono transition-all border text-left ${
                   isSelected
-                    ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_16px_rgba(244,44,29,0.15)]"
-                    : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
+                    ? "bg-[#F42C1D]/15 border-[#F42C1D] text-white font-bold"
+                    : "bg-[#0C0C0E] border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                 }`}
               >
                 <span>{type}</span>
-                {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-accent" />}
+                {isSelected && <span className="h-1.5 w-1.5 bg-[#F42C1D]" />}
               </button>
             );
           })}
@@ -229,14 +231,14 @@ export function ContactForm() {
 
       {/* Field Group 2: Contact Information */}
       <div className="pt-2">
-        <span className="block font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-4">
-          2. Contact Credentials
+        <span className="block font-mono text-xs font-bold text-[#F42C1D] uppercase tracking-[0.2em] mb-4">
+          [02] // CONTACT CREDENTIALS
         </span>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {/* Name */}
           <div>
-            <label htmlFor="name" className="block text-xs font-mono font-medium text-foreground mb-1.5">
-              Full Name <span className="text-accent">*</span>
+            <label htmlFor="name" className="block text-xs font-mono font-medium text-zinc-300 uppercase tracking-wider mb-1.5">
+              Full Name <span className="text-[#F42C1D]">*</span>
             </label>
             <input
               type="text"
@@ -246,10 +248,10 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="e.g. Alex Mercer"
               aria-invalid={Boolean(errors.name)}
-              className={`w-full rounded-xl border bg-background/80 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:outline-none ${
+              className={`w-full border bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:outline-none ${
                 errors.name
                   ? "border-red-500 focus:border-red-500"
-                  : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/40"
+                  : "border-white/15 focus:border-[#F42C1D]"
               }`}
             />
             {errors.name && <p className="mt-1.5 text-xs text-red-400 font-mono">{errors.name}</p>}
@@ -257,8 +259,8 @@ export function ContactForm() {
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-xs font-mono font-medium text-foreground mb-1.5">
-              Work Email <span className="text-accent">*</span>
+            <label htmlFor="email" className="block text-xs font-mono font-medium text-zinc-300 uppercase tracking-wider mb-1.5">
+              Work Email <span className="text-[#F42C1D]">*</span>
             </label>
             <input
               type="email"
@@ -268,10 +270,10 @@ export function ContactForm() {
               onChange={handleChange}
               placeholder="alex@company.com"
               aria-invalid={Boolean(errors.email)}
-              className={`w-full rounded-xl border bg-background/80 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:outline-none ${
+              className={`w-full border bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:outline-none ${
                 errors.email
                   ? "border-red-500 focus:border-red-500"
-                  : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/40"
+                  : "border-white/15 focus:border-[#F42C1D]"
               }`}
             />
             {errors.email && <p className="mt-1.5 text-xs text-red-400 font-mono">{errors.email}</p>}
@@ -279,8 +281,8 @@ export function ContactForm() {
 
           {/* Company */}
           <div>
-            <label htmlFor="company" className="block text-xs font-mono font-medium text-foreground mb-1.5">
-              Company / Project Entity <span className="text-muted-foreground font-normal">(Optional)</span>
+            <label htmlFor="company" className="block text-xs font-mono font-medium text-zinc-300 uppercase tracking-wider mb-1.5">
+              Company / Project Entity <span className="text-zinc-500 font-normal">[Optional]</span>
             </label>
             <input
               type="text"
@@ -289,14 +291,14 @@ export function ContactForm() {
               value={formData.company}
               onChange={handleChange}
               placeholder="Acme Corp"
-              className="w-full rounded-xl border border-surface-border bg-background/80 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40"
+              className="w-full border border-white/15 bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-[#F42C1D] focus:outline-none"
             />
           </div>
 
           {/* Phone / WhatsApp */}
           <div>
-            <label htmlFor="phone" className="block text-xs font-mono font-medium text-foreground mb-1.5">
-              Phone / WhatsApp <span className="text-muted-foreground font-normal">(Optional)</span>
+            <label htmlFor="phone" className="block text-xs font-mono font-medium text-zinc-300 uppercase tracking-wider mb-1.5">
+              Phone / WhatsApp <span className="text-zinc-500 font-normal">[Optional]</span>
             </label>
             <input
               type="tel"
@@ -305,7 +307,7 @@ export function ContactForm() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="+1 (555) 000-0000"
-              className="w-full rounded-xl border border-surface-border bg-background/80 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40"
+              className="w-full border border-white/15 bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-[#F42C1D] focus:outline-none"
             />
           </div>
         </div>
@@ -315,8 +317,8 @@ export function ContactForm() {
       <div className="pt-2 grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Budget Selector */}
         <div>
-          <label className="block font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-3">
-            3. Estimated Budget Tier <span className="text-red-400">*</span>
+          <label className="block font-mono text-xs font-bold text-[#F42C1D] uppercase tracking-[0.2em] mb-3">
+            [03] // BUDGET TIER <span className="text-red-400">*</span>
           </label>
           <div className="grid grid-cols-2 gap-2">
             {budgetRanges.map((range) => {
@@ -326,10 +328,10 @@ export function ContactForm() {
                   key={range}
                   type="button"
                   onClick={() => handleSelectField("budget", range)}
-                  className={`rounded-xl px-3 py-3 text-xs font-mono text-center transition-all border ${
+                  className={`px-3 py-2.5 text-xs font-mono text-center transition-all border ${
                     isSelected
-                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(244,44,29,0.12)]"
-                      : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
+                      ? "bg-[#F42C1D]/15 border-[#F42C1D] text-white font-bold"
+                      : "bg-[#0C0C0E] border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                   }`}
                 >
                   {range}
@@ -341,8 +343,8 @@ export function ContactForm() {
 
         {/* Timeline Selector */}
         <div>
-          <label className="block font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-3">
-            4. Target Delivery Cadence <span className="text-red-400">*</span>
+          <label className="block font-mono text-xs font-bold text-[#F42C1D] uppercase tracking-[0.2em] mb-3">
+            [04] // TARGET TIMELINE <span className="text-red-400">*</span>
           </label>
           <div className="grid grid-cols-2 gap-2">
             {timelineOptions.map((opt) => {
@@ -352,10 +354,10 @@ export function ContactForm() {
                   key={opt}
                   type="button"
                   onClick={() => handleSelectField("timeline", opt)}
-                  className={`rounded-xl px-3 py-3 text-xs font-mono text-center transition-all border ${
+                  className={`px-3 py-2.5 text-xs font-mono text-center transition-all border ${
                     isSelected
-                      ? "bg-accent/15 border-accent text-accent font-bold shadow-[0_0_12px_rgba(244,44,29,0.12)]"
-                      : "bg-surface/80 border-surface-border text-muted-foreground hover:border-surface-border-hover hover:text-foreground"
+                      ? "bg-[#F42C1D]/15 border-[#F42C1D] text-white font-bold"
+                      : "bg-[#0C0C0E] border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
                   }`}
                 >
                   {opt}
@@ -368,8 +370,8 @@ export function ContactForm() {
 
       {/* Field Group 4: Project Details & References */}
       <div className="pt-2">
-        <label htmlFor="projectDetails" className="block font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-2">
-          5. Project Scope &amp; Technical Requirements <span className="text-red-400">*</span>
+        <label htmlFor="projectDetails" className="block font-mono text-xs font-bold text-[#F42C1D] uppercase tracking-[0.2em] mb-2">
+          [05] // TECHNICAL REQUIREMENTS <span className="text-red-400">*</span>
         </label>
         <textarea
           id="projectDetails"
@@ -377,15 +379,15 @@ export function ContactForm() {
           rows={5}
           value={formData.projectDetails}
           onChange={handleChange}
-          placeholder="Briefly describe what you're building, target audience, preferred integrations (e.g. Shopify, Stripe, Supabase), and key deadlines..."
+          placeholder="Briefly describe what you're building, target audience, preferred integrations (e.g. Next.js, Stripe, Supabase), and key delivery milestones..."
           aria-invalid={Boolean(errors.projectDetails)}
-          className={`w-full rounded-2xl border bg-background/80 p-4 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:outline-none ${
+          className={`w-full border bg-black/60 p-4 text-sm text-white placeholder:text-zinc-600 transition-colors focus:outline-none ${
             errors.projectDetails
               ? "border-red-500 focus:border-red-500"
-              : "border-surface-border focus:border-accent focus:ring-1 focus:ring-accent/40"
+              : "border-white/15 focus:border-[#F42C1D]"
           }`}
         />
-        <div className="mt-1.5 flex items-center justify-between text-xs font-mono text-muted-foreground">
+        <div className="mt-1.5 flex items-center justify-between text-xs font-mono text-zinc-500">
           <span>{errors.projectDetails ? <span className="text-red-400">{errors.projectDetails}</span> : "Minimum 20 characters required"}</span>
           <span>{formData.projectDetails.length} characters</span>
         </div>
@@ -393,8 +395,8 @@ export function ContactForm() {
 
       {/* Optional Reference Link */}
       <div>
-        <label htmlFor="referenceSite" className="block text-xs font-mono font-medium text-foreground mb-1.5">
-          Reference URL or Figma Link <span className="text-muted-foreground font-normal">(Optional)</span>
+        <label htmlFor="referenceSite" className="block text-xs font-mono font-medium text-zinc-300 uppercase tracking-wider mb-1.5">
+          Reference URL or Figma Link <span className="text-zinc-500 font-normal">[Optional]</span>
         </label>
         <input
           type="url"
@@ -403,31 +405,31 @@ export function ContactForm() {
           value={formData.referenceSite}
           onChange={handleChange}
           placeholder="https://example.com or Figma file link"
-          className="w-full rounded-xl border border-surface-border bg-background/80 px-4 py-3.5 text-sm text-foreground placeholder:text-muted-foreground/40 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40"
+          className="w-full border border-white/15 bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-[#F42C1D] focus:outline-none"
         />
       </div>
 
       {/* Submit Action Bar */}
-      <div className="pt-4 border-t border-surface-border/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-          <Clock className="h-3.5 w-3.5 text-accent" />
-          <span>Responses sent within 24 business hours</span>
+      <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+          <Clock className="h-3.5 w-3.5 text-[#F42C1D]" />
+          <span>Direct response within 24 business hours</span>
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_24px_rgba(244,44,29,0.35)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_rgba(244,44,29,0.5)] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none"
+          className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 bg-[#F42C1D] px-8 py-4 font-mono text-xs uppercase tracking-widest font-bold text-white transition-all duration-200 hover:bg-[#ff3b2c] hover:shadow-[0_0_24px_rgba(244,44,29,0.4)] disabled:opacity-50 disabled:pointer-events-none"
         >
           {isSubmitting ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              <span>Transmitting Architecture Spec...</span>
+              <span>Transmitting Spec...</span>
             </>
           ) : (
             <>
               <span>Dispatch Project Enquiry</span>
-              <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <Send className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </>
           )}
         </button>

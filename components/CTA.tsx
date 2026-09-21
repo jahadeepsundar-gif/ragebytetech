@@ -15,35 +15,30 @@ export function CTA() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-surface-border bg-surface/90 p-8 text-center sm:p-16 backdrop-blur-2xl shadow-2xl shadow-black/80 transition-all duration-300 hover:border-accent/40">
-          {/* Top Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-surface-border bg-background/80 px-4 py-1 text-xs text-muted-foreground backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            <span className="font-mono text-foreground font-medium">New Studio Engagements Open</span>
+        <div className="relative mx-auto max-w-5xl border border-surface-border/80 bg-surface/30 p-8 sm:p-16 text-center backdrop-blur-xl transition-all duration-300 hover:border-accent/60">
+          {/* Top Editorial Tag */}
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest border-b border-surface-border/80 pb-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span>[08] // NEW ENGAGEMENTS OPEN</span>
           </div>
 
           {/* Heading */}
-          <h2 className="mt-6 font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
-            Ready to build something{" "}
-            <span className="bg-gradient-to-r from-white via-zinc-200 to-accent bg-clip-text text-transparent">
-              extraordinary?
-            </span>
+          <h2 className="mt-8 font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
+            <span className="block text-white">Ready to build something</span>
+            <span className="block mt-2 text-accent">Extraordinary?</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="mx-auto mt-5 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="mx-auto mt-6 max-w-xl text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed">
             Tell us about your product goals, timeline, and architectural requirements.
-            A senior engineer will review your project and reply with technical feedback within 24 hours.
+            A senior engineer will review your project and reply with technical feedback within 24 business hours.
           </p>
 
           {/* Action Row */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="group relative inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-background shadow-[0_0_28px_-4px_rgba(244,44,29,0.4)] transition-all duration-200 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(244,44,29,0.55)] hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative inline-flex items-center gap-3 bg-accent px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-background shadow-[0_0_24px_-4px_rgba(244,44,29,0.35)] transition-all duration-200 hover:bg-accent-hover active:scale-[0.98]"
             >
               <span>Start a Project</span>
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -51,26 +46,28 @@ export function CTA() {
 
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 rounded-xl border border-surface-border bg-background px-7 py-4 text-sm font-medium text-foreground transition-all duration-200 hover:border-surface-border-hover hover:bg-surface-elevated active:scale-[0.98]"
+              className="inline-flex items-center gap-3 border border-white/20 bg-background/80 px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-foreground backdrop-blur-md transition-all duration-200 hover:border-white/50 hover:bg-surface-elevated active:scale-[0.98]"
             >
-              <span>Explore Selected Work</span>
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
+              <span>Selected Work</span>
+              <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
           {/* Factual Trust Guarantees */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 border-t border-surface-border/60 pt-8 text-xs text-muted-foreground font-mono">
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-6 border-t border-surface-border/80 pt-8 text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
             <div className="flex items-center gap-2">
               <Clock className="h-3.5 w-3.5 text-accent" />
-              <span>Responses within 24 business hours</span>
+              <span>24-Hour Senior Response</span>
             </div>
+            <span className="text-white/10 hidden sm:inline">/</span>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
-              <span>Direct senior engineer evaluation</span>
+              <span>Direct Engineer Review</span>
             </div>
+            <span className="text-white/10 hidden sm:inline">/</span>
             <div className="flex items-center gap-2">
               <Shield className="h-3.5 w-3.5 text-accent" />
-              <span>Mutual NDA ready on request</span>
+              <span>Mutual NDA Ready</span>
             </div>
           </div>
         </div>

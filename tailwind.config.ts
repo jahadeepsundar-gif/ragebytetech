@@ -49,6 +49,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        display: ["var(--font-display)", "var(--font-heading)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
         heading: ["var(--font-heading)", "var(--font-geist-sans)", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],

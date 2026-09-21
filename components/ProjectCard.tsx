@@ -9,103 +9,107 @@ import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
 interface ProjectCardProps {
   project: Project;
   priority?: boolean;
+  index?: number;
 }
 
-export function ProjectCard({ project, priority = false }: ProjectCardProps) {
+export function ProjectCard({ project, priority = false, index }: ProjectCardProps) {
   const isDemo = project.name.includes("[Demo");
   const displayName = project.name.replace(" [Demo Project]", "").replace(" [Demo]", "");
+  const indexFormatted = typeof index === "number" ? String(index + 1).padStart(2, "0") : null;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/80 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8),0_0_24px_-8px_rgba(244,44,29,0.2)]">
+    <article className="group relative flex flex-col border border-surface-border/80 bg-surface/30 backdrop-blur-md transition-all duration-300 hover:border-accent/60 hover:bg-surface/60">
       {/* Visual Thumbnail Frame */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-subtle">
+      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-surface-border/80 bg-black/40">
         <Image
           src={project.coverImage}
           alt={`Screenshot preview of ${displayName}`}
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
         />
 
         {/* Ambient Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
 
-        {/* Top Badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-          {isDemo ? (
-            <span className="inline-flex items-center gap-1 rounded-md border border-surface-border bg-background/90 px-2.5 py-1 font-mono text-[10px] text-accent backdrop-blur-md shadow-sm">
-              <Sparkles className="h-3 w-3" />
-              Demo Case Study
-            </span>
-          ) : (
-            <span className="inline-flex items-center rounded-md border border-surface-border bg-background/90 px-2.5 py-1 font-mono text-[10px] text-foreground backdrop-blur-md">
-              Client Project
-            </span>
-          )}
+        {/* Top Badges & Monospace Index */}
+        <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
+          <div className="flex items-center gap-2">
+            {indexFormatted && (
+              <span className="font-mono text-xs font-bold tracking-widest text-accent bg-background/90 px-2 py-0.5 border border-surface-border">
+                [{indexFormatted}]
+              </span>
+            )}
+            {isDemo ? (
+              <span className="inline-flex items-center gap-1 border border-surface-border bg-background/90 px-2 py-0.5 font-mono text-[10px] text-zinc-300 uppercase tracking-wider">
+                <Sparkles className="h-3 w-3 text-accent" />
+                Demo Case Study
+              </span>
+            ) : (
+              <span className="inline-flex items-center border border-surface-border bg-background/90 px-2 py-0.5 font-mono text-[10px] text-zinc-300 uppercase tracking-wider">
+                Production Release
+              </span>
+            )}
+          </div>
 
           {project.liveUrl && (
-            <span className="hidden sm:inline-flex items-center gap-1 rounded-md border border-surface-border bg-background/90 px-2 py-0.5 font-mono text-[10px] text-muted-foreground backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Live Demo
+            <span className="hidden sm:inline-flex items-center gap-1.5 border border-surface-border bg-background/90 px-2 py-0.5 font-mono text-[10px] text-zinc-400 uppercase tracking-wider">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Live System
             </span>
           )}
         </div>
 
         {/* Hover Quick Action on Desktop */}
-        <div className="absolute inset-0 hidden items-center justify-center opacity-0 transition-opacity duration-300 md:flex md:group-hover:opacity-100 bg-background/40 backdrop-blur-[2px]">
+        <div className="absolute inset-0 hidden items-center justify-center opacity-0 transition-opacity duration-300 md:flex md:group-hover:opacity-100 bg-black/50 backdrop-blur-[2px]">
           <Link
             href={`/work/${project.slug}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-xs font-semibold text-background shadow-lg transition-transform hover:scale-105"
+            className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-background shadow-xl transition-transform hover:scale-105"
           >
-            <span>Explore Case Study</span>
+            <span>Read Architecture</span>
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
       </div>
 
       {/* Card Content & Details */}
-      <div className="flex flex-1 flex-col justify-between p-6">
+      <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
         <div>
-          {/* Tech Stack Pills */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.tech.slice(0, 3).map((item) => (
+          {/* Tech Stack Metadata Hairlines */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tech.map((item) => (
               <span
                 key={item}
-                className="rounded-md border border-surface-border/80 bg-background/60 px-2 py-0.5 font-mono text-[10px] text-muted-foreground transition-colors group-hover:border-surface-border-hover group-hover:text-foreground"
+                className="border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-400"
               >
                 {item}
               </span>
             ))}
-            {project.tech.length > 3 && (
-              <span className="rounded-md border border-surface-border/80 bg-background/60 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
-                +{project.tech.length - 3}
-              </span>
-            )}
           </div>
 
-          {/* Project Title */}
-          <h3 className="font-heading text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-accent">
-            <Link href={`/work/${project.slug}`} className="flex items-center justify-between">
+          {/* Large Editorial Project Title */}
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-foreground group-hover:text-accent transition-colors leading-[1.02]">
+            <Link href={`/work/${project.slug}`} className="flex items-center justify-between gap-4">
               <span>{displayName}</span>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+              <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent shrink-0" />
             </Link>
           </h3>
 
-          {/* Description */}
-          <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+          {/* Technical Description */}
+          <p className="mt-3 text-xs sm:text-sm text-zinc-400 line-clamp-2 leading-relaxed font-sans">
             {project.description}
           </p>
         </div>
 
         {/* Card Footer Bar */}
-        <div className="mt-6 flex items-center justify-between border-t border-surface-border/60 pt-4 text-xs">
+        <div className="mt-8 flex items-center justify-between border-t border-surface-border/60 pt-4 text-xs font-mono">
           <Link
             href={`/work/${project.slug}`}
-            className="font-mono text-xs font-semibold text-accent transition-colors hover:text-accent-hover inline-flex items-center gap-1"
+            className="font-semibold text-accent transition-colors hover:text-white inline-flex items-center gap-2 tracking-wider uppercase text-[11px]"
           >
-            <span>View Architecture</span>
-            <span>&rarr;</span>
+            <span>Explore Architecture Specification</span>
+            <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
           </Link>
 
           {project.liveUrl && (
@@ -113,10 +117,10 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground font-mono text-[11px]"
+              className="inline-flex items-center gap-1.5 text-zinc-500 hover:text-zinc-200 transition-colors tracking-wider uppercase text-[10px]"
             >
-              <span>External Demo</span>
-              <ExternalLink className="h-3 w-3" />
+              <span>Live Instance</span>
+              <ExternalLink className="h-3 w-3 text-accent" />
             </a>
           )}
         </div>

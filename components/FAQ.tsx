@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface FAQItem {
@@ -55,57 +55,66 @@ export function FAQ({
   };
 
   return (
-    <section className="py-24 border-t border-surface-border bg-background relative overflow-hidden">
+    <section className="py-24 sm:py-32 border-t border-white/10 bg-[#070709] relative overflow-hidden">
       {/* Background mesh */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-25 radial-mask" 
+        className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
       />
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-md bg-surface px-3 py-1 text-xs font-mono font-medium text-accent border border-surface-border">
-            <HelpCircle className="h-3.5 w-3.5" />
-            <span>TRANSPARENCY &amp; PROTOCOLS</span>
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        {/* Editorial Section Marker */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
+          <div className="flex items-center gap-3">
+            <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+              [TRANSPARENCY PROTOCOL]
+            </span>
           </div>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
+          <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+            [SYS.FAQ // VERIFIED]
+          </span>
+        </div>
+
+        <div>
+          <h2 className="font-display uppercase text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.035em] text-white leading-[0.92]">
             {title}
           </h2>
-          <p className="mt-4 text-base text-muted-foreground leading-relaxed">
+          <p className="mt-5 text-sm sm:text-base text-zinc-400 font-sans max-w-2xl leading-relaxed">
             {subtitle}
           </p>
         </div>
 
-        <div className="mt-14 space-y-3">
+        <div className="mt-14 divide-y divide-white/10 border-y border-white/10">
           {items.map((item, idx) => {
             const isOpen = openIndex === idx;
             const qCode = `0${idx + 1}`;
             return (
               <div
                 key={idx}
-                className={`overflow-hidden rounded-2xl border transition-all duration-200 ${
-                  isOpen
-                    ? "border-accent/40 bg-surface/90 shadow-xl shadow-black/40"
-                    : "border-surface-border bg-surface/60 hover:border-surface-border-hover hover:bg-surface/80"
+                className={`transition-colors duration-200 ${
+                  isOpen ? "bg-white/[0.02]" : "hover:bg-white/[0.01]"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="flex w-full items-center justify-between p-6 text-left transition-colors focus-visible:outline-none"
+                  className="flex w-full items-start justify-between py-6 sm:py-8 text-left transition-colors focus-visible:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-center gap-3 sm:gap-4 pr-4">
-                    <span className="font-mono text-xs font-bold text-accent shrink-0">
+                  <div className="flex items-baseline gap-4 sm:gap-6 pr-6">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-[#F42C1D] shrink-0">
                       [{qCode}]
                     </span>
-                    <span className="font-heading text-base sm:text-lg font-bold text-foreground transition-colors group-hover:text-accent">
+                    <span className="font-heading text-lg sm:text-xl font-bold text-white tracking-tight">
                       {item.question}
                     </span>
                   </div>
                   <div
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-surface-border transition-transform duration-200 ${
-                      isOpen ? "rotate-180 bg-accent/10 border-accent/40 text-accent" : "text-muted-foreground bg-background"
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center border transition-all duration-200 ${
+                      isOpen
+                        ? "rotate-180 border-[#F42C1D] text-[#F42C1D] bg-[#F42C1D]/10"
+                        : "border-white/20 text-zinc-400 hover:text-white hover:border-white/40"
                     }`}
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -120,8 +129,10 @@ export function FAQ({
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="border-t border-surface-border/50 px-6 pt-4 pb-6 font-sans text-sm sm:text-base text-zinc-300 leading-relaxed pl-12 sm:pl-14">
-                        {item.answer}
+                      <div className="pb-8 font-sans text-sm sm:text-base text-zinc-300 leading-relaxed pl-10 sm:pl-14 max-w-3xl border-l-2 border-[#F42C1D]/40 ml-2 mb-4">
+                        <div className="pl-4">
+                          {item.answer}
+                        </div>
                       </div>
                     </motion.div>
                   )}

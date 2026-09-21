@@ -33,70 +33,75 @@ export function TrustStats() {
             ))}
           </div>
         ) : (
-          // MASTER Specification Fallback: Qualitative Trust Matrix (FAST / MODERN / RESPONSIVE / CUSTOM BUILDS)
+          // Editorial Architecture: Qualitative Trust Matrix (FAST / MODERN / RESPONSIVE / CUSTOM BUILDS)
           <div>
             {/* Header / Section Meta */}
-            <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-surface-border/60 pb-6">
+            <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-surface-border/80 pb-8">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-md bg-surface px-2.5 py-1 text-[11px] font-mono font-medium text-accent border border-surface-border">
+                <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>CORE PILLARS</span>
+                  <span>[01] // ARCHITECTURAL PILLARS</span>
                 </div>
-                <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
                   The RageByte Engineering Matrix
                 </h2>
               </div>
-              <p className="max-w-md text-xs sm:text-sm text-muted-foreground font-mono">
-                Rigorous full-stack discipline. No template shortcuts, no bloated plugins, no technical compromises.
+              <p className="max-w-md text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed">
+                Rigorous full-stack discipline. No template shortcuts, no bloated plugins, zero technical compromises.
               </p>
             </div>
 
-            {/* 4 Architectural Cards */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Editorial Asymmetric Rows with Hairlines */}
+            <div className="divide-y divide-surface-border/80 border-t border-b border-surface-border/80">
               {trustQualities.map((item, idx) => {
                 const Icon = icons[idx % icons.length];
                 const indexFormatted = `0${idx + 1}`;
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/70 p-7 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-surface hover:shadow-[0_12px_32px_-8px_rgba(244,44,29,0.15)]"
+                    className="group py-8 sm:py-10 transition-colors duration-300 hover:bg-surface/30 px-2 sm:px-4"
                   >
-                    {/* Top corner crosshair aesthetic marker */}
-                    <div className="absolute top-3 right-3 font-mono text-[10px] text-zinc-600 group-hover:text-accent transition-colors">
-                      +
-                    </div>
-
-                    <div>
-                      {/* Monospaced Index & Icon Row */}
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-bold tracking-widest text-muted-foreground group-hover:text-accent transition-colors">
-                          [{indexFormatted}]
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                      {/* Dominant Editorial Numeral (Cols 1-2) */}
+                      <div className="md:col-span-2 flex items-baseline gap-3">
+                        <span className="font-display text-5xl sm:text-7xl font-black tracking-tighter text-white/20 group-hover:text-accent transition-colors">
+                          {indexFormatted}
                         </span>
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-surface-border bg-background p-2 transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface-elevated group-hover:shadow-[0_0_16px_rgba(244,44,29,0.2)]">
-                          <Icon className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
-                        </div>
+                        <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+                          / 04
+                        </span>
                       </div>
 
-                      {/* Title & Sublabel */}
-                      <div className="mt-6">
-                        <h3 className="font-heading text-xl font-extrabold tracking-tight text-foreground transition-colors group-hover:text-white">
-                          {item.label}
-                        </h3>
-                        <p className="mt-1 font-mono text-xs font-medium text-accent">
-                          {item.sublabel}
+                      {/* Title & Sublabel (Cols 3-6) */}
+                      <div className="md:col-span-4">
+                        <div className="flex items-center gap-3">
+                          <Icon className="h-4 w-4 text-accent" />
+                          <h3 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-foreground group-hover:text-white transition-colors">
+                            {item.label}
+                          </h3>
+                        </div>
+                        <p className="mt-2 font-mono text-xs font-semibold text-accent uppercase tracking-wider">
+                          [ {item.sublabel} ]
                         </p>
                       </div>
 
-                      {/* Technical Description */}
-                      <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+                      {/* Technical Description (Cols 7-10) */}
+                      <div className="md:col-span-4">
+                        <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
+                          {item.description}
+                        </p>
+                      </div>
 
-                    {/* Bottom accent indicator bar */}
-                    <div className="mt-6 pt-4 border-t border-surface-border/50 flex items-center justify-between text-[11px] font-mono text-muted-foreground">
-                      <span>VERIFIED SPEC</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent/40 group-hover:bg-accent transition-colors" />
+                      {/* Metadata / Status (Cols 11-12) */}
+                      <div className="md:col-span-2 md:text-right flex md:flex-col justify-between items-center md:items-end gap-2 pt-2 md:pt-0">
+                        <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                          SPEC VERIFIED
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-accent">
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                          LIVE
+                        </span>
+                      </div>
                     </div>
                   </div>
                 );

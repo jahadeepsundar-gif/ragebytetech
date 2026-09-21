@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Space_Grotesk, Barlow_Condensed } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import "@/styles/threeui.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-// Master Specification Section 2 & 8:
+// Master Specification Section 2 & 8 + Editorial Display:
+// Display: Barlow Condensed
 // Headings: Geist / Space Grotesk
 // Body: Inter
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -66,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable}`}
+      className={`${barlowCondensed.variable} ${inter.variable} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased flex flex-col selection:bg-accent/20 selection:text-accent">
         <Navbar />
