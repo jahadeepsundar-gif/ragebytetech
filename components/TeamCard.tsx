@@ -30,16 +30,16 @@ export function TeamCard({ member }: TeamCardProps) {
   const displayName = member.name.replace(" [Demo Profile]", "").replace(" [Demo]", "");
 
   return (
-    <article className="group relative flex flex-col justify-between border border-white/10 bg-[#0C0C0E] p-7 transition-colors duration-300 hover:border-white/30">
+    <article className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] hover:border-accent/50 hover:bg-[#0e0a0b]">
       {/* Top Corner Marker */}
-      <div className="absolute top-3 right-3 font-mono text-xs text-zinc-600 transition-colors group-hover:text-[#F42C1D]">
+      <div className="absolute top-3 right-3 font-mono text-xs text-zinc-600 transition-colors group-hover:text-accent">
         +
       </div>
 
       <div>
         {/* Header: Photo, Role Badges & Social Links */}
         <div className="flex items-start justify-between gap-4">
-          <div className="relative h-20 w-20 overflow-hidden border border-white/15 bg-black">
+          <div className="relative h-20 w-20 rounded-xl overflow-hidden border border-white/15 bg-black">
             <Image
               src={member.photo || member.image}
               alt={`Photo of ${displayName}`}
@@ -56,7 +56,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${displayName}'s GitHub`}
-                className="flex h-8 w-8 items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-[#F42C1D] hover:text-[#F42C1D]"
+                className="flex h-8 w-8 rounded-lg items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
               >
                 <GithubIcon className="h-4 w-4" />
               </a>
@@ -67,7 +67,7 @@ export function TeamCard({ member }: TeamCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${displayName}'s LinkedIn`}
-                className="flex h-8 w-8 items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-[#F42C1D] hover:text-[#F42C1D]"
+                className="flex h-8 w-8 rounded-lg items-center justify-center border border-white/15 bg-black text-zinc-400 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
               >
                 <LinkedinIcon className="h-4 w-4" />
               </a>
@@ -82,12 +82,12 @@ export function TeamCard({ member }: TeamCardProps) {
               {displayName}
             </h3>
             {isDemo && (
-              <span className="border border-white/15 bg-black px-2 py-0.5 font-mono text-[10px] text-[#F42C1D] uppercase">
+              <span className="rounded-md border border-white/15 bg-black px-2 py-0.5 font-mono text-[10px] text-accent uppercase">
                 DEMO PROFILE
               </span>
             )}
           </div>
-          <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-[#F42C1D]">
+          <p className="mt-1 font-mono text-xs font-bold uppercase tracking-wider text-accent">
             {member.role || member.designation}
           </p>
 
@@ -106,7 +106,7 @@ export function TeamCard({ member }: TeamCardProps) {
           {member.skills.map((skill) => (
             <span
               key={skill}
-              className="border border-white/10 bg-black/60 px-2 py-0.5 font-mono text-[10px] text-zinc-300"
+              className="rounded-md border border-white/10 bg-black/60 px-2 py-0.5 font-mono text-[10px] text-zinc-300"
             >
               {skill}
             </span>

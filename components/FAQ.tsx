@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ScrollReveal, TextReveal } from "@/components/motion/MotionPrimitives";
 
 export interface FAQItem {
   question: string;
@@ -64,26 +65,30 @@ export function FAQ({
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Editorial Section Marker */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
-          <div className="flex items-center gap-3">
-            <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-              [TRANSPARENCY PROTOCOL]
+        <ScrollReveal>
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
+            <div className="flex items-center gap-3">
+              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
+                [TRANSPARENCY PROTOCOL]
+              </span>
+            </div>
+            <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+              [SYS.FAQ // VERIFIED]
             </span>
           </div>
-          <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-            [SYS.FAQ // VERIFIED]
-          </span>
-        </div>
 
-        <div>
-          <h2 className="font-display uppercase text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.035em] text-white leading-[0.92]">
-            {title}
-          </h2>
-          <p className="mt-5 text-sm sm:text-base text-zinc-400 font-sans max-w-2xl leading-relaxed">
-            {subtitle}
-          </p>
-        </div>
+          <div>
+            <TextReveal delay={0.1}>
+              <h2 className="font-display uppercase text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.035em] text-white leading-[0.92]">
+                {title}
+              </h2>
+            </TextReveal>
+            <p className="mt-5 text-sm sm:text-base text-zinc-400 font-sans max-w-2xl leading-relaxed">
+              {subtitle}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="mt-14 divide-y divide-white/10 border-y border-white/10">
           {items.map((item, idx) => {
@@ -111,10 +116,10 @@ export function FAQ({
                     </span>
                   </div>
                   <div
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center border transition-all duration-200 ${
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-colors duration-200 ${
                       isOpen
                         ? "rotate-180 border-[#F42C1D] text-[#F42C1D] bg-[#F42C1D]/10"
-                        : "border-white/20 text-zinc-400 hover:text-white hover:border-white/40"
+                        : "border-white/20 text-zinc-400 hover:text-accent hover:border-accent"
                     }`}
                   >
                     <ChevronDown className="h-4 w-4" />

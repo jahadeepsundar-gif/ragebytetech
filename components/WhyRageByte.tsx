@@ -1,219 +1,248 @@
+"use client";
+
 import React from "react";
 import {
-  Zap,
-  Gauge,
-  Boxes,
-  Smartphone,
-  MessagesSquare,
-  CheckCircle2,
-  XCircle,
-} from "lucide-react";
+  ScrollReveal,
+  TextReveal,
+  DividerReveal,
+  ScaleIn,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
-interface Differentiator {
+interface Tenet {
+  number: string;
   title: string;
   tagline: string;
-  description: string;
-  icon: React.ElementType;
-  bullets: string[];
+  statement: string;
+  specs: string[];
 }
 
-const differentiators: Differentiator[] = [
+const tenets: Tenet[] = [
   {
-    title: "Modern React Stack",
-    tagline: "Next.js 14, RSC, TypeScript",
-    description:
-      "We build exclusively on modern, high-velocity technologies with end-to-end type safety, Server Components, and zero runtime styling overhead.",
-    icon: Zap,
-    bullets: ["Zero legacy code debt", "Strict TypeScript architecture", "Streaming edge runtime caching"],
+    number: "01",
+    title: "Modern React Exclusivity",
+    tagline: "NEXT.JS 14, RSC & STRICT TYPESCRIPT",
+    statement:
+      "We build exclusively on modern, high-velocity technologies with end-to-end type safety, Server Components, and zero runtime styling overhead. Zero legacy baggage, zero outdated patterns.",
+    specs: ["ZERO LEGACY CODE DEBT", "STRICT TYPESCRIPT ENFORCEMENT", "STREAMING EDGE RUNTIME"],
   },
   {
-    title: "Performance by Design",
-    tagline: "Optimized Core Web Vitals",
-    description:
-      "Performance is an architectural pillar, not an afterthought. We optimize critical rendering paths, asset compression, and layout stability from day one.",
-    icon: Gauge,
-    bullets: ["Targeted sub-second LCP", "Zero cumulative layout shift", "Automated next/image compression"],
+    number: "02",
+    title: "Performance as an Invariant",
+    tagline: "CORE WEB VITALS ENGINEERED FROM LINE ZERO",
+    statement:
+      "Performance is an architectural foundation, not an optimization pass before launch. We engineer critical rendering paths, asset compression, and layout stability into every layout from day one.",
+    specs: ["TARGETED SUB-SECOND LCP", "ZERO CUMULATIVE LAYOUT SHIFT", "AUDITED EDGE CACHING"],
   },
   {
-    title: "Zero-Bloat Custom Code",
-    tagline: "No Page Builders, No Fragile Plugins",
-    description:
-      "Every line of code is purpose-written for your product. We eliminate bulky visual builders and vulnerable third-party dependencies in favor of clean components.",
-    icon: Boxes,
-    bullets: ["Handcrafted modular architecture", "Clean, audited CSS output", "100% client codebase ownership"],
+    number: "03",
+    title: "Zero-Bloat Bespoke Code",
+    tagline: "NO PAGE BUILDERS // NO VULNERABLE PLUGINS",
+    statement:
+      "Every single component is purpose-written for your product. We eliminate bulky visual builders and fragile third-party plugin ecosystems in favor of clean, maintainable modular code.",
+    specs: ["100% CLIENT REPO OWNERSHIP", "AUDITED CSS TOKEN BUNDLE", "HANDCRAFTED MODULAR ARCHITECTURE"],
   },
   {
+    number: "04",
     title: "Mobile-First Touch Architecture",
-    tagline: "Fluid, Handheld-Optimized Layouts",
-    description:
-      "The majority of web traffic arrives on mobile screens. We design and stress-test on physical devices first, scaling up to high-resolution ultrawide displays.",
-    icon: Smartphone,
-    bullets: ["Ergonomic 48px+ touch targets", "Fluid typographic clamp scaling", "Accessible mobile drawer navigation"],
+    tagline: "FLUID, HANDHELD-OPTIMIZED LAYOUTS",
+    statement:
+      "The majority of modern traffic arrives on mobile glass. We design and stress-test on physical handheld devices first, scaling up to high-resolution ultrawide desktop displays.",
+    specs: ["48PX+ HIT TARGET AUDIT", "FLUID TYPOGRAPHIC CLAMPS", "ACCESSIBLE DRAWER NAVIGATION"],
   },
   {
-    title: "Direct Senior Engineer Model",
-    tagline: "Direct Access, Zero Middlemen",
-    description:
-      "No account managers, junior handoffs, or administrative bureaucracy. You communicate directly with the senior engineers architecting and executing your platform.",
-    icon: MessagesSquare,
-    bullets: ["Rapid technical alignment", "Zero communication dilution", "Transparent weekly milestone previews"],
+    number: "05",
+    title: "Direct Senior Engineer Access",
+    tagline: "ZERO MIDDLEMEN // DIRECT COMMIT COLLABORATION",
+    statement:
+      "No account managers, junior handoffs, or administrative bureaucracy. You communicate directly with the senior engineers architecting and executing your production platform.",
+    specs: ["DIRECT SLACK & GITHUB CADENCE", "24-HOUR TECHNICAL SLA", "TRANSPARENT SPRINT PREVIEWS"],
   },
 ];
 
 export function WhyRageByte() {
   return (
-    <section className="py-24 border-y border-surface-border bg-background relative overflow-hidden">
-      {/* Background ambient lighting */}
+    <section className="py-20 lg:py-28 border-y border-white/10 bg-background relative overflow-hidden">
+      {/* Background Engineering Mesh */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-25 radial-mask" 
+        className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-20 radial-mask" 
       />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Editorial Manifesto Header */}
-        <div className="border-b border-surface-border/80 pb-12">
+        {/* Section Editorial Header */}
+        <ScrollReveal className="pb-10">
           <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span>[04] // STUDIO MANIFESTO</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span>[04] // STUDIO MANIFESTO &amp; PRINCIPLES</span>
           </div>
-          <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
-            Why High-Growth Teams Choose Us
-          </h2>
-          <div className="mt-6 font-display text-xl sm:text-2xl lg:text-3xl text-zinc-300 font-bold uppercase tracking-tight max-w-4xl leading-tight">
-            We operate as a specialized technical studio, not a bloated volume agency.
+          <TextReveal delay={0.1}>
+            <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
+              Why High-Growth<br />
+              <span className="text-white/95">Teams Choose Us</span>
+            </h2>
+          </TextReveal>
+          <p className="mt-8 font-display text-2xl sm:text-3xl lg:text-4xl text-zinc-300 font-bold uppercase tracking-tight max-w-5xl leading-tight">
+            We operate as a dedicated technical engineering lab, not a volume agency.
             Zero administrative layers. Direct senior code execution.
-          </div>
-        </div>
+          </p>
+        </ScrollReveal>
 
-        {/* High-Contrast Editorial Model Comparison */}
-        <div className="mt-14 border border-surface-border/80 bg-surface/20">
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-surface-border/80">
-            {/* The Traditional Agency Dilemma */}
-            <div className="p-8 sm:p-12 bg-black/40">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-semibold text-zinc-500 uppercase tracking-widest">
-                  [ ANTI-PATTERN ]
-                </span>
-                <XCircle className="h-4 w-4 text-zinc-600" />
+        <DividerReveal className="border-t border-white/10" />
+
+        {/* The Studio Manifesto Comparison: Softened Editorial Comparison */}
+        <ScaleIn className="my-10 rounded-3xl border border-white/[0.08] bg-[#090607]/80 p-6 sm:p-10 shadow-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            {/* The Traditional Agency Model (Anti-Pattern) */}
+            <div className="rounded-2xl border border-white/5 bg-black/40 p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                  <span className="font-mono text-xs font-semibold text-zinc-500 uppercase tracking-widest">
+                    [ ANTI-PATTERN // DEPRECATED ]
+                  </span>
+                  <span className="font-mono text-[10px] text-zinc-600 uppercase">SYS_LEGACY</span>
+                </div>
+                <h3 className="mt-5 font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-zinc-400">
+                  The Traditional Agency Dilemma
+                </h3>
+                <p className="mt-1 font-mono text-xs text-zinc-500 uppercase tracking-wider">
+                  Bureaucracy, Dilution &amp; Plugin Debt
+                </p>
+
+                <div className="mt-6 space-y-4 font-mono text-xs text-zinc-500">
+                  <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
+                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_01 // THE TELEPHONE GAME</span>
+                    <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Account managers act as translation filters between you and outsourced junior developers.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
+                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_02 // THEME RECYCLING</span>
+                    <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Heavily reliant on off-the-shelf WordPress templates, brittle visual builders, and fragile plugins.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
+                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_03 // SCHEDULE DILUTION</span>
+                    <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Sluggish 3 to 6-month delivery cycles inflated with administrative meetings and scope bloat.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
+                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_04 // RUNTIME DEGRADATION</span>
+                    <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Performance treated as an afterthought; poor Core Web Vitals and sluggish mobile responsiveness.
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-zinc-400">
-                The Traditional Agency Model
-              </h3>
-              <p className="mt-1 font-mono text-xs text-zinc-500">
-                Bloat, Bureaucracy &amp; Telephone Games
-              </p>
-              <ul className="mt-8 space-y-4 text-xs sm:text-sm text-zinc-500 font-sans">
-                <li className="flex items-start gap-3">
-                  <span className="text-zinc-600 font-mono text-xs mt-0.5">—</span>
-                  <span>Account managers act as telephone games between you and offshore contractors.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-zinc-600 font-mono text-xs mt-0.5">—</span>
-                  <span>Heavily reliant on off-the-shelf WordPress themes, brittle plugins, and page builders.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-zinc-600 font-mono text-xs mt-0.5">—</span>
-                  <span>Slow 3-6 month delivery cycles with inflated agency management overhead.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-zinc-600 font-mono text-xs mt-0.5">—</span>
-                  <span>Performance treated as an afterthought; poor Core Web Vitals and low mobile scores.</span>
-                </li>
-              </ul>
             </div>
 
-            {/* The RageByte Studio Model */}
-            <div className="p-8 sm:p-12 bg-surface/40 relative">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-semibold text-accent uppercase tracking-widest">
-                  [ PRODUCTION STANDARD ]
-                </span>
-                <CheckCircle2 className="h-4 w-4 text-accent" />
+            {/* The RageByte Studio Model (Production Standard) */}
+            <div className="rounded-2xl border border-accent/30 bg-[#140c0d]/70 p-6 sm:p-8 shadow-[0_0_24px_rgba(244,44,29,0.08)] flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-accent/20 pb-3">
+                  <span className="font-mono text-xs font-semibold text-accent uppercase tracking-widest">
+                    [ PRODUCTION STANDARD // ACTIVE ]
+                  </span>
+                  <span className="font-mono text-[10px] text-accent uppercase">SYS_RAGEBYTE</span>
+                </div>
+                <h3 className="mt-5 font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
+                  The RageByte Studio Paradigm
+                </h3>
+                <p className="mt-1 font-mono text-xs text-accent uppercase tracking-wider">
+                  Precision, Velocity &amp; Direct Senior Access
+                </p>
+
+                <div className="mt-6 space-y-4 font-mono text-xs">
+                  <div className="border-l-2 border-accent pl-3.5 py-0.5">
+                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_01 // DIRECT SENIOR COMMIT</span>
+                    <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Direct collaboration with the senior engineers architecting, testing, and deploying your code.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-accent pl-3.5 py-0.5">
+                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_02 // 100% BESPOKE CODEBASE</span>
+                    <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Zero visual page builders. Pure Next.js 14 App Router, Server Components, and Tailwind design tokens.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-accent pl-3.5 py-0.5">
+                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_03 // 7-DAY DELIVERY CADENCE</span>
+                    <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Fast agile sprints with live staged preview deployment URLs delivered every milestone.
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-accent pl-3.5 py-0.5">
+                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_04 // PERFORMANCE INVARIANT</span>
+                    <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
+                      Engineered from day one for sub-second page loads, accessible contrast ratios, and zero layout shift.
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white">
-                The RageByte Studio Model
-              </h3>
-              <p className="mt-1 font-mono text-xs text-accent">
-                Precision, Speed &amp; Direct Senior Engineers
-              </p>
-              <ul className="mt-8 space-y-4 text-xs sm:text-sm text-zinc-300 font-sans">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-mono text-xs mt-0.5">&rarr;</span>
-                  <span>Direct communication with the senior engineers actually writing and deploying your code.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-mono text-xs mt-0.5">&rarr;</span>
-                  <span>100% bespoke Next.js App Router and TypeScript architecture tailored to your product.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-mono text-xs mt-0.5">&rarr;</span>
-                  <span>Fast, agile weekly sprints with working staged deployment URLs delivered every milestone.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent font-mono text-xs mt-0.5">&rarr;</span>
-                  <span>Engineered for sub-second page loads, accessible contrast, and zero layout shift.</span>
-                </li>
-              </ul>
             </div>
           </div>
-        </div>
+        </ScaleIn>
 
-        {/* 5 Core Differentiators as an Editorial Specification Matrix */}
-        <div className="mt-16 divide-y divide-surface-border/80 border-t border-b border-surface-border/80">
-          {differentiators.map((item, idx) => {
-            const Icon = item.icon;
-            const indexFormatted = `0${idx + 1}`;
-            return (
+        {/* 5 Core Engineering Tenets (Manifesto Statements) */}
+        <DividerReveal className="border-t border-white/10 my-8" />
+        <StaggerContainer className="space-y-4">
+          {tenets.map((tenet) => (
+            <StaggerItem key={tenet.number}>
               <div
-                key={item.title}
-                className="group py-8 sm:py-10 transition-colors duration-300 hover:bg-surface/30 px-2 sm:px-4"
+                tabIndex={0}
+                className="group rounded-2xl border border-white/[0.06] hover:border-accent/40 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none bg-[#0c0809]/40 hover:bg-[#120a0b]/80 p-6 sm:p-8 lg:p-10 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
               >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-                  {/* Dominant Numeral */}
-                  <div className="md:col-span-2 flex items-baseline gap-3">
-                    <span className="font-display text-5xl sm:text-6xl font-black text-white/20 group-hover:text-accent transition-colors">
-                      {indexFormatted}
-                    </span>
-                    <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
-                      / 05
-                    </span>
-                  </div>
-
-                  {/* Title & Tagline */}
-                  <div className="md:col-span-4">
-                    <div className="flex items-center gap-3">
-                      <Icon className="h-4 w-4 text-accent" />
-                      <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-foreground group-hover:text-white transition-colors">
-                        {item.title}
-                      </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                  {/* Refined Editorial Display Numeral (Cols 1-2) */}
+                  <div className="lg:col-span-2">
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-400 group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200">
+                        {tenet.number}
+                      </span>
+                      <span className="font-mono text-[11px] tracking-widest text-zinc-600 font-normal">
+                        / 05
+                      </span>
                     </div>
-                    <p className="mt-2 font-mono text-xs font-semibold text-accent uppercase tracking-wider">
-                      [ {item.tagline} ]
+                    <div className="mt-2 text-[10px] font-mono uppercase tracking-widest text-zinc-500">
+                      TENET ARCHITECTURE
+                    </div>
+                  </div>
+
+                  {/* Tenet Title & Tagline (Cols 3-6) */}
+                  <div className="lg:col-span-4">
+                    <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 leading-[0.98]">
+                      {tenet.title}
+                    </h3>
+                    <p className="mt-2.5 font-mono text-xs font-semibold text-accent uppercase tracking-wider">
+                      [ {tenet.tagline} ]
                     </p>
                   </div>
 
-                  {/* Description & Technical Bullets */}
-                  <div className="md:col-span-6 space-y-3">
-                    <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
-                      {item.description}
+                  {/* Statement & Technical Specs (Cols 7-12) */}
+                  <div className="lg:col-span-6 space-y-4">
+                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans">
+                      {tenet.statement}
                     </p>
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {item.bullets.map((bullet, bIdx) => (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {tenet.specs.map((spec, sIdx) => (
                         <span
-                          key={bIdx}
-                          className="inline-flex items-center gap-1.5 border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[10px] text-zinc-300 uppercase tracking-wider"
+                          key={sIdx}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[10px] text-zinc-300 uppercase tracking-wider"
                         >
                           <span className="h-1 w-1 rounded-full bg-accent" />
-                          {bullet}
+                          {spec}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );

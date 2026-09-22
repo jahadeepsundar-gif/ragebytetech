@@ -271,24 +271,30 @@ export function BookshelfServices() {
                     key={service.title}
                     type="button"
                     onClick={() => handleSelectVolume(idx)}
-                    className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-all duration-200 shrink-0 ${
+                    onMouseEnter={() => setHoveredIndex(idx)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-colors duration-200 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black active:scale-[0.98] ${
                       isActive
                         ? "border border-accent bg-[#1c1112] text-white shadow-[0_0_16px_rgba(244,44,29,0.35)]"
                         : isHovered
-                        ? "border border-accent/60 bg-[#140c0d] text-white"
-                        : "border border-surface-border/70 bg-[#0e0a0b]/80 text-zinc-400 hover:border-[#824334] hover:text-white"
+                        ? "border border-accent bg-[#140c0d] text-white shadow-[0_0_12px_rgba(244,44,29,0.25)]"
+                        : "border border-white/[0.08] bg-[#0e0a0b]/80 text-zinc-400 hover:border-accent hover:text-white hover:bg-[#140c0d]"
                     }`}
                   >
                     <span
-                      className={`h-1.5 w-1.5 rounded-full ${
+                      className={`h-1.5 w-1.5 rounded-full transition-colors duration-200 ${
                         isActive
                           ? "bg-accent shadow-[0_0_6px_#F42C1D]"
-                          : "bg-zinc-600 group-hover:bg-accent"
+                          : isHovered
+                          ? "bg-accent shadow-[0_0_6px_#F42C1D]"
+                          : "bg-zinc-600 group-hover:bg-accent group-focus-visible:bg-accent"
                       }`}
                     />
                     <span
-                      className={`font-semibold ${
-                        isActive ? "text-accent" : "text-zinc-400 group-hover:text-accent"
+                      className={`font-semibold transition-colors duration-200 ${
+                        isActive || isHovered
+                          ? "text-accent"
+                          : "text-zinc-400 group-hover:text-accent group-focus-visible:text-accent"
                       }`}
                     >
                       {code}
@@ -302,7 +308,7 @@ export function BookshelfServices() {
             </div>
 
             {/* 3b. Active SPEC Metadata Information Bar (Clean, Minimal, Zero extra buttons on the right) */}
-            <div className="pointer-events-auto relative rounded-xl sm:rounded-2xl border border-surface-border/90 bg-[#0e0a0b]/90 px-4 py-3 backdrop-blur-xl shadow-2xl transition-all">
+            <div className="pointer-events-auto relative rounded-2xl border border-white/[0.08] bg-[#0e0a0b]/95 px-4 py-3 backdrop-blur-xl shadow-2xl transition-all">
               <div className="flex items-center gap-3.5">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-border bg-surface text-accent shadow-inner">
                   <IconComponent className="h-4 w-4" />

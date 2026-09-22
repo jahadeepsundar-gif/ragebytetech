@@ -5,6 +5,8 @@ import "./globals.css";
 import "@/styles/threeui.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageLoadSequence } from "@/components/motion/PageLoadSequence";
+import { RageBytePreloader } from "@/components/RageBytePreloader";
 
 // Master Specification Section 2 & 8 + Editorial Display:
 // Display: Barlow Condensed
@@ -77,9 +79,12 @@ export default function RootLayout({
       className={`${barlowCondensed.variable} ${inter.variable} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased flex flex-col selection:bg-accent/20 selection:text-accent">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <RageBytePreloader />
+        <PageLoadSequence>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </PageLoadSequence>
       </body>
     </html>
   );

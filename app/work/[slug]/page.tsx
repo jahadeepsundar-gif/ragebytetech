@@ -110,7 +110,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-[#F42C1D] px-6 py-3.5 font-mono text-xs uppercase tracking-wider font-bold text-white hover:bg-[#ff3b2c] transition-colors"
+                  className="rounded-xl inline-flex items-center justify-center gap-2 bg-accent px-6 py-3.5 font-mono text-xs uppercase tracking-wider font-bold text-background hover:bg-accent-hover transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   <span>Visit Live Prototype</span>
                   <ExternalLink className="h-4 w-4" />
@@ -118,7 +118,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               )}
               <Link
                 href="/work"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 bg-transparent px-6 py-3.5 font-mono text-xs uppercase tracking-wider text-white hover:border-[#F42C1D] hover:text-[#F42C1D] transition-colors"
+                className="rounded-xl inline-flex items-center justify-center gap-2 border border-white/20 bg-transparent px-6 py-3.5 font-mono text-xs uppercase tracking-wider text-white hover:border-accent hover:text-accent transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <ArrowLeft className="h-4 w-4" />
                 <span>All Case Studies</span>
@@ -152,7 +152,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="border border-white/10 bg-black px-2.5 py-1 font-mono text-xs text-zinc-300"
+                className="rounded-md border border-white/10 bg-black px-2.5 py-1 font-mono text-xs text-zinc-300"
               >
                 {t}
               </span>
@@ -164,7 +164,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
       {/* Hero Cover Image Mockup */}
       <section className="py-16 bg-[#070709]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative aspect-[16/9] w-full overflow-hidden border border-white/10 bg-black">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
             <Image
               src={project.coverImage}
               alt={`Cover preview of ${displayName}`}
@@ -182,7 +182,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* The Challenge */}
-            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-12 relative">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-12 relative hover:border-accent/40 transition-colors duration-200">
               <span className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-400">
                 [01] // THE BOTTLENECK
               </span>
@@ -195,8 +195,8 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             </div>
 
             {/* The Solution */}
-            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-12 relative">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#F42C1D]">
+            <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-12 relative hover:border-accent/40 transition-colors duration-200">
+              <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
                 [02] // ENGINEERED EXECUTION
               </span>
               <h2 className="mt-3 font-display uppercase text-2xl sm:text-3xl font-black text-white">
@@ -229,9 +229,9 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             {project.features.map((feat, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 border border-white/10 bg-[#0C0C0E] p-6"
+                className="rounded-xl flex items-start gap-3 border border-white/[0.08] bg-[#090607]/80 p-6"
               >
-                <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-2" />
+                <span className="h-1.5 w-1.5 bg-accent shrink-0 mt-2" />
                 <span className="text-xs sm:text-sm text-zinc-200 leading-relaxed font-sans font-medium">
                   {feat}
                 </span>
@@ -261,11 +261,11 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               {project.screenshots.map((shot, idx) => (
                 <div key={idx} className="grid grid-cols-1 gap-8 lg:grid-cols-12 items-center">
                   {/* Desktop Preview */}
-                  <div className="lg:col-span-8 overflow-hidden border border-white/15 bg-black">
+                  <div className="lg:col-span-8 overflow-hidden rounded-2xl border border-white/15 bg-black">
                     <div className="flex items-center gap-2 border-b border-white/10 bg-black/90 px-4 py-3">
-                      <div className="h-2 w-2 bg-[#F42C1D]" />
+                      <div className="h-2 w-2 bg-accent" />
                       <span className="ml-2 font-mono text-[11px] text-zinc-400 flex items-center gap-1">
-                        <Terminal className="h-3.5 w-3.5 text-[#F42C1D]" />
+                        <Terminal className="h-3.5 w-3.5 text-accent" />
                         DESKTOP VIEWPORT // 1920x1080
                       </span>
                     </div>
@@ -282,7 +282,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
                   {/* Mobile Preview Frame */}
                   <div className="lg:col-span-4 flex justify-center">
-                    <div className="w-[280px] overflow-hidden border border-white/15 bg-black">
+                    <div className="w-[280px] overflow-hidden rounded-2xl border border-white/15 bg-black">
                       <div className="border-b border-white/10 bg-black/90 px-4 py-2 font-mono text-[10px] text-zinc-500 uppercase tracking-wider text-center">
                         MOBILE VIEWPORT
                       </div>
@@ -308,8 +308,8 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
       {project.result && (
         <section className="py-20 border-t border-white/10 bg-[#070709]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="border border-white/10 bg-[#0C0C0E] p-8 sm:p-14 relative">
-              <div className="flex items-center gap-2 text-[#F42C1D] font-mono text-xs font-bold uppercase tracking-widest">
+            <div className="rounded-3xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-14 relative shadow-2xl">
+              <div className="flex items-center gap-2 text-accent font-mono text-xs font-bold uppercase tracking-widest">
                 <TrendingUp className="h-4 w-4" />
                 <span>[BENCHMARK IMPACT]</span>
               </div>
@@ -329,7 +329,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-xs">
           <Link
             href={`/work/${prevProject.slug}`}
-            className="flex items-center gap-2 text-zinc-400 hover:text-[#F42C1D] transition-colors"
+            className="flex items-center gap-2 text-zinc-400 hover:text-accent focus-visible:outline-none focus-visible:text-accent transition-colors duration-200"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>PREV: {prevProject.name.replace(" [Demo Project]", "").toUpperCase()}</span>
@@ -337,7 +337,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
           <Link
             href={`/work/${nextProject.slug}`}
-            className="flex items-center gap-2 text-zinc-400 hover:text-[#F42C1D] transition-colors"
+            className="flex items-center gap-2 text-zinc-400 hover:text-accent focus-visible:outline-none focus-visible:text-accent transition-colors duration-200"
           >
             <span>NEXT: {nextProject.name.replace(" [Demo Project]", "").toUpperCase()}</span>
             <ArrowRight className="h-4 w-4" />

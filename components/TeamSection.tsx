@@ -25,6 +25,7 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 
 import { CharacterCarousel } from "@/src/shaders/character-carousel/CharacterCarousel";
 import { teamMembers } from "@/data/team";
+import { ScrollReveal, TextReveal, ScaleIn } from "@/components/motion/MotionPrimitives";
 
 export function TeamSection() {
   // Details panel is initially hidden (null) until a member card is explicitly clicked
@@ -76,15 +77,17 @@ export function TeamSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Editorial Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-surface-border/80 pb-8">
+        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-surface-border/80 pb-8">
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               <span>[07] // TECHNICAL LEADERSHIP</span>
             </div>
-            <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
-              The Engineering Collective
-            </h2>
+            <TextReveal delay={0.1}>
+              <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
+                The Engineering Collective
+              </h2>
+            </TextReveal>
             <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed">
               Direct access to our senior architects, engineers, and creative technologists. Zero account managers, zero junior buffers.
             </p>
@@ -102,12 +105,12 @@ export function TeamSection() {
                   <button
                     key={member.id}
                     onClick={() => handleSelectMember(idx, member.id)}
-                    className={`h-8 w-8 font-mono text-xs font-bold transition-all flex items-center justify-center border ${
+                    className={`h-8 w-8 rounded-lg font-mono text-xs font-bold transition-all duration-200 flex items-center justify-center border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.96] hover:scale-[1.04] ${
                       isSelected
                         ? "bg-accent text-background border-accent shadow-sm"
                         : isActive
-                        ? "bg-white/10 border-white/40 text-foreground"
-                        : "bg-surface/40 border-surface-border text-zinc-400 hover:text-foreground hover:border-white/30"
+                        ? "bg-white/10 border-accent/40 text-foreground"
+                        : "bg-surface/40 border-surface-border text-zinc-400 hover:text-accent hover:border-accent"
                     }`}
                     aria-label={`Select ${member.name}`}
                   >
@@ -117,10 +120,11 @@ export function TeamSection() {
               })}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* MAIN TEAM CONTAINER: Full-width Filmstrip initially, transitions to Split layout upon selection */}
-        <div className="relative rounded-2xl border border-surface-border/80 bg-surface/30 overflow-hidden shadow-2xl backdrop-blur-md">
+        <ScaleIn delay={0.15}>
+          <div className="relative rounded-2xl border border-surface-border/80 bg-surface/30 overflow-hidden shadow-2xl backdrop-blur-md">
           <div 
             aria-hidden="true" 
             className="pointer-events-none absolute top-0 right-0 -mr-24 -mt-24 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
@@ -298,6 +302,7 @@ export function TeamSection() {
             )}
           </div>
         </div>
+        </ScaleIn>
       </div>
     </section>
   );

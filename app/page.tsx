@@ -11,6 +11,13 @@ import { Process } from "@/components/Process";
 import { TeamSection } from "@/components/TeamSection";
 import { CTA } from "@/components/CTA";
 import { projects } from "@/data/projects";
+import {
+  ScrollReveal,
+  TextReveal,
+  DividerReveal,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/motion/MotionPrimitives";
 
 export default function HomePage() {
   // Selected Work: 2-4 strongest projects per Section 4
@@ -32,15 +39,17 @@ export default function HomePage() {
         />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-surface-border/80 pb-8">
+          <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6 pb-8">
             <div>
               <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 <span>[02] // SELECTED WORK ARCHIVE</span>
               </div>
-              <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
-                Selected Work
-              </h2>
+              <TextReveal delay={0.1}>
+                <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
+                  Selected Work
+                </h2>
+              </TextReveal>
               <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
                 A selection of high-performance web applications, headless commerce systems,
                 and digital platforms engineered for production speed.
@@ -48,18 +57,22 @@ export default function HomePage() {
             </div>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 border border-white/20 bg-background/80 px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all group self-start md:self-auto"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-background/80 px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-foreground hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98] transition-colors group self-start md:self-auto"
             >
               <span>Explore All Archives</span>
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 text-zinc-400 group-hover:text-accent" />
             </Link>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <DividerReveal className="border-t border-surface-border/80 mb-16" />
+
+          <StaggerContainer className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {selectedProjects.map((project, idx) => (
-              <ProjectCard key={project.slug} project={project} priority={idx === 0} index={idx} />
+              <StaggerItem key={project.slug}>
+                <ProjectCard project={project} priority={idx === 0} index={idx} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -71,27 +84,31 @@ export default function HomePage() {
         />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-surface-border/80 pb-8">
+          <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6 pb-8">
             <div>
               <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 <span>[03] // CAPABILITIES DIRECTORY</span>
               </div>
-              <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
-                Engineered Services
-              </h2>
+              <TextReveal delay={0.1}>
+                <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
+                  Engineered Services
+                </h2>
+              </TextReveal>
               <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
                 From high-conversion landing pages to full-scale web applications. Six core volume capabilities, zero generic templates.
               </p>
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 border border-white/20 bg-background/80 px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all group self-start md:self-auto"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-background/80 px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest text-foreground hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98] transition-colors group self-start md:self-auto"
             >
               <span>Service Breakdown</span>
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 text-zinc-400 group-hover:text-accent" />
             </Link>
-          </div>
+          </ScrollReveal>
+
+          <DividerReveal className="border-t border-surface-border/80 mb-16" />
 
           <BookshelfServices />
         </div>
