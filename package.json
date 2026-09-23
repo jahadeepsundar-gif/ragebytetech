@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node -e \"try { fs.rmSync('.next', { recursive: true, force: true }); } catch (e) {}\"",
+    "predev": "node -e \"const net=require('net');const fs=require('fs');const s=net.connect(3000,'127.0.0.1',()=>{console.log('[predev] Port 3000 already active. Prevented duplicate server and .next corruption.');s.destroy();process.exit(1);}).on('error',()=>{try{fs.rmSync('.next/cache',{recursive:true,force:true});}catch(e){}process.exit(0);});s.setTimeout(1000,()=>{s.destroy();process.exit(0);});\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
