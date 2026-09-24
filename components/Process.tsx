@@ -1,12 +1,12 @@
 import React from "react";
 import {
   ScrollReveal,
-  TextReveal,
   DividerReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal, ScrollRail } from "@/components/motion/Premium";
 interface Step {
   stepNumber: string;
   stageName: string;
@@ -112,14 +112,14 @@ export function Process() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>[06] // SYSTEMATIC DELIVERY PROTOCOL</span>
+              <span>SYSTEMATIC DELIVERY PROTOCOL</span>
             </div>
-            <TextReveal delay={0.1}>
+            <HeadingReveal delay={0.1}>
               <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
                 From Scope to<br />
                 <span className="text-white/95">Edge Production</span>
               </h2>
-            </TextReveal>
+            </HeadingReveal>
           </div>
 
           <div className="max-w-md space-y-2 lg:text-right">
@@ -135,12 +135,15 @@ export function Process() {
         <DividerReveal className="border-t border-white/10" />
 
         {/* Continuous Editorial Engineering Timeline (Softened Panels) */}
-        <StaggerContainer staggerDelay={0.08} className="space-y-4 mt-10">
+        <div className="relative mt-10">
+          {/* Scroll rail: fills as the reader moves from Discover to Launch */}
+          <ScrollRail className="-left-6 top-0 bottom-0 hidden xl:block" />
+        <StaggerContainer staggerDelay={0.08} className="space-y-4">
           {steps.map((step) => (
             <StaggerItem key={step.stepNumber}>
-              <div
+              <div data-spotlight
                 tabIndex={0}
-                className="group rounded-2xl border border-white/[0.08] hover:border-accent/40 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none bg-[#0c0809]/40 hover:bg-[#120a0b]/80 p-6 sm:p-8 lg:p-10 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] cursor-default"
+                className="group rounded-2xl border border-white/[0.08] hover:border-accent/40 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none bg-surface/40 hover:bg-surface/80 p-6 sm:p-8 lg:p-10 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] cursor-default"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                   {/* Refined Editorial Display Numeral (Cols 1-3) */}
@@ -198,6 +201,7 @@ export function Process() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+        </div>
       </div>
     </section>
   );

@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
         success: true,
         configured: true,
         message:
-          "Your enquiry has been received. The RageByte team will review your project details and get back to you within 24 hours.",
+          "Your enquiry has been received. The Kaatchi Productions team will review your project details and get back to you within 24 hours.",
         messageId: emailResult.messageId,
       },
       { status: 200 }

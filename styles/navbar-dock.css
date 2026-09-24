@@ -1,0 +1,62 @@
+/* ThreeUI Sable dock (src/shaders/animated-top-dock) used as the site navigation.
+   Geometry and motion come from the Sable rules in threeui.css and the dock
+   controller; this file only re-skins the surfaces to the site theme tokens
+   (app/globals.css), so it follows light pages and .theme-dark bands alike.
+
+   The authored dock is absolutely centred inside a fixed showcase frame, and its
+   controller re-measures whenever that frame resizes. The header reproduces that:
+   a frame sized to the dock at rest (items are a fixed 94px, 3px gaps, 4px padding,
+   1px border), with the dock centred inside so it grows evenly and never resizes
+   the frame it is measured against. */
+.navbar-dock-frame {
+  position: relative;
+  width: calc(var(--dock-items) * 94px + (var(--dock-items) - 1) * 3px + 10px);
+  height: 38px;
+}
+
+/* ---- capsule: same pill language as the rest of the header ---- */
+.navbar-dock.animated-top-dock__nav {
+  top: 0;
+  border-color: rgb(var(--c-foreground) / 0.1);
+  border-radius: 9999px;
+  background: rgb(var(--c-surface) / 0.7);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.navbar-dock .animated-top-dock__link {
+  border-radius: 9999px;
+  color: rgb(var(--c-text-secondary));
+  background: transparent;
+  backdrop-filter: none;
+  text-decoration: none;
+}
+
+/* spring-near and keyboard focus */
+.navbar-dock .animated-top-dock__item[data-dock-near="true"],
+.navbar-dock .animated-top-dock__item:focus-visible {
+  color: rgb(var(--c-foreground));
+  border-color: rgb(var(--c-foreground) / 0.12);
+  background: rgb(var(--c-surface-elevated));
+  box-shadow: 0 8px 18px -8px rgb(var(--shadow-color) / 0.3);
+}
+
+.navbar-dock .animated-top-dock__item:focus-visible {
+  border-color: var(--accent);
+}
+
+.navbar-dock .animated-top-dock__item[data-dock-near="true"] .animated-top-dock__icon {
+  opacity: 1;
+}
+
+/* current route: solid ink pill, like the reference's black buttons */
+.navbar-dock .animated-top-dock__link[aria-current="page"] {
+  color: var(--on-accent);
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 8px 18px -10px rgb(var(--shadow-color) / 0.45);
+}
+
+.navbar-dock .animated-top-dock__link[aria-current="page"] .animated-top-dock__icon {
+  opacity: 1;
+}

@@ -27,7 +27,7 @@ export function PageLoadSequence({ children }: PageLoadSequenceProps) {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.35, ease: STUDIO_EASE }}
-            className="fixed inset-0 z-[9999] pointer-events-none bg-[#050505]"
+            className="fixed inset-0 z-[9999] pointer-events-none bg-background"
           />
         )}
       </AnimatePresence>

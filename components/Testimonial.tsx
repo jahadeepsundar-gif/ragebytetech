@@ -33,7 +33,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             <Quote className="h-3.5 w-3.5" />
             <span>EXECUTIVE ENDORSEMENTS</span>
           </div>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
+          <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
             Trusted by Technical Leaders
           </h2>
 
@@ -53,7 +53,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             return (
               <div
                 key={item.id}
-                className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(0,0,0,0.8),0_0_20px_-6px_rgba(244,44,29,0.15)]"
+                className="group relative flex flex-col justify-between rounded-2xl border border-surface-border bg-surface/80 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface hover:shadow-[0_16px_36px_-12px_rgba(17,17,17,0.24),0_0_20px_-6px_rgba(17,17,17,0.068)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -87,7 +87,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                     )}
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-heading text-sm font-bold text-foreground truncate">
+                      <h3 className="font-display uppercase text-base font-black tracking-tight text-foreground truncate">
                         {cleanName}
                       </h3>
                       <p className="text-xs text-muted-foreground truncate font-mono">

@@ -3,13 +3,13 @@
 import React from "react";
 import {
   ScrollReveal,
-  TextReveal,
   DividerReveal,
   StaggerContainer,
   StaggerItem,
   ScaleIn,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export function TechStack() {
   const coreShowcases = [
     {
@@ -95,14 +95,14 @@ export function TechStack() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>[05] // PRODUCTION INFRASTRUCTURE</span>
+              <span>PRODUCTION INFRASTRUCTURE</span>
             </div>
-            <TextReveal delay={0.1}>
+            <HeadingReveal delay={0.1}>
               <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
                 Engineered on<br />
                 <span className="text-white/95">Next.js &amp; TypeScript</span>
               </h2>
-            </TextReveal>
+            </HeadingReveal>
           </div>
 
           <div className="max-w-md space-y-2 lg:text-right">
@@ -121,9 +121,9 @@ export function TechStack() {
         <StaggerContainer className="space-y-5 mt-10">
           {coreShowcases.map((tech) => (
             <StaggerItem key={tech.name}>
-              <div
+              <div data-spotlight
                 tabIndex={0}
-                className="group rounded-2xl border border-white/[0.08] hover:border-accent/40 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none bg-[#0c0809]/40 hover:bg-[#120a0b]/80 p-6 sm:p-8 lg:p-10 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
+                className="group rounded-2xl border border-white/[0.08] hover:border-accent/40 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none bg-surface/40 hover:bg-surface/80 p-6 sm:p-8 lg:p-10 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
               >
                 {/* Technical Meta Header */}
                 <div className="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
@@ -184,7 +184,7 @@ export function TechStack() {
         </StaggerContainer>
 
         {/* Secondary Infrastructure Array (Softened Container) */}
-        <ScaleIn className="mt-10 rounded-3xl border border-white/[0.08] bg-[#090607]/80 p-6 sm:p-8 shadow-xl">
+        <ScaleIn className="mt-10 rounded-3xl border border-white/[0.08] bg-surface/80 p-6 sm:p-8 shadow-xl">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
             <span className="font-mono text-xs font-semibold text-zinc-400 uppercase tracking-widest">
               [ SUPPORTING INFRASTRUCTURE &amp; PROTOCOLS ]
@@ -195,9 +195,9 @@ export function TechStack() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {secondaryTech.map((item) => (
               <StaggerItem key={item.code}>
-                <div
+                <div data-spotlight
                   tabIndex={0}
-                  className="rounded-xl border border-white/5 hover:border-accent/30 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none p-5 group hover:bg-[#140c0d]/60 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
+                  className="rounded-xl border border-white/5 hover:border-accent/30 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none p-5 group hover:bg-surface/60 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
                 >
                   <div className="flex items-baseline justify-between font-mono text-[11px] mb-2">
                     <span className="text-accent font-bold">[{item.code}]</span>

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070709">
-  <title>RageByte Character Filmstrip</title>
+  <title>Kaatchi Productions Character Filmstrip</title>
   <style>
     :root {
       color-scheme: dark;
-      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      font-family: "RageByte Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
       background: #070709;
     }
 
@@ -46,7 +46,7 @@
       cursor: ew-resize;
       touch-action: none;
       background:
-        linear-gradient(90deg, rgba(244, 44, 29, 0.04) 1px, transparent 1px) 50% 0 / 25% 100%,
+        linear-gradient(90deg, rgba(232, 230, 225, 0.04) 1px, transparent 1px) 50% 0 / 25% 100%,
         repeating-linear-gradient(
           0deg,
           transparent 0,
@@ -54,7 +54,7 @@
           rgba(130, 67, 52, 0.08) 110px,
           transparent 111px
         ),
-        radial-gradient(circle at var(--pointer-x) 48%, rgba(244, 44, 29, 0.12), transparent 38%),
+        radial-gradient(circle at var(--pointer-x) 48%, rgba(232, 230, 225, 0.12), transparent 38%),
         #070709;
     }
 
@@ -67,7 +67,7 @@
       opacity: 0.22;
       background:
         repeating-radial-gradient(circle at 12% 18%, rgba(130, 67, 52, 0.18) 0 0.5px, transparent 0.7px 4px),
-        repeating-radial-gradient(circle at 78% 71%, rgba(244, 44, 29, 0.15) 0 0.5px, transparent 0.8px 5px);
+        repeating-radial-gradient(circle at 78% 71%, rgba(232, 230, 225, 0.15) 0 0.5px, transparent 0.8px 5px);
       mix-blend-mode: screen;
     }
 
@@ -129,23 +129,23 @@
       position: absolute;
       inset: 5px;
       z-index: 3;
-      border: 1px solid rgba(244, 44, 29, calc(0.08 + var(--focus) * 0.25));
+      border: 1px solid rgba(232, 230, 225, calc(0.08 + var(--focus) * 0.25));
       border-radius: 3px;
       pointer-events: none;
     }
 
     .card[aria-current="true"] {
-      border-color: rgba(244, 44, 29, 0.85);
+      border-color: rgba(232, 230, 225, 0.85);
       box-shadow:
         0 calc(14px + var(--focus) * 28px) calc(24px + var(--focus) * 44px)
-          rgba(244, 44, 29, 0.25),
-        inset 0 0 0 1px rgba(244, 44, 29, 0.6);
+          rgba(232, 230, 225, 0.25),
+        inset 0 0 0 1px rgba(232, 230, 225, 0.6);
     }
 
     .card:focus-visible {
       box-shadow:
         0 26px 50px rgba(0, 0, 0, 0.65),
-        0 0 0 4px rgba(244, 44, 29, 0.5);
+        0 0 0 4px rgba(232, 230, 225, 0.5);
     }
 
     .portrait {
@@ -162,9 +162,10 @@
       height: 100%;
       object-fit: cover;
       transform: scale(calc(1.04 + (1 - var(--focus)) * 0.06));
+      /* monochrome site theme: black-and-white portraits */
       filter:
-        saturate(calc(0.78 + var(--focus) * 0.32))
-        contrast(1.05);
+        grayscale(1)
+        contrast(calc(1.02 + var(--focus) * 0.08));
       transition: filter 0.3s ease;
     }
 
@@ -191,10 +192,10 @@
       width: clamp(23px, 2.7vw, 36px);
       aspect-ratio: 1;
       place-items: center;
-      border: 1px solid rgba(244, 44, 29, 0.5);
+      border: 1px solid rgba(232, 230, 225, 0.5);
       border-radius: 50%;
-      color: #f42c1d;
-      font: 600 clamp(7px, 0.68vw, 11px)/1 ui-monospace, "SFMono-Regular", monospace;
+      color: #e8e6e1;
+      font: 600 clamp(7px, 0.68vw, 11px)/1 "RageByte Mono", ui-monospace, "SFMono-Regular", monospace;
     }
 
     .meta {
@@ -220,7 +221,8 @@
 
     .role {
       margin-top: clamp(2px, 0.3vw, 4px);
-      color: #f42c1d;
+      color: #e8e6e1;
+      font-family: "RageByte Mono", ui-monospace, monospace;
       font-size: clamp(6px, 0.52vw, 8.5px);
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -244,7 +246,7 @@
         min-height: 520px;
         cursor: ns-resize;
         background:
-          linear-gradient(90deg, rgba(244, 44, 29, 0.04) 1px, transparent 1px) 50% 0 / 50% 100%,
+          linear-gradient(90deg, rgba(232, 230, 225, 0.04) 1px, transparent 1px) 50% 0 / 50% 100%,
           repeating-linear-gradient(
             0deg,
             transparent 0,
@@ -252,7 +254,7 @@
             rgba(130, 67, 52, 0.08) 88px,
             transparent 89px
           ),
-          radial-gradient(circle at 50% 50%, rgba(244, 44, 29, 0.12), transparent 35%),
+          radial-gradient(circle at 50% 50%, rgba(232, 230, 225, 0.12), transparent 35%),
           #070709;
       }
 
@@ -269,15 +271,15 @@
   </style>
 </head>
 <body>
-  <main class="stage" id="stage" aria-label="Interactive RageByte team member filmstrip">
-    <h1 class="sr-only">RageByte Team Filmstrip</h1>
+  <main class="stage" id="stage" aria-label="Interactive Kaatchi Productions team member filmstrip">
+    <h1 class="sr-only">Kaatchi Productions Team Filmstrip</h1>
     <p class="sr-only">Move, scroll, or use the arrow keys to browse the team members.</p>
     <div class="deck" id="deck" data-testid="filmstrip"></div>
   </main>
 
   <script>
     (() => {
-      // 8 RageByte Team Members
+      // 8 Kaatchi Productions Team Members
       const defaultTeam = [
         { id: "team-01", name: "Jahadeep Sundar", role: "Systems Architecture", image: "/images/team/team-01.webp" },
         { id: "team-02", name: "Arjun Mehta", role: "Web Performance & Motion", image: "/images/team/team-02.webp" },

@@ -10,17 +10,18 @@ export const serviceTypes = [
 ] as const;
 
 export const budgetRanges = [
-  "Under $2,500",
-  "$2,500 - $5,000",
-  "$5,000 - $10,000",
-  "$10,000+",
-  "To be determined",
+  "Under ₹25K",
+  "₹25K – ₹50K",
+  "₹50K – ₹1 Lakh",
+  "₹1 – 3 Lakh",
+  "₹3 Lakh+",
+  "Not sure yet",
 ] as const;
 
 export const timelineOptions = [
-  "Immediately (< 2 weeks)",
-  "1 - 2 months",
-  "2 - 3 months",
+  "Within 2 weeks",
+  "2 – 4 weeks",
+  "1 – 2 months",
   "Flexible",
 ] as const;
 
@@ -53,7 +54,7 @@ export const contactFormSchema = z.object({
   }),
   projectDetails: z
     .string()
-    .min(10, { message: "Project details must be at least 10 characters." })
+    .min(20, { message: "Please tell us a little more (at least 20 characters)." })
     .max(3000, { message: "Project details must not exceed 3000 characters." }),
   referenceSite: z
     .string()

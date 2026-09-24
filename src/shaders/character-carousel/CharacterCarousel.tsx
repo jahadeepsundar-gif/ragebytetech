@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import characterFilmstripSource from "./sources/character-filmstrip.html?raw";
+import { FRAME_FONT_RECEIVER } from "@/lib/brandFonts";
+import { useFrameBrandFonts } from "@/lib/useFrameBrandFonts";
 
 export type CharacterCarouselVariant = "filmstrip" | "wave";
 
@@ -105,7 +107,7 @@ html, body, .stage { width: 100%; height: 100%; margin: 0; overflow: hidden; }
 
   return focusedSource
     .replace(/<script[^>]+cloudflareinsights\.com[^>]*><\/script>/gi, "")
-    .replace("</head>", `${focusStyles}${memberPayload}${controls}</head>`);
+    .replace("</head>", `${focusStyles}${FRAME_FONT_RECEIVER}${memberPayload}${controls}</head>`);
 }
 
 export function CharacterCarousel({
@@ -125,6 +127,7 @@ export function CharacterCarousel({
   selectedMemberIndex,
 }: CharacterCarouselProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  useFrameBrandFonts(iframeRef);
   const [hostVisible, setHostVisible] = useState(true);
   const [documentVisible, setDocumentVisible] = useState(() => typeof document === "undefined" || !document.hidden);
   const safeSpeed = clamp(speed, 0, 2.5);
@@ -222,7 +225,7 @@ export function CharacterCarousel({
     >
       <iframe
         ref={iframeRef}
-        title="RageByte Interactive Team Filmstrip"
+        title="Kaatchi Productions Interactive Team Filmstrip"
         srcDoc={source}
         sandbox="allow-scripts"
         onLoad={postControls}

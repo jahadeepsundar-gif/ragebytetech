@@ -2,39 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================================
+   Theme palette — monochrome editorial (warm paper, black ink, black bands).
+   Every colour is an RGB channel triple so Tailwind opacity modifiers work
+   (bg-surface/80, border-white/10 …). Tailwind maps these in tailwind.config.ts.
+
+   The codebase was authored dark-first, so the utility names keep their
+   original meaning rather than their literal colour:
+     white  → ink (primary text, hairlines, soft fills)
+     black  → the lightest inset surface
+     zinc-* → the grey ramp, ordered from "near ink" (100) to "near paper" (900)
+   Wrap any section in .theme-dark to flip the whole subtree into a black band.
+   ========================================================================= */
 :root {
-  /* Architectural foundation - Near-black #070709 */
-  --background: #070709;
-  --background-secondary: #0e0a0b;
-  --background-tertiary: #160f10;
-  --foreground: #f3f4f6;
+  /* Foundation */
+  --c-background: 232 230 225;            /* #E8E6E1 warm paper */
+  --c-background-secondary: 243 242 239;  /* #F3F2EF lighter paper */
+  --c-background-tertiary: 222 220 215;   /* #DEDCD7 mid grey band */
+  --c-foreground: 17 17 17;               /* #111111 ink */
 
-  /* Engineered surfaces & borders - Dark brown & dark red-brown */
-  --surface: #140c0d;
-  --surface-subtle: #1c1112;
-  --surface-elevated: #281719;
-  --surface-border: #4B2D2E;
-  --surface-border-hover: #824334;
+  /* Surfaces & hairlines */
+  --c-surface: 243 242 239;               /* cards on paper */
+  --c-surface-subtle: 236 234 229;
+  --c-surface-elevated: 250 250 248;
+  --c-surface-border: 204 201 195;        /* #CCC9C3 */
+  --c-surface-border-hover: 17 17 17;
 
-  /* Typography color tokens (WCAG AA tested) */
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --text-muted: #827878;
+  /* Text */
+  --c-text-primary: 17 17 17;
+  --c-text-secondary: 74 74 72;
+  --c-text-muted: 110 108 104;
 
-  /* Primary RageByte accent red (#F42C1D) & hover deep red (#AE1918) */
-  --accent: #F42C1D;
-  --accent-hover: #AE1918;
-  --accent-muted: rgba(244, 44, 29, 0.12);
-  --accent-glow: rgba(244, 44, 29, 0.35);
-  --accent-subtle: rgba(244, 44, 29, 0.05);
+  /* Accent is ink: black buttons, black underlines */
+  --c-accent: 17 17 17;
+  --c-accent-hover: 51 51 51;
+  --c-on-accent: 243 242 239;             /* text on accent buttons */
 
-  /* Approved brand palette tokens */
-  --brand-bg: #070709;
-  --brand-dark-brown: #4B2D2E;
-  --brand-muted-brown: #824334;
-  --brand-accent-red: #F42C1D;
-  --brand-deep-red: #AE1918;
-  --brand-red-brown: #701C1A;
+  /* Utility-name remaps (see note above) */
+  --c-white: 17 17 17;
+  --c-black: 243 242 239;
+  --c-zinc-50: 20 20 20;
+  --c-zinc-100: 26 26 26;
+  --c-zinc-200: 38 38 37;
+  --c-zinc-300: 52 52 50;
+  --c-zinc-400: 78 77 74;
+  --c-zinc-500: 104 102 98;
+  --c-zinc-600: 132 130 125;
+  --c-zinc-700: 164 162 157;
+  --c-zinc-800: 196 194 189;
+  --c-zinc-900: 214 212 207;
+  --c-zinc-950: 226 224 219;
+
+  --shadow-color: 17 17 17;
+}
+
+/* Black band: GAZU-style inverted section */
+.theme-dark {
+  --c-background: 17 17 17;               /* #111111 */
+  --c-background-secondary: 24 24 23;
+  --c-background-tertiary: 32 32 31;
+  --c-foreground: 242 241 237;
+
+  --c-surface: 26 26 25;
+  --c-surface-subtle: 32 32 31;
+  --c-surface-elevated: 38 38 37;
+  --c-surface-border: 58 58 56;
+  --c-surface-border-hover: 242 241 237;
+
+  --c-text-primary: 242 241 237;
+  --c-text-secondary: 184 182 177;
+  --c-text-muted: 140 138 134;
+
+  --c-accent: 242 241 237;
+  --c-accent-hover: 214 212 207;
+  --c-on-accent: 17 17 17;
+
+  --c-white: 242 241 237;
+  --c-black: 12 12 12;
+  --c-zinc-50: 250 250 249;
+  --c-zinc-100: 244 244 242;
+  --c-zinc-200: 228 227 224;
+  --c-zinc-300: 212 211 207;
+  --c-zinc-400: 168 166 161;
+  --c-zinc-500: 128 126 122;
+  --c-zinc-600: 92 91 88;
+  --c-zinc-700: 66 65 63;
+  --c-zinc-800: 44 44 42;
+  --c-zinc-900: 30 30 29;
+  --c-zinc-950: 20 20 19;
+
+  --shadow-color: 0 0 0;
+  color: rgb(var(--c-foreground));
+}
+
+:root,
+.theme-dark {
+  /* Derived colours for plain CSS (stylesheets, inline styles) */
+  --background: rgb(var(--c-background));
+  --foreground: rgb(var(--c-foreground));
+  --surface: rgb(var(--c-surface));
+  --surface-border: rgb(var(--c-surface-border));
+  --surface-border-hover: rgb(var(--c-surface-border-hover));
+  --text-muted: rgb(var(--c-text-muted));
+  --accent: rgb(var(--c-accent));
+  --accent-hover: rgb(var(--c-accent-hover));
+  --accent-muted: rgb(var(--c-accent) / 0.08);
+  --accent-glow: rgb(var(--shadow-color) / 0.18);
+  --accent-subtle: rgb(var(--c-accent) / 0.04);
+  --on-accent: rgb(var(--c-on-accent));
 }
 
 * {
@@ -42,7 +117,7 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
@@ -57,29 +132,29 @@ body {
   flex-direction: column;
 }
 
-/* Custom scrollbar matching dark architectural aesthetic */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070709;
+  background: #e8e6e1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4B2D2E;
+  background: #b9b6b0;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #824334;
+  background: #111111;
 }
 
 /* Selection highlight */
 ::selection {
-  background-color: var(--accent-muted);
-  color: var(--accent);
+  background-color: #111111;
+  color: #f3f2ef;
 }
 
 /* Keyboard accessibility focus rings */
@@ -97,16 +172,16 @@ body {
   .bg-grid-pattern {
     background-size: 40px 40px;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgb(var(--c-foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--c-foreground) / 0.05) 1px, transparent 1px);
   }
 
   /* Dense telemetry grid */
   .bg-dense-grid {
     background-size: 24px 24px;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      linear-gradient(to right, rgb(var(--c-foreground) / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--c-foreground) / 0.035) 1px, transparent 1px);
   }
 
   /* Subtle radial vignette */
@@ -116,7 +191,7 @@ body {
 
   /* Glassmorphic border shimmer */
   .glass-card {
-    background: linear-gradient(135deg, rgba(38, 20, 22, 0.75) 0%, rgba(18, 10, 11, 0.85) 100%);
+    background: rgb(var(--c-surface) / 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--surface-border);
@@ -128,8 +203,8 @@ body {
 
   .glass-card-hover:hover {
     border-color: var(--surface-border-hover);
-    background: linear-gradient(135deg, rgba(75, 45, 46, 0.6) 0%, rgba(28, 15, 17, 0.85) 100%);
-    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.8), 0 0 24px -6px var(--accent-subtle);
+    background: rgb(var(--c-surface-elevated));
+    box-shadow: 0 16px 40px -18px rgb(var(--shadow-color) / 0.25);
   }
 
   @keyframes detailsPanelEnter {

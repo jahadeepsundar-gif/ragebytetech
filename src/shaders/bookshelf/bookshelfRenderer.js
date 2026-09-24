@@ -7,6 +7,8 @@
 /* Exact seven-cover crop table SHA-256: 8a5051436eedea06d09d0bca5571762b644af3bce09127c37c6754f7a4abb87f */
 /* Complete authored collection: Codex, Claude Code, Cursor, Antigravity, Figma, Framer, and Xcode. The exact renderer, room, shelf, books, covers, pages, lighting, pointer, drag, orbit, and disposal lifecycle remain present. */
 import * as THREE from "three165";
+import { drawBookCoverTypography } from "./bookCoverTypography.js";
+import { brandFont, loadBrandFonts } from "@/lib/brandFonts";
 import { OrbitControls } from "./three165/OrbitControls.js";
 import { RoomEnvironment } from "./three165/RoomEnvironment.js";
 import { RoundedBoxGeometry } from "./three165/RoundedBoxGeometry.js";
@@ -706,27 +708,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
 
       drawMotif(ctx, book, canvasTexture.width, canvasTexture.height);
 
-      ctx.fillStyle = book.foil;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.font = '500 18px Inter, "Helvetica Neue", Arial, sans-serif';
-      ctx.letterSpacing = "4px";
-      ctx.fillText(`WORKING VOLUMES  /  ${book.roman}`, canvasTexture.width / 2, 92);
-
-      const titleSize = 40;
-      ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetY = 2;
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-      ctx.letterSpacing = "1.6px";
-      ctx.fillText(book.title, canvasTexture.width / 2, canvasTexture.height * 0.72);
-      ctx.fillStyle = "#f0ebe1";
-      ctx.font = '600 16px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.letterSpacing = "2.6px";
-      ctx.fillText(book.discipline.toUpperCase(), canvasTexture.width / 2, canvasTexture.height * 0.79);
-      ctx.restore();
+      // Lettering is applied once by the shared foil layer.
 
       return configureCanvasTexture(new THREE.CanvasTexture(canvasTexture));
     }
@@ -738,71 +720,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       const ctx = foilCanvas.getContext("2d");
       const index = BOOKS.indexOf(book) + 1;
 
-      ctx.clearRect(0, 0, foilCanvas.width, foilCanvas.height);
-      ctx.fillStyle = "#ffffff";
-      ctx.strokeStyle = "#ffffff";
-      ctx.textAlign = "left";
-      ctx.textBaseline = "alphabetic";
-
-      ctx.font = '500 15px Inter, "Helvetica Neue", Arial, sans-serif';
-      ctx.letterSpacing = "2.8px";
-      ctx.fillText(`WORKING VOLUMES  /  ${pad(index)}`, 58, 70);
-      ctx.globalAlpha = 0.7;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(58, 86);
-      ctx.lineTo(164, 86);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // Soft, subtle contrast backing gradient behind the title label zone to guarantee readability against any background
-      const textBackdrop = ctx.createLinearGradient(0, 945, 0, 1095);
-      textBackdrop.addColorStop(0, "rgba(0, 0, 0, 0)");
-      textBackdrop.addColorStop(0.25, "rgba(7, 7, 9, 0.42)");
-      textBackdrop.addColorStop(0.85, "rgba(7, 7, 9, 0.52)");
-      textBackdrop.addColorStop(1, "rgba(0, 0, 0, 0)");
-      ctx.fillStyle = textBackdrop;
-      ctx.fillRect(40, 945, foilCanvas.width - 80, 150);
-
-      // Book title: Crisp high-contrast off-white with multi-layer shadow for guaranteed legibility
-      const titleSize = 38;
-      ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
-      ctx.shadowBlur = 10;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 2;
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-      ctx.letterSpacing = "1.6px";
-      ctx.fillText(book.title, 58, 1010);
-      ctx.restore();
-
-      // Second crisp pass to ensure vibrant off-white text
-      ctx.save();
-      ctx.fillStyle = "#fdfcf9";
-      ctx.font = `600 ${titleSize}px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-      ctx.letterSpacing = "1.6px";
-      ctx.fillText(book.title, 58, 1010);
-      ctx.restore();
-
-      // Discipline / Service name: Distinct, contrasting light ivory/bone with shadow
-      ctx.save();
-      ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
-      ctx.shadowBlur = 6;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 1.5;
-      ctx.fillStyle = "#f0ebe1";
-      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.letterSpacing = "2.6px";
-      ctx.fillText(book.discipline.toUpperCase(), 60, 1056);
-      ctx.restore();
-
-      ctx.save();
-      ctx.fillStyle = "#f0ebe1";
-      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.letterSpacing = "2.6px";
-      ctx.fillText(book.discipline.toUpperCase(), 60, 1056);
-      ctx.restore();
+      drawBookCoverTypography(ctx, book, index);
 
       return configureCanvasTexture(new THREE.CanvasTexture(foilCanvas));
     }
@@ -992,7 +910,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         ctx.fillStyle = `rgba(${red},${green},${blue},0.2)`;
         ctx.textAlign = "left";
         ctx.textBaseline = "alphabetic";
-        ctx.font = '500 15px Inter, "Helvetica Neue", Arial, sans-serif';
+        ctx.font = brandFont("mono", 500, 15);
         ctx.letterSpacing = "2px";
         ctx.fillText(book.title.toUpperCase(), 84, 98);
         ctx.fillRect(84, 121, 190, 2);
@@ -1011,7 +929,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         }
 
         ctx.globalAlpha = 0.32;
-        ctx.font = '400 17px "Iowan Old Style", Baskerville, Georgia, serif';
+        ctx.font = brandFont("sans", 400, 17);
         ctx.fillText(book.roman, paperCanvas.width - 104, paperCanvas.height - 72);
         ctx.globalAlpha = 1;
       }
@@ -1102,7 +1020,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         ctx.textBaseline = "alphabetic";
 
         ctx.globalAlpha = 0.58;
-        ctx.font = '500 10px Inter, "Helvetica Neue", Arial, sans-serif';
+        ctx.font = brandFont("mono", 500, 10);
         ctx.letterSpacing = "1.8px";
         ctx.fillText(`WORKING VOLUMES  /  ${book.roman}`, 48, 48);
         ctx.textAlign = "right";
@@ -1112,25 +1030,25 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
         ctx.globalAlpha = 1;
 
         if (pageIndex === 0) {
-          ctx.font = '500 12px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 12);
           ctx.letterSpacing = "2.3px";
           ctx.fillText(book.discipline.toUpperCase(), 54, 174);
-          ctx.font = `400 ${book.title.length > 10 ? 48 : 58}px "Iowan Old Style", Baskerville, Georgia, serif`;
+          ctx.font = brandFont("display", 800, book.title.length > 10 ? 48 : 58);
           ctx.letterSpacing = "0px";
-          drawWrappedCanvasText(ctx, book.title, 52, 246, 18, 58, 2);
+          drawWrappedCanvasText(ctx, book.title.toUpperCase(), 52, 246, 18, 58, 2);
           ctx.globalAlpha = 0.55;
-          ctx.font = '400 22px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 22);
           drawWrappedCanvasText(ctx, book.note, 54, 462, 36, 30, 4);
         } else if (pageIndex === 1 || pageIndex === 3) {
           const chapterIndex = pageIndex === 1 ? 0 : 1;
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText(`CHAPTER ${pad(chapterIndex + 1)}`, 54, 166);
-          ctx.font = '400 49px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("display", 800, 49);
           ctx.letterSpacing = "0px";
-          drawWrappedCanvasText(ctx, book.chapters[chapterIndex], 52, 244, 18, 54, 3);
+          drawWrappedCanvasText(ctx, book.chapters[chapterIndex].toUpperCase(), 52, 244, 18, 54, 3);
           ctx.globalAlpha = 0.52;
-          ctx.font = '400 20px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 20);
           drawWrappedCanvasText(
             ctx,
             chapterIndex === 0 ? book.note : book.deck,
@@ -1141,7 +1059,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
             6
           );
         } else if (pageIndex === 2) {
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText("PLATE 01  /  SYSTEM MOTIF", 54, 146);
           ctx.save();
@@ -1149,10 +1067,10 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
           drawMotif(ctx, { ...book, foil: ink }, logicalWidth, logicalHeight * 0.92);
           ctx.restore();
           ctx.globalAlpha = 0.48;
-          ctx.font = '400 17px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 17);
           drawWrappedCanvasText(ctx, book.theme, 54, 650, 44, 24, 3);
         } else if (pageIndex === 4) {
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText(`NOTES  /  ${book.chapters[1].toUpperCase()}`, 54, 138);
           ctx.globalAlpha = 0.44;
@@ -1165,21 +1083,21 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
           }
           ctx.globalAlpha = 0.78;
           ctx.strokeRect(54, 654, 404, 54);
-          ctx.font = '500 10px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 10);
           ctx.letterSpacing = "1.4px";
           ctx.fillText(book.motif.toUpperCase(), 70, 686);
         } else if (pageIndex === 5) {
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText("CHAPTER 03", 54, 166);
-          ctx.font = '400 49px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("display", 800, 49);
           ctx.letterSpacing = "0px";
-          drawWrappedCanvasText(ctx, book.chapters[2], 52, 244, 18, 54, 3);
+          drawWrappedCanvasText(ctx, book.chapters[2].toUpperCase(), 52, 244, 18, 54, 3);
           ctx.globalAlpha = 0.52;
-          ctx.font = '400 20px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 20);
           drawWrappedCanvasText(ctx, book.deck, 54, 438, 42, 28, 6);
         } else if (pageIndex === 6) {
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText("PLATE 02  /  TECHNICAL SYSTEM", 54, 146);
           ctx.save();
@@ -1200,17 +1118,17 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
           }
           ctx.restore();
           ctx.globalAlpha = 0.48;
-          ctx.font = '400 17px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 17);
           drawWrappedCanvasText(ctx, book.theme, 54, 650, 44, 24, 3);
         } else {
-          ctx.font = '500 11px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 11);
           ctx.letterSpacing = "2px";
           ctx.fillText("COLOPHON", 54, 164);
-          ctx.font = '400 32px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("display", 800, 32);
           ctx.letterSpacing = "0px";
           ctx.fillText(book.title, 54, 230);
           ctx.globalAlpha = 0.58;
-          ctx.font = '400 18px "Iowan Old Style", Baskerville, Georgia, serif';
+          ctx.font = brandFont("sans", 400, 18);
           drawWrappedCanvasText(
             ctx,
             `${book.binding}. ${book.format}. Conceived as an original editorial study for Working Volumes.`,
@@ -1221,7 +1139,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
             7
           );
           ctx.globalAlpha = 0.74;
-          ctx.font = '500 10px Inter, "Helvetica Neue", Arial, sans-serif';
+          ctx.font = brandFont("mono", 500, 10);
           ctx.letterSpacing = "1.8px";
           ctx.fillText(`SPECIMEN ${book.roman} / ${book.seed}  ·  IMAGINED EDITION`, 54, 676);
         }
@@ -1432,7 +1350,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
 
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.font = '500 24px Inter, "Helvetica Neue", Arial, sans-serif';
+      ctx.font = brandFont("mono", 500, 24);
       ctx.letterSpacing = "5px";
       ctx.fillText(book.roman, foilCanvas.width * 0.5, 118);
 
@@ -1443,7 +1361,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.shadowBlur = 6;
       ctx.shadowOffsetY = 1;
       ctx.fillStyle = "#fdfcf9";
-      ctx.font = '600 24px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.font = brandFont("display", 800, 24);
       ctx.letterSpacing = "2px";
       ctx.fillText(book.title, 0, 0);
       ctx.restore();
@@ -1519,7 +1437,7 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.textAlign = "left";
       ctx.textBaseline = "alphabetic";
 
-      ctx.font = '500 16px Inter, "Helvetica Neue", Arial, sans-serif';
+      ctx.font = brandFont("mono", 500, 16);
       ctx.letterSpacing = "3px";
       ctx.fillText(`WORKING VOLUMES  /  ${book.roman}`, 68, 82);
       ctx.globalAlpha = 0.72;
@@ -1546,13 +1464,13 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       ctx.shadowBlur = 8;
       ctx.shadowOffsetY = 2;
       ctx.fillStyle = "#fdfcf9";
-      ctx.font = '600 36px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.font = brandFont("display", 800, 36);
       ctx.letterSpacing = "1.6px";
       ctx.fillText(book.title, 68, 956);
       ctx.shadowBlur = 6;
       ctx.shadowOffsetY = 1.5;
       ctx.fillStyle = "#f0ebe1";
-      ctx.font = '600 15px "Inter", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      ctx.font = brandFont("mono", 500, 15);
       ctx.letterSpacing = "2.6px";
       ctx.fillText(book.discipline.toUpperCase(), 70, 1004);
       ctx.restore();
@@ -4111,9 +4029,9 @@ export function createBookshelfRenderer(host, canvas, callbacks = {}) {
       );
 
       try {
-        await document.fonts.load("600 82px Inter");
+        await loadBrandFonts();
       } catch (error) {
-        // The system sans-serif fallback keeps the interface usable offline.
+        // The fallback stacks keep the interface usable offline.
       }
 
       try {

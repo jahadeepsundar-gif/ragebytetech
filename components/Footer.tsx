@@ -2,13 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, ArrowUp, Terminal, Mail } from "lucide-react";
+import { ArrowUpRight, ArrowUp, Terminal } from "lucide-react";
 import {
   ScrollReveal,
-  TextReveal,
   DividerReveal,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal, Magnetic } from "@/components/motion/Premium";
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -34,7 +34,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-auto border-t border-white/[0.08] bg-[#050507] text-foreground relative overflow-hidden">
+    <footer className="theme-dark mt-auto border-t border-white/[0.08] bg-background text-foreground relative overflow-hidden">
       {/* Subtle Atmospheric Studio Ambient Glow - no checkered patterns or grids */}
       <div
         aria-hidden="true"
@@ -48,18 +48,18 @@ export function Footer() {
         <ScrollReveal className="pb-16 sm:pb-20">
           <div className="flex items-center gap-2.5 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest mb-6 sm:mb-8">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            <span>[09] // FINALE — STUDIO DISPATCH</span>
+            <span>FINALE — STUDIO DISPATCH</span>
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 lg:gap-14">
             <div className="max-w-4xl">
-              <TextReveal delay={0.1}>
+              <HeadingReveal delay={0.1}>
                 <h2 className="font-display uppercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-[-0.04em] text-white leading-[0.88] select-none">
                   LET&apos;S BUILD<br />
                   <span className="text-white/95">SOMETHING </span>
                   <span className="text-accent">TECHNICAL.</span>
                 </h2>
-              </TextReveal>
+              </HeadingReveal>
               <p className="mt-6 sm:mt-8 max-w-2xl text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
                 Direct access to senior engineers and creative technologists.
                 Zero account managers, zero generic templates. Built for performance, stability, and scale.
@@ -68,21 +68,16 @@ export function Footer() {
 
             {/* Primary Action Suite */}
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-start sm:items-center gap-4 shrink-0">
+              <Magnetic>
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-8 py-4 sm:px-9 sm:py-4.5 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_28px_-4px_rgba(244,44,29,0.4)] transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(244,44,29,0.6)] hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="group relative inline-flex items-center gap-3 rounded-full border border-accent bg-accent px-8 py-4 sm:px-9 sm:py-4.5 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_28px_-4px_rgba(17,17,17,0.18)] transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_36px_-2px_rgba(17,17,17,0.27)] hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <span>Start a Project</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
+              </Magnetic>
 
-              <a
-                href="mailto:hello@ragebyte.tech"
-                className="group inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.03] px-6 py-4 sm:px-7 sm:py-4.5 font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-zinc-300 transition-all duration-300 hover:border-accent hover:text-white hover:bg-white/[0.06] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                <Mail className="h-4 w-4 text-accent transition-transform duration-300 group-hover:scale-110" />
-                <span>hello@ragebyte.tech</span>
-              </a>
             </div>
           </div>
         </ScrollReveal>
@@ -135,14 +130,14 @@ export function Footer() {
                 <Link
                   href="/"
                   className="inline-flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-xl"
-                  aria-label="RageByte Home"
+                  aria-label="Kaatchi Productions Home"
                 >
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] p-2 transition-colors duration-200 group-hover:border-accent">
                     <Terminal className="h-4 w-4 text-accent" />
                   </div>
                   <div className="flex flex-col">
                     <span className="font-display text-2xl sm:text-3xl font-black uppercase tracking-[-0.03em] text-white leading-none">
-                      RAGE<span className="text-accent">BYTE</span>
+                      Kaatchi <span className="text-accent">Productions</span>
                     </span>
                     <span className="font-mono text-[9px] tracking-widest text-zinc-500 uppercase mt-0.5">
                       TECHNICAL WEB STUDIO
@@ -189,18 +184,18 @@ export function Footer() {
                   <span className="text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
                     Direct Contact
                   </span>
-                  <a
-                    href="mailto:hello@ragebyte.tech"
+                  <Link
+                    href="/contact"
                     className="hover:text-accent transition-colors duration-200"
                   >
-                    hello@ragebyte.tech
-                  </a>
+                    Project enquiry form &rarr;
+                  </Link>
                 </div>
                 <div>
                   <span className="text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
                     Engineering Intake
                   </span>
-                  <span className="text-zinc-300">Direct Senior Engineer Response &lt; 24h</span>
+                  <span className="text-zinc-300">Reply within 24 hours on working days</span>
                 </div>
               </div>
             </div>
@@ -212,7 +207,7 @@ export function Footer() {
         {/* =================================================== */}
         <div className="mt-16 sm:mt-24 flex flex-col sm:flex-row items-center justify-between border-t border-white/[0.08] pt-8 gap-4 font-mono text-xs text-zinc-500">
           <p>
-            &copy; {currentYear} RageByte Web Studio. All rights reserved.
+            &copy; {currentYear} Kaatchi Productions. All rights reserved.
           </p>
 
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 text-[11px]">

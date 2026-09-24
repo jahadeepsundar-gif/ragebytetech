@@ -10,13 +10,12 @@ import {
   ShoppingCart,
   Palette,
   Wrench,
-  CheckCircle2,
   X,
   Rotate3d,
-  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import "@/src/shaders/threeui.css";
+import styles from "./BookshelfServices.module.css";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Globe,
@@ -36,9 +35,9 @@ const BookshelfScene = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-full w-full items-center justify-center bg-[#070709]">
+      <div className="flex h-full w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#4B2D2E] border-t-accent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-surface-border border-t-accent" />
           <span className="font-mono text-xs tracking-wider text-muted-foreground uppercase">
             Loading Interactive Studio Architecture...
           </span>
@@ -60,6 +59,14 @@ export function BookshelfServices() {
     if (!container) return;
 
     const checkState = () => {
+      // Reuse the renderer's authored palette so the reading panel belongs to the book.
+      const scene = container.querySelector<HTMLElement>(".bookshelf");
+      if (scene) {
+        for (const token of ["paper-pale", "paper-deep", "walnut-deep"]) {
+          const value = scene.style.getPropertyValue(`--${token}`);
+          if (value) container.style.setProperty(`--volume-${token}`, value);
+        }
+      }
       // 1. Check detail panel inspection state
       const detailPanel = container.querySelector("#detail-panel");
       if (detailPanel) {
@@ -81,7 +88,7 @@ export function BookshelfServices() {
         }
       }
 
-      // 3. Format floating 3D pointer-label with RageByte SPEC branding
+      // 3. Format floating 3D pointer-label with Kaatchi Productions SPEC branding
       const pointerLabel = container.querySelector("#pointer-label");
       const pointerLabelIndex = container.querySelector("#pointer-label-index");
       const pointerLabelTitle = container.querySelector("#pointer-label-title");
@@ -184,7 +191,7 @@ export function BookshelfServices() {
   return (
     <div
       ref={containerRef}
-      className="bookshelf-interactive-zone relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-surface-border/80 bg-[#070709] shadow-[0_24px_64px_-20px_rgba(0,0,0,0.95)]"
+      className="theme-dark bookshelf-interactive-zone relative w-full overflow-hidden rounded-2xl lg:rounded-3xl border border-surface-border/80 bg-background shadow-[0_24px_64px_-20px_rgba(17,17,17,0.285)]"
     >
       <style jsx global>{`
         /* Floating 3D Pointer Tooltip over hovered books */
@@ -198,14 +205,14 @@ export function BookshelfServices() {
           gap: 8px;
           padding: 6px 14px;
           border-radius: 9999px;
-          background: rgba(14, 10, 11, 0.95);
-          border: 1px solid rgba(244, 44, 29, 0.5);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9),
-            0 0 16px rgba(244, 44, 29, 0.35);
+          background: rgba(17, 17, 17, 0.94);
+          border: 1px solid rgba(17, 17, 17, 0.9);
+          box-shadow: 0 10px 30px rgba(17,17,17,0.27),
+            0 0 16px rgba(17,17,17,0.158);
           backdrop-filter: blur(12px);
-          font-family: var(--font-mono, monospace);
+          font-family: var(--font-geist-mono), monospace;
           font-size: 11px;
-          color: #ffffff;
+          color: #f3f2ef;
           white-space: nowrap;
           transition: opacity 150ms ease-out;
         }
@@ -214,12 +221,12 @@ export function BookshelfServices() {
           opacity: 0;
         }
         .bookshelf-interactive-zone #pointer-label-index {
-          color: #f42c1d;
+          color: #b9b6b0;
           font-weight: 700;
           letter-spacing: 0.05em;
         }
         .bookshelf-interactive-zone #pointer-label-title {
-          color: #f4f4f5;
+          color: #f3f2ef;
           font-weight: 500;
         }
       `}</style>
@@ -227,18 +234,18 @@ export function BookshelfServices() {
       {/* Subtle atmospheric ambient glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-80 w-[600px] rounded-full bg-[#701C1A]/10 blur-[100px] -z-10"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-80 w-[600px] rounded-full bg-accent-hover/10 blur-[100px] -z-10"
       />
 
-      {/* 1. Main 3D Bookshelf Canvas (Exact ThreeUI BookshelfScene with RageByte Service Books) */}
-      <div className="relative h-[600px] sm:h-[660px] lg:h-[720px] w-full overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* 1. Main 3D Bookshelf Canvas (Exact ThreeUI BookshelfScene with Kaatchi Productions Service Books) */}
+      <div className={`${styles.stage} ${isInspecting ? styles.inspecting : ""}`}>
+        <div className={styles.scene}>
           <BookshelfScene className="w-full h-full !bg-transparent" />
         </div>
 
         {/* 2. Top Subtle Telemetry Status */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between p-4 sm:p-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-[#070709]/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-muted-foreground backdrop-blur-md">
+        <div className={`pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between p-4 sm:p-6 ${isInspecting ? styles.quietStatus : ""}`}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-muted-foreground backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -246,7 +253,7 @@ export function BookshelfServices() {
             <span>STUDIO VOLUMES // 6 CORE SPECIFICATIONS</span>
           </div>
 
-          <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-[#070709]/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-zinc-400 backdrop-blur-md">
+          <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-zinc-400 backdrop-blur-md">
             <Rotate3d className="h-3.5 w-3.5 text-accent" />
             <span>
               {isInspecting
@@ -258,7 +265,7 @@ export function BookshelfServices() {
 
         {/* 3. SHELF OVERVIEW MODE: Minimal Active SPEC Information (NO extra buttons on right) */}
         {!isInspecting && (
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end p-3 sm:p-5 lg:p-6 bg-gradient-to-t from-[#070709] via-[#070709]/80 to-transparent pt-14">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col justify-end p-3 sm:p-5 lg:p-6 bg-gradient-to-t from-background via-background/80 to-transparent pt-14">
             {/* 3a. Native 6 SPEC Volume Pills Bar (Clicking any tab smoothly selects the book in 3D) */}
             <div className="pointer-events-auto mb-2.5 flex items-center justify-start sm:justify-center overflow-x-auto pb-1 sm:pb-0 gap-1.5 sm:gap-2 no-scrollbar">
               {services.map((service, idx) => {
@@ -275,10 +282,10 @@ export function BookshelfServices() {
                     onMouseLeave={() => setHoveredIndex(null)}
                     className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-colors duration-200 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black active:scale-[0.98] ${
                       isActive
-                        ? "border border-accent bg-[#1c1112] text-white shadow-[0_0_16px_rgba(244,44,29,0.35)]"
+                        ? "border border-accent bg-surface-subtle text-white shadow-[0_0_16px_rgba(17,17,17,0.158)]"
                         : isHovered
-                        ? "border border-accent bg-[#140c0d] text-white shadow-[0_0_12px_rgba(244,44,29,0.25)]"
-                        : "border border-white/[0.08] bg-[#0e0a0b]/80 text-zinc-400 hover:border-accent hover:text-white hover:bg-[#140c0d]"
+                        ? "border border-accent bg-surface text-white shadow-[0_0_12px_rgba(17,17,17,0.113)]"
+                        : "border border-white/[0.08] bg-background-secondary/80 text-zinc-400 hover:border-accent hover:text-white hover:bg-surface"
                     }`}
                   >
                     <span
@@ -308,7 +315,7 @@ export function BookshelfServices() {
             </div>
 
             {/* 3b. Active SPEC Metadata Information Bar (Clean, Minimal, Zero extra buttons on the right) */}
-            <div className="pointer-events-auto relative rounded-2xl border border-white/[0.08] bg-[#0e0a0b]/95 px-4 py-3 backdrop-blur-xl shadow-2xl transition-all">
+            <div className="pointer-events-auto relative rounded-2xl border border-white/[0.08] bg-background-secondary/95 px-4 py-3 backdrop-blur-xl shadow-2xl transition-all">
               <div className="flex items-center gap-3.5">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-surface-border bg-surface text-accent shadow-inner">
                   <IconComponent className="h-4 w-4" />
@@ -323,7 +330,7 @@ export function BookshelfServices() {
                     </span>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                    <h3 className="font-heading text-sm sm:text-base font-bold text-white shrink-0">
+                    <h3 className="font-display uppercase text-base sm:text-lg font-black tracking-tight text-white shrink-0">
                       {currentService.title}
                     </h3>
                     <p className="text-xs text-muted-foreground line-clamp-1">
@@ -336,105 +343,43 @@ export function BookshelfServices() {
           </div>
         )}
 
-        {/* 4. DETAIL / INSPECTION MODE: Architectural Blueprint Drawer (When book is inspected in 3D) */}
+        {/* A companion page using the selected volume's own paper and ink. */}
         {isInspecting && (
-          <div className="pointer-events-auto absolute inset-x-3 bottom-3 sm:inset-y-4 sm:right-4 sm:left-auto sm:w-[460px] z-30 animate-in fade-in slide-in-from-right-4 duration-300 rounded-2xl border border-accent/50 bg-[#0e0a0b]/95 p-5 sm:p-6 backdrop-blur-2xl shadow-[0_24px_60px_rgba(0,0,0,0.95)] flex flex-col justify-between overflow-y-auto">
-            <div>
-              {/* Drawer Header */}
-              <div className="flex items-start justify-between gap-4 border-b border-surface-border/80 pb-4">
-                <div>
-                  <div className="inline-flex items-center gap-2 font-mono text-xs font-bold text-accent">
-                    <span>{currentSpecCode}</span>
-                    <span className="text-muted-foreground">{"//"}</span>
-                    <span className="text-foreground uppercase tracking-wider">
-                      Architectural Blueprint
-                    </span>
-                  </div>
-                  <h3 className="mt-1 font-heading text-xl sm:text-2xl font-extrabold text-white">
-                    {currentService.title}
-                  </h3>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleCloseInspection}
-                  aria-label="Close volume inspection"
-                  className="rounded-lg border border-surface-border bg-surface p-1.5 text-muted-foreground transition-colors hover:border-accent/40 hover:text-white focus:outline-none"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-
-              {/* Service Description */}
-              <div className="mt-4 space-y-4">
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                  {currentService.description}
-                </p>
-
-                {currentService.idealFor && (
-                  <div className="rounded-xl border border-surface-border/80 bg-[#140c0d] p-3 text-xs leading-relaxed">
-                    <span className="font-mono text-accent font-semibold block mb-1">
-                      Ideal Target Architecture:
-                    </span>
-                    <span className="text-zinc-300">{currentService.idealFor}</span>
-                  </div>
-                )}
-
-                {/* Deliverables Checklist */}
-                {currentService.deliverables && (
-                  <div>
-                    <h4 className="font-mono text-[11px] font-semibold uppercase tracking-wider text-accent mb-2.5 flex items-center gap-1.5">
-                      <Sparkles className="h-3 w-3" />
-                      <span>Standard Production Deliverables</span>
-                    </h4>
-                    <ul className="space-y-2">
-                      {currentService.deliverables.slice(0, 4).map((d, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 text-xs text-zinc-300"
-                        >
-                          <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0 mt-0.5" />
-                          <span>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+          <aside className={styles.page} aria-labelledby="volume-detail-title">
+            <header className={styles.pageHeader}>
+              <span className={styles.eyebrow}>Kaatchi Productions / Service notes</span>
+              <button type="button" onClick={handleCloseInspection}
+                aria-label="Close volume inspection" className={styles.close}>
+                <X size={18} />
+              </button>
+            </header>
+            <div className={styles.pageBody}>
+              <h3 id="volume-detail-title" className={styles.title}>{currentService.title}</h3>
+              <p className={styles.description}>{currentService.description}</p>
+              {currentService.idealFor && (
+                <section className={styles.note}>
+                  <h4 className={styles.eyebrow}>Made for</h4>
+                  <p>{currentService.idealFor}</p>
+                </section>
+              )}
+              {currentService.deliverables && (
+                <section className={styles.deliverables}>
+                  <h4 className={styles.eyebrow}>Inside this service</h4>
+                  <ul>
+                    {currentService.deliverables.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                </section>
+              )}
             </div>
-
-            {/* Drawer Footer Actions */}
-            <div className="mt-6 pt-4 border-t border-surface-border/80 flex flex-col gap-2.5">
-              <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500">
-                <span>3D Interaction: Drag to turn pages</span>
-                <button
-                  type="button"
-                  onClick={handleCloseInspection}
-                  className="text-zinc-400 hover:text-accent transition-colors"
-                >
-                  Return to Shelf [Esc]
-                </button>
+            <footer className={styles.pageFooter}>
+              <Link href={`/contact?service=${encodeURIComponent(currentService.title)}`}
+                className={styles.proposal}>Request a proposal <span aria-hidden="true">↗</span></Link>
+              <div className={styles.pageLinks}>
+                <button type="button" onClick={handleCloseInspection}>← Back to shelf</button>
+                <Link href="/services">All services ↗</Link>
               </div>
-
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`/contact?service=${encodeURIComponent(
-                    currentService.title
-                  )}`}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2.5 text-xs font-semibold text-background shadow-[0_0_18px_rgba(244,44,29,0.35)] transition-all hover:bg-accent-hover"
-                >
-                  <span>Request Proposal</span>
-                </Link>
-
-                <Link
-                  href="/services"
-                  className="rounded-xl border border-surface-border bg-surface px-3 py-2.5 text-xs font-mono text-zinc-300 hover:border-accent/40 hover:text-accent transition-colors"
-                >
-                  Full Catalog
-                </Link>
-              </div>
-            </div>
-          </div>
+            </footer>
+          </aside>
         )}
       </div>
     </div>

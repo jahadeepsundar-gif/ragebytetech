@@ -21,7 +21,7 @@ export const teamMembers: TeamMember[] = [
     designation: "Founder & Principal Architect",
     shortRole: "Systems Architecture",
     image: "/images/team/team-01.webp",
-    bio: "Leads RageByte's architectural vision, specializing in distributed systems, high-throughput Next.js App Router architectures, and edge infrastructure.",
+    bio: "Leads Kaatchi Productions' architectural vision, specializing in distributed systems, high-throughput Next.js App Router architectures, and edge infrastructure.",
     specializations: [
       "Distributed Cloud Systems",
       "Next.js App Router Architecture",

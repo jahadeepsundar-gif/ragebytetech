@@ -3,13 +3,13 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import {
   ScrollReveal,
-  TextReveal,
   ScaleIn,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal, Magnetic } from "@/components/motion/Premium";
 export function CTA() {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28 bg-background">
+    <section className="relative overflow-hidden py-20 lg:py-28 bg-background-tertiary">
       {/* Radiant atmospheric background glow */}
       <div
         aria-hidden="true"
@@ -22,22 +22,22 @@ export function CTA() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Softened Editorial Container */}
         <ScaleIn>
-          <div className="relative rounded-3xl border border-white/[0.08] bg-[#090607]/80 backdrop-blur-md overflow-hidden p-8 sm:p-12 lg:p-16 shadow-2xl">
+          <div className="relative rounded-3xl border border-white/[0.08] bg-surface/80 backdrop-blur-md overflow-hidden p-8 sm:p-12 lg:p-16 shadow-2xl">
             <div className="flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest mb-10 pb-6 border-b border-white/[0.08]">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>[08] // INTAKE &amp; COLLABORATION</span>
+              <span>INTAKE &amp; COLLABORATION</span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
               {/* Left Column: Monumental Typographic Action Area (7 cols) */}
               <ScrollReveal className="lg:col-span-7 flex flex-col justify-between">
                 <div>
-                  <TextReveal delay={0.1}>
+                  <HeadingReveal delay={0.1}>
                     <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.035em] text-white leading-[0.92]">
                       Ready to build<br />
                       <span className="text-accent">Something Extraordinary?</span>
                     </h2>
-                  </TextReveal>
+                  </HeadingReveal>
 
                   <p className="mt-6 text-xs sm:text-sm text-zinc-300 font-sans max-w-xl leading-relaxed">
                     Tell us about your product goals, traffic constraints, and timeline.
@@ -46,17 +46,19 @@ export function CTA() {
                 </div>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Magnetic>
                 <Link
                   href="/contact"
-                  className="group relative inline-flex items-center gap-3 rounded-xl border border-accent bg-accent px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-background shadow-[0_0_24px_-4px_rgba(244,44,29,0.35)] transition-colors duration-200 hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                  className="group relative inline-flex items-center gap-3 rounded-xl border border-accent bg-accent px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-background shadow-[0_0_24px_-4px_rgba(17,17,17,0.158)] transition-colors duration-200 hover:bg-accent-hover active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   <span>Start a Project</span>
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
+                </Magnetic>
 
                 <Link
                   href="/work"
-                  className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/[0.03] px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-white transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                  className="btn-sweep inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/[0.03] px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest text-white transition-colors duration-200 hover:border-accent hover:text-accent active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   <span>Selected Work</span>
                   <ArrowRight className="h-4 w-4 text-zinc-400 transition-transform group-hover:translate-x-1" />

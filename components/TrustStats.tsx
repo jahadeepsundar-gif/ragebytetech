@@ -4,14 +4,14 @@ import React from "react";
 import { trustQualities } from "@/data/stats";
 import {
   ScrollReveal,
-  TextReveal,
   DividerReveal,
   ScaleIn,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export function TrustStats() {
   return (
-    <section id="stats" className="border-y border-white/10 bg-background-secondary py-20 lg:py-28 relative overflow-hidden">
+    <section id="stats" className="theme-dark border-y border-white/10 bg-background py-20 lg:py-28 relative overflow-hidden">
       {/* Engineering Mesh Grid Background */}
       <div 
         aria-hidden="true" 
@@ -24,14 +24,14 @@ export function TrustStats() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>[01] // ARCHITECTURAL SPECIFICATION</span>
+              <span>ARCHITECTURAL SPECIFICATION</span>
             </div>
-            <TextReveal delay={0.1}>
+            <HeadingReveal delay={0.1}>
               <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
-                The RageByte<br />
+                The Kaatchi Productions<br />
                 <span className="text-white/95">Engineering Matrix</span>
               </h2>
-            </TextReveal>
+            </HeadingReveal>
           </div>
 
           <div className="max-w-md space-y-2 lg:text-right">
@@ -47,14 +47,14 @@ export function TrustStats() {
         <DividerReveal className="border-t border-white/10" />
 
         {/* Softened Editorial Technical Spread Enclosure */}
-        <ScaleIn className="mt-10 rounded-3xl border border-white/[0.08] bg-[#090607]/80 overflow-hidden shadow-2xl">
+        <ScaleIn className="mt-10 rounded-3xl border border-white/[0.08] bg-surface/80 overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12">
             {/* Left Column: Monumental Typographic Anchor & Telemetry (4 cols) */}
             <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-white/[0.08] p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-black/40">
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-                    REF: RB-CORE-PHILOSOPHY
+                    REF: KP-CORE-PHILOSOPHY
                   </span>
                   <span className="font-mono text-[10px] text-accent">01 / 04</span>
                 </div>
@@ -99,9 +99,9 @@ export function TrustStats() {
               {/* Top Row: FAST & MODERN */}
               <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] border-b border-white/[0.08]">
                 {/* Item 01: FAST */}
-                <div
+                <div data-spotlight
                   tabIndex={0}
-                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-[#140c0d]/60 focus-visible:bg-[#140c0d]/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
+                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-surface/60 focus-visible:bg-surface/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
                 >
                   <span className="absolute top-4 right-4 font-mono text-[11px] text-zinc-600 select-none group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200">+</span>
                   <div>
@@ -133,9 +133,9 @@ export function TrustStats() {
                 </div>
 
                 {/* Item 02: MODERN */}
-                <div
+                <div data-spotlight
                   tabIndex={0}
-                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-[#140c0d]/60 focus-visible:bg-[#140c0d]/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
+                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-surface/60 focus-visible:bg-surface/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
                 >
                   <span className="absolute top-4 right-4 font-mono text-[11px] text-zinc-600 select-none group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200">+</span>
                   <div>
@@ -170,9 +170,9 @@ export function TrustStats() {
               {/* Bottom Row: RESPONSIVE & CUSTOM BUILDS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
                 {/* Item 03: RESPONSIVE */}
-                <div
+                <div data-spotlight
                   tabIndex={0}
-                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-[#140c0d]/60 focus-visible:bg-[#140c0d]/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
+                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-surface/60 focus-visible:bg-surface/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
                 >
                   <span className="absolute top-4 right-4 font-mono text-[11px] text-zinc-600 select-none group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200">+</span>
                   <div>
@@ -204,9 +204,9 @@ export function TrustStats() {
                 </div>
 
                 {/* Item 04: CUSTOM BUILDS */}
-                <div
+                <div data-spotlight
                   tabIndex={0}
-                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-[#140c0d]/60 focus-visible:bg-[#140c0d]/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
+                  className="p-6 sm:p-8 lg:p-10 relative group hover:bg-surface/60 focus-visible:bg-surface/60 focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none transition-colors duration-200 flex flex-col justify-between cursor-default"
                 >
                   <span className="absolute top-4 right-4 font-mono text-[11px] text-zinc-600 select-none group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200">+</span>
                   <div>

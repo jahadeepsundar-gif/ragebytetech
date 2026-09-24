@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
+import { projects, isInProgress } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ragebyte.tech";
@@ -40,7 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Dynamic case study routes
-  const dynamicRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+  // In-progress builds stay unlisted until launch
+  const dynamicRoutes: MetadataRoute.Sitemap = projects.filter((project) => !isInProgress(project)).map((project) => ({
     url: `${baseUrl}/work/${project.slug}`,
     lastModified: currentDate,
     changeFrequency: "monthly",

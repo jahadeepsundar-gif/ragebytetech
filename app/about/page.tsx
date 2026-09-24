@@ -13,14 +13,15 @@ import {
   StaggerItem,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export const metadata: Metadata = {
   title: "About Us — Mission, Team & Engineering Philosophy",
   description:
-    "Learn about RageByte: a specialized web development studio building custom Next.js web applications, headless storefronts, and performance-first interfaces.",
+    "Learn about Kaatchi Productions: a specialized web development studio building custom Next.js web applications, headless storefronts, and performance-first interfaces.",
   openGraph: {
-    title: "About Us — Mission, Team & Engineering Philosophy | RageByte",
+    title: "About Us — Mission, Team & Engineering Philosophy | Kaatchi Productions",
     description:
-      "Learn about RageByte: a specialized web development studio building custom Next.js web applications, headless storefronts, and performance-first interfaces.",
+      "Learn about Kaatchi Productions: a specialized web development studio building custom Next.js web applications, headless storefronts, and performance-first interfaces.",
   },
 };
 
@@ -28,9 +29,9 @@ export default function AboutPage() {
   const isDemoTeam = teamMembers.some((m) => m.name.includes("[Demo"));
 
   return (
-    <div className="flex flex-col bg-[#070709]">
+    <div className="flex flex-col bg-background">
       {/* Editorial Header */}
-      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-background overflow-hidden">
         {/* Background mesh */}
         <div 
           aria-hidden="true" 
@@ -42,9 +43,9 @@ export default function AboutPage() {
             {/* Editorial Section Marker */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
               <div className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+                <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  [01] // STUDIO MANIFESTO
+                  STUDIO MANIFESTO
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
@@ -53,19 +54,19 @@ export default function AboutPage() {
             </div>
 
             <div className="max-w-4xl">
-              <TextReveal delay={0.1}>
+              <HeadingReveal delay={0.1}>
                 <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
                   WE BUILD WEB SOFTWARE{" "}
-                  <span className="text-[#F42C1D]">THAT PERFORMS.</span>
+                  <span className="text-accent">THAT PERFORMS.</span>
                 </h1>
-              </TextReveal>
+              </HeadingReveal>
 
               <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
-                RageByte was founded on a simple conviction: businesses don&apos;t need generic templates, bureaucracy, or account-management overhead. They need senior engineers who understand modern web architecture, write clean TypeScript, and ship code that converts.
+                Kaatchi Productions was founded on a simple conviction: businesses don&apos;t need generic templates, bureaucracy, or account-management overhead. They need senior engineers who understand modern web architecture, write clean TypeScript, and ship code that converts.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-                <span className="text-[#F42C1D] font-bold">[ENGINEERING FIRST]</span>
+                <span className="text-accent font-bold">[ENGINEERING FIRST]</span>
                 <span className="text-zinc-600">{"//"}</span>
                 <span>ZERO ACCOUNT MANAGERS</span>
                 <span className="text-zinc-600">{"//"}</span>
@@ -79,13 +80,13 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Studio Philosophy */}
-      <section className="py-20 sm:py-28 bg-[#070709] relative">
+      <section className="py-20 sm:py-28 bg-background relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 items-start">
             {/* Left Narrative */}
             <ScrollReveal className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-3 border-b border-white/10 pb-3">
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F42C1D]">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                   [OPERATIONAL DISCIPLINE]
                 </span>
               </div>
@@ -103,7 +104,7 @@ export default function AboutPage() {
             {/* Right Pillars Matrix */}
             <StaggerContainer className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <StaggerItem>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+                <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                   <span className="font-mono text-xs font-black text-accent block mb-2">01</span>
                   <h3 className="font-display uppercase text-xl font-black text-white mb-2">Speed by Default</h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
@@ -113,7 +114,7 @@ export default function AboutPage() {
               </StaggerItem>
 
               <StaggerItem>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+                <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                   <span className="font-mono text-xs font-black text-accent block mb-2">02</span>
                   <h3 className="font-display uppercase text-xl font-black text-white mb-2">Strict TypeScript</h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
@@ -123,7 +124,7 @@ export default function AboutPage() {
               </StaggerItem>
 
               <StaggerItem>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+                <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                   <span className="font-mono text-xs font-black text-accent block mb-2">03</span>
                   <h3 className="font-display uppercase text-xl font-black text-white mb-2">Zero Bloatware</h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
@@ -133,7 +134,7 @@ export default function AboutPage() {
               </StaggerItem>
 
               <StaggerItem>
-                <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+                <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-6 hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                   <span className="font-mono text-xs font-black text-accent block mb-2">04</span>
                   <h3 className="font-display uppercase text-xl font-black text-white mb-2">Direct Dev Pairing</h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
@@ -147,14 +148,14 @@ export default function AboutPage() {
       </section>
 
       {/* Full Team Directory */}
-      <section className="py-24 sm:py-32 border-t border-white/10 bg-[#070709] relative overflow-hidden">
+      <section className="py-24 sm:py-32 border-t border-white/10 bg-background relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  [02] // CORE ENGINEERING ROSTER
+                  CORE ENGINEERING ROSTER
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
@@ -173,7 +174,7 @@ export default function AboutPage() {
               </p>
 
               {isDemoTeam && (
-                <div className="mt-4 rounded-lg border border-white/10 bg-[#0C0C0E] px-3.5 py-1 text-xs text-zinc-400 font-mono inline-flex items-center gap-2">
+                <div className="mt-4 rounded-lg border border-white/10 bg-surface px-3.5 py-1 text-xs text-zinc-400 font-mono inline-flex items-center gap-2">
                   <Sparkles className="h-3.5 w-3.5 text-accent" />
                   <span>Demo team roster for UI verification — pending production team profiles</span>
                 </div>
@@ -194,7 +195,7 @@ export default function AboutPage() {
       {/* Architectural Stack Breakdown */}
       <TechStack />
 
-      {/* Why Choose RageByte Advantage */}
+      {/* Why Choose Kaatchi Productions Advantage */}
       <WhyRageByte />
 
       {/* Final Studio CTA */}

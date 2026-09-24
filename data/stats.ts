@@ -39,7 +39,7 @@ export const trustQualities: TrustQuality[] = [
   },
 ];
 
-// Placeholder metrics ready to be activated when genuine RageByte shipping counts are provided
+// Placeholder metrics ready to be activated when genuine Kaatchi Productions shipping counts are provided
 export const metricStats: MetricStat[] = [
   { value: "99.9%", label: "Uptime Reliability", isReal: false },
   { value: "< 1.0s", label: "Avg Core Web Vitals LCP", isReal: false },

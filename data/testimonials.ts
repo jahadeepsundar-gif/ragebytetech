@@ -23,7 +23,7 @@ export const testimonials: Testimonial[] = [
     company: "CloudVibe Inc.",
     avatarUrl: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80",
     quote:
-      "RageByte delivered our Next.js application ahead of schedule with remarkable attention to performance. Our page load speed dropped by over 60%, and their TypeScript architecture was exceptionally clean.",
+      "Kaatchi Productions delivered our Next.js application ahead of schedule with remarkable attention to performance. Our page load speed dropped by over 60%, and their TypeScript architecture was exceptionally clean.",
     projectSlug: "strata-cloud-platform",
     isDemo: true,
   },
@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
     company: "Aura Commerce",
     avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
     quote:
-      "Working with RageByte felt like having an elite technical team in our corner. No fluff, direct developer communication, and a website that immediately impressed our investors.",
+      "Working with Kaatchi Productions felt like having an elite technical team in our corner. No fluff, direct developer communication, and a website that immediately impressed our investors.",
     projectSlug: "nexus-e-commerce",
     isDemo: true,
   },

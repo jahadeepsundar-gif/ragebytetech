@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, type CSSProperties } from "react";
+import { FRAME_FONT_FAMILIES, FRAME_FONT_RECEIVER } from "@/lib/brandFonts";
+import { useFrameBrandFonts } from "@/lib/useFrameBrandFonts";
 
 import aetherisLabsSource from "./sources/aetheris-labs.html?raw";
 import audioWordmarkSource from "./sources/audio-wordmark.html?raw";
@@ -54,6 +56,8 @@ type EffectDefinition = {
   };
   transformSource?: (source: string, mode: EffectMode) => string;
   hiddenTargets?: readonly string[];
+  /** Load the site's brand fonts into the frame (see lib/brandFonts.ts) */
+  brandFonts?: boolean;
   introWordmark?: {
     sceneSelector: string;
     text: string;
@@ -1595,10 +1599,12 @@ const EFFECTS = {
     },
     targets: [{ selector: "#stage", role: "background" }],
     hiddenTargets: [".sr"],
+    brandFonts: true,
     introWordmark: {
       sceneSelector: "#comp .scene:first-child",
-      text: "RageByte",
-      fontSize: 130,
+      text: "Kaatchi Productions",
+      // 19 characters: sized so the uppercase wordmark fits the 1280px composition
+      fontSize: 112,
       endTime: 1.7,
       holdTime: 1.1,
       logoSvg: "",
@@ -1689,6 +1695,10 @@ function buildFocusedDocument(definition: EffectDefinition, mode: EffectMode) {
   const introWordmarkStyle = definition.introWordmark
     ? `${definition.introWordmark.sceneSelector} .tx { font-size: ${definition.introWordmark.fontSize}px !important; }`
     : "";
+  // Same treatment as the site's display headings: Barlow Condensed, black, uppercase
+  const brandFontStyle = definition.brandFonts && definition.introWordmark
+    ? `${definition.introWordmark.sceneSelector} .tx { font-family: "${FRAME_FONT_FAMILIES.display}", "Arial Narrow", sans-serif !important; font-weight: 900 !important; text-transform: uppercase !important; letter-spacing: -0.02em !important; }`
+    : "";
   const focusStyle = `<style data-threeui-focus>
 html, body { width: 100% !important; height: 100% !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; background: ${background} !important; color-scheme: ${mode} !important; }
 body { position: relative !important; display: flex !important; align-items: center !important; justify-content: center !important; }
@@ -1706,7 +1716,8 @@ body[data-threeui-ready] > [data-threeui-role] { visibility: visible !important;
 [data-threeui-role="visual"][data-threeui-fit="wide-wordmark"] { width: min(calc(100vw - 48px), 1180px) !important; max-width: calc(100vw - 48px) !important; height: auto !important; max-height: none !important; aspect-ratio: 16 / 3 !important; padding: 0 !important; overflow: hidden !important; }
 [data-threeui-role="visual"][data-threeui-fit="portrait-stage"] { position: absolute !important; top: 50% !important; right: auto !important; bottom: auto !important; left: 50% !important; width: 1080px !important; max-width: none !important; height: 1350px !important; max-height: none !important; padding: 0 !important; overflow: hidden !important; transform-origin: center !important; }
 ${introWordmarkStyle}
-</style>`;
+${brandFontStyle}
+</style>${definition.brandFonts ? FRAME_FONT_RECEIVER : ""}`;
   const focusScript = `<script data-threeui-focus>
 (function () {
   document.documentElement.dataset.sfMode = ${modeJson};
@@ -1748,7 +1759,16 @@ ${introWordmarkStyle}
         });
       }
       var introReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var introStartedAt = performance.now();
+      var introStartedAt = 0;
+      // Hold the first frame (letters hidden) until the brand font is in, so the
+      // wordmark never swaps typeface mid-animation
+      if (typeof window.__seek === 'function') window.__seek(0);
+      function beginIntroWordmark() {
+        if (introStartedAt) return;
+        introStartedAt = performance.now();
+        try { window.parent.postMessage({ threeuiIntroStart: true }, '*'); } catch (e) {}
+        requestAnimationFrame(renderIntroWordmark);
+      }
       function renderIntroWordmark(now) {
         if (typeof window.__seek !== 'function') {
           requestAnimationFrame(renderIntroWordmark);
@@ -1759,7 +1779,7 @@ ${introWordmarkStyle}
           try { window.parent.postMessage({ threeuiIntroComplete: true }, '*'); } catch (e) {}
           return;
         }
-        var elapsed = (now - introStartedAt) / 1000;
+        var elapsed = Math.max(0, (now - introStartedAt) / 1000);
         window.__seek(Math.min(elapsed, introWordmark.endTime));
         if (elapsed >= introWordmark.endTime) {
           try { window.parent.postMessage({ threeuiIntroComplete: true }, '*'); } catch (e) {}
@@ -1767,7 +1787,11 @@ ${introWordmarkStyle}
           requestAnimationFrame(renderIntroWordmark);
         }
       }
-      requestAnimationFrame(renderIntroWordmark);
+      if (window.__brandFontsReady || !${JSON.stringify(Boolean(definition.brandFonts))}) beginIntroWordmark();
+      else {
+        window.addEventListener('brandfontsready', beginIntroWordmark, { once: true });
+        setTimeout(beginIntroWordmark, 500);
+      }
     }
     if (!roots.length) return;
     isolated = true;
@@ -1812,6 +1836,7 @@ function NeuformIsolatedEffect({
   trackPointerHover?: boolean;
 }) {
   const frameRef = useRef<HTMLIFrameElement>(null);
+  useFrameBrandFonts(frameRef, definition.brandFonts === true);
   const safeMode: EffectMode = mode === "light" ? "light" : "dark";
   const background = effectBackground(definition, safeMode);
   const source = useMemo(() => buildFocusedDocument(definition, safeMode), [definition, safeMode]);

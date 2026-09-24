@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ScrollReveal, TextReveal } from "@/components/motion/MotionPrimitives";
+import { ScrollReveal } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export interface FAQItem {
   question: string;
   answer: string;
@@ -12,7 +13,7 @@ export interface FAQItem {
 
 const defaultFAQs: FAQItem[] = [
   {
-    question: "What makes RageByte different from standard web agencies?",
+    question: "What makes Kaatchi Productions different from standard web agencies?",
     answer:
       "We operate as a small, senior, technically strong engineering unit. You communicate directly with the developers building your application — never account managers or junior outsourcers. We write custom Next.js and TypeScript codebases without page builders or bloated templates.",
   },
@@ -56,7 +57,7 @@ export function FAQ({
   };
 
   return (
-    <section className="py-24 sm:py-32 border-t border-white/10 bg-[#070709] relative overflow-hidden">
+    <section className="py-24 sm:py-32 border-t border-white/10 bg-background relative overflow-hidden">
       {/* Background mesh */}
       <div 
         aria-hidden="true" 
@@ -68,7 +69,7 @@ export function FAQ({
         <ScrollReveal>
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
             <div className="flex items-center gap-3">
-              <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+              <span className="h-1.5 w-1.5 bg-accent" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
                 [TRANSPARENCY PROTOCOL]
               </span>
@@ -79,11 +80,11 @@ export function FAQ({
           </div>
 
           <div>
-            <TextReveal delay={0.1}>
+            <HeadingReveal delay={0.1}>
               <h2 className="font-display uppercase text-4xl sm:text-6xl lg:text-7xl font-black tracking-[-0.035em] text-white leading-[0.92]">
                 {title}
               </h2>
-            </TextReveal>
+            </HeadingReveal>
             <p className="mt-5 text-sm sm:text-base text-zinc-400 font-sans max-w-2xl leading-relaxed">
               {subtitle}
             </p>
@@ -108,17 +109,17 @@ export function FAQ({
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-baseline gap-4 sm:gap-6 pr-6">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#F42C1D] shrink-0">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-accent shrink-0">
                       [{qCode}]
                     </span>
-                    <span className="font-heading text-lg sm:text-xl font-bold text-white tracking-tight">
+                    <span className="font-display uppercase text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
                       {item.question}
                     </span>
                   </div>
                   <div
                     className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-colors duration-200 ${
                       isOpen
-                        ? "rotate-180 border-[#F42C1D] text-[#F42C1D] bg-[#F42C1D]/10"
+                        ? "rotate-180 border-accent text-accent bg-accent/10"
                         : "border-white/20 text-zinc-400 hover:text-accent hover:border-accent"
                     }`}
                   >
@@ -134,7 +135,7 @@ export function FAQ({
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="pb-8 font-sans text-sm sm:text-base text-zinc-300 leading-relaxed pl-10 sm:pl-14 max-w-3xl border-l-2 border-[#F42C1D]/40 ml-2 mb-4">
+                      <div className="pb-8 font-sans text-sm sm:text-base text-zinc-300 leading-relaxed pl-10 sm:pl-14 max-w-3xl border-l-2 border-accent/40 ml-2 mb-4">
                         <div className="pl-4">
                           {item.answer}
                         </div>

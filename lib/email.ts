@@ -2,11 +2,12 @@ import { Resend } from "resend";
 import { ContactFormData } from "./validation";
 
 const resendApiKey = process.env.RESEND_API_KEY;
-const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL || "hello@ragebyte.tech";
-const senderEmail = process.env.CONTACT_SENDER_EMAIL || "RageByte Enquiries <onboarding@resend.dev>";
+// No fallback address: enquiries are only emailed once a real inbox is configured
+const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL?.trim() ?? "";
+const senderEmail = process.env.CONTACT_SENDER_EMAIL || "Kaatchi Productions Enquiries <onboarding@resend.dev>";
 
 export const isEmailServiceConfigured = Boolean(
-  resendApiKey && resendApiKey.trim() !== "" && !resendApiKey.includes("placeholder")
+  resendApiKey && resendApiKey.trim() !== "" && !resendApiKey.includes("placeholder") && recipientEmail
 );
 
 const resendClient = isEmailServiceConfigured ? new Resend(resendApiKey) : null;
@@ -19,7 +20,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<{
 }> {
   if (!isEmailServiceConfigured || !resendClient) {
     console.warn(
-      "[RageByte Email Service] RESEND_API_KEY is not configured in environment variables. Enquiry received but email dispatch is paused."
+      "[Kaatchi Productions Email Service] RESEND_API_KEY is not configured in environment variables. Enquiry received but email dispatch is paused."
     );
     return {
       success: false,
@@ -47,7 +48,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<{
       <body>
         <div class="container">
           <div class="header">
-            <span class="badge">RAGEBYTE NEW ENQUIRY</span>
+            <span class="badge">Kaatchi Productions · New Enquiry</span>
             <h2 style="margin: 8px 0 0 0; color: #090a0f;">New Project Enquiry from ${escapeHtml(data.name)}</h2>
           </div>
           
@@ -111,7 +112,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<{
       from: senderEmail,
       to: [recipientEmail],
       replyTo: data.email,
-      subject: `[RageByte Enquiry] ${data.serviceType} - ${data.name}${data.company ? ` (${data.company})` : ""}`,
+      subject: `[Kaatchi Productions Enquiry] ${data.serviceType} - ${data.name}${data.company ? ` (${data.company})` : ""}`,
       html: htmlContent,
     });
 

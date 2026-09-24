@@ -1,5 +1,8 @@
 import type { Config } from "tailwindcss";
 
+/** A theme colour defined as an RGB channel triple in app/globals.css */
+const ch = (name: string) => `rgb(var(--c-${name}) / <alpha-value>)`;
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,60 +13,62 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // All colours resolve to theme channels in app/globals.css (light by
+        // default, flipped inside .theme-dark), so opacity modifiers work.
         background: {
-          DEFAULT: "var(--background)",
-          secondary: "var(--background-secondary)",
-          tertiary: "var(--background-tertiary)",
+          DEFAULT: ch("background"),
+          secondary: ch("background-secondary"),
+          tertiary: ch("background-tertiary"),
         },
-        foreground: "var(--foreground)",
+        foreground: ch("foreground"),
         surface: {
-          DEFAULT: "var(--surface)",
-          subtle: "var(--surface-subtle)",
-          elevated: "var(--surface-elevated)",
-          border: "var(--surface-border)",
-          "border-hover": "var(--surface-border-hover)",
+          DEFAULT: ch("surface"),
+          subtle: ch("surface-subtle"),
+          elevated: ch("surface-elevated"),
+          border: ch("surface-border"),
+          "border-hover": ch("surface-border-hover"),
         },
         accent: {
-          DEFAULT: "var(--accent)",
-          hover: "var(--accent-hover)",
+          DEFAULT: ch("accent"),
+          hover: ch("accent-hover"),
           muted: "var(--accent-muted)",
           glow: "var(--accent-glow)",
           subtle: "var(--accent-subtle)",
-        },
-        brand: {
-          bg: "#070709",
-          "dark-brown": "#4B2D2E",
-          "muted-brown": "#824334",
-          accent: "#F42C1D",
-          "deep-red": "#AE1918",
-          "red-brown": "#701C1A",
+          foreground: ch("on-accent"),
         },
         muted: {
-          DEFAULT: "var(--text-muted)",
-          foreground: "var(--text-muted)",
+          DEFAULT: ch("text-muted"),
+          foreground: ch("text-muted"),
         },
         text: {
-          primary: "var(--text-primary)",
-          secondary: "var(--text-secondary)",
-          muted: "var(--text-muted)",
+          primary: ch("text-primary"),
+          secondary: ch("text-secondary"),
+          muted: ch("text-muted"),
         },
+        // Authored dark-first: "white" = ink, "black" = lightest inset surface,
+        // zinc = grey ramp. See the note in app/globals.css.
+        white: ch("white"),
+        black: ch("black"),
+        zinc: Object.fromEntries(
+          ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"].map((step) => [step, ch(`zinc-${step}`)]),
+        ),
       },
       fontFamily: {
-        display: ["var(--font-display)", "var(--font-heading)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-heading)", "var(--font-geist-sans)", "sans-serif"],
+        heading: ["var(--font-display)", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       boxShadow: {
-        "glow-sm": "0 0 16px -4px var(--accent-glow)",
-        "glow-md": "0 0 32px -6px var(--accent-glow)",
-        "glow-lg": "0 0 48px -8px var(--accent-glow)",
-        "surface-card": "0 10px 40px -10px rgba(0, 0, 0, 0.6)",
-        "surface-card-hover": "0 20px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px -8px var(--accent-glow)",
+        "glow-sm": "0 6px 16px -8px var(--accent-glow)",
+        "glow-md": "0 12px 32px -14px var(--accent-glow)",
+        "glow-lg": "0 18px 48px -20px var(--accent-glow)",
+        "surface-card": "0 10px 40px -18px rgb(var(--shadow-color) / 0.18)",
+        "surface-card-hover": "0 20px 50px -20px rgb(var(--shadow-color) / 0.28)",
       },
       backgroundImage: {
         "radial-top": "radial-gradient(circle at 50% 0%, var(--tw-gradient-stops))",
-        "mesh-grid": "linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px)",
+        "mesh-grid": "linear-gradient(to right, rgb(var(--c-foreground) / 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgb(var(--c-foreground) / 0.05) 1px, transparent 1px)",
       },
       keyframes: {
         float: {

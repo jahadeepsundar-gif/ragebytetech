@@ -17,7 +17,7 @@ export type TypographyVortexCanvasProps = {
 
 export const TYPOGRAPHY_VORTEX_DEFAULTS = {
   mode: "dark" as const,
-  phrase: "RAGEBYTE TECH ",
+  phrase: "KAATCHI PRODUCTIONS ",
   speed: 1,
   ringGrowth: 1.21,
   opacity: 1,

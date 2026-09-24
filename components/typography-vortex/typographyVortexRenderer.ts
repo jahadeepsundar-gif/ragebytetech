@@ -1,3 +1,5 @@
+import { brandFontFamily, loadBrandFonts } from "@/lib/brandFonts";
+
 export type TypographyVortexMode = "dark" | "light";
 
 export type TypographyVortexOptions = {
@@ -91,10 +93,10 @@ export function createTypographyVortexRenderer(
 
   const buildRings = () => {
     const options = getOptions();
-    const rawPhrase = options.phrase || "RAGEBYTE TECH ";
+    const rawPhrase = options.phrase || "KAATCHI PRODUCTIONS ";
     const phrase = rawPhrase.endsWith(" ") ? rawPhrase : `${rawPhrase} `;
     const random = mulberry32(7 * 17 + 3);
-    const fontFamily = '"ThreeUI Fragment Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace';
+    const fontFamily = brandFontFamily("mono");
     const ringPixelRatio = Math.max(pixelRatio, 1.5);
     const maximumRadius = Math.hypot(Math.max(width * 0.55, width * 0.48), Math.max(height * 0.52, height * 0.5)) + 40;
     rings = [];
@@ -121,7 +123,7 @@ export function createTypographyVortexRenderer(
       bitmapContext.font = `${ringBase.fontSize}px ${fontFamily}`;
       bitmapContext.textAlign = "center";
       bitmapContext.textBaseline = "middle";
-      const ink = resolveMode(options.mode) === "light" ? "42,44,52" : "211,211,206";
+      const ink = resolveMode(options.mode) === "light" ? "34,33,31" : "211,211,206";
       bitmapContext.fillStyle = `rgba(${ink},${ringBase.alpha})`;
       const step = (ringBase.fontSize * 0.62 * ringBase.spacing) / ringBase.radius;
       const count = Math.max(4, Math.floor((Math.PI * 2) / step));
@@ -293,8 +295,8 @@ export function createTypographyVortexRenderer(
     if (suctionActive) {
       const progress = clamp((time - suction.started) / (suction.until - suction.started), 0, 1);
       context.save();
-      const suctionInk = resolveMode(getOptions().mode) === "light" ? "42,44,52" : "174,25,24";
-      const suctionCore = resolveMode(getOptions().mode) === "light" ? "28,30,38" : "244,44,29";
+      const suctionInk = resolveMode(getOptions().mode) === "light" ? "34,33,31" : "174,25,24";
+      const suctionCore = resolveMode(getOptions().mode) === "light" ? "17,17,17" : "244,44,29";
       context.strokeStyle = `rgba(${suctionInk},${(1 - progress) * 0.34 * options.opacity})`;
       context.lineWidth = 1;
       context.beginPath();
@@ -315,7 +317,7 @@ export function createTypographyVortexRenderer(
       buildRings();
     }
     context.clearRect(0, 0, width, height);
-    context.fillStyle = isLight ? "#eef1f6" : "#070709";
+    context.fillStyle = isLight ? "#e8e6e1" : "#070709";
     context.fillRect(0, 0, width, height);
     layerContext.clearRect(0, 0, width, height);
     const deltaTime = Math.min(time - (lastTime || time), 100);
@@ -326,8 +328,8 @@ export function createTypographyVortexRenderer(
     const centerX = width * 0.52;
     const centerY = height * 0.485;
     const seconds = time / 1000 * options.speed;
-    const guideInk = isLight ? "42,44,52" : "112,28,26";
-    const strayInk = isLight ? "48,50,58" : "188,188,183";
+    const guideInk = isLight ? "34,33,31" : "112,28,26";
+    const strayInk = isLight ? "52,51,48" : "188,188,183";
 
     context.save();
     context.translate(centerX, centerY);
@@ -350,7 +352,7 @@ export function createTypographyVortexRenderer(
       layerContext.drawImage(ring.bitmap, -ring.size / 2, -ring.size / 2, ring.size, ring.size);
       layerContext.restore();
     }
-    const fontFamily = '"ThreeUI Fragment Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace';
+    const fontFamily = brandFontFamily("mono");
     layerContext.textAlign = "center";
     layerContext.textBaseline = "middle";
     for (const stray of strays) {
@@ -403,7 +405,7 @@ export function createTypographyVortexRenderer(
     updateDust(time, deltaTime);
     if (dissolve > 0.02) {
       context.save();
-      const dissolveInk = isLight ? "42,44,52" : "174,25,24";
+      const dissolveInk = isLight ? "34,33,31" : "174,25,24";
       context.strokeStyle = `rgba(${dissolveInk},${(0.08 + dissolve * 0.13) * options.opacity})`;
       context.lineWidth = 1;
       context.setLineDash([2, 6]);
@@ -469,8 +471,14 @@ export function createTypographyVortexRenderer(
   intersectionObserver.observe(host);
   resize();
   frame = requestAnimationFrame(animate);
+  // Ring text is baked into bitmaps; rebake once the brand mono face is available
+  let disposed = false;
+  loadBrandFonts().then(() => {
+    if (!disposed) renderSignature = "";
+  });
 
   return () => {
+    disposed = true;
     if (frame) cancelAnimationFrame(frame);
     resizeObserver.disconnect();
     intersectionObserver.disconnect();

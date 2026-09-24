@@ -1,10 +1,16 @@
+export type ProjectStatus = "live" | "in-progress";
+
 export interface Project {
   slug: string;
   name: string;
+  status: ProjectStatus;
   description: string;
+  industry: string;
+  scope: string;
   tech: string[];
   liveUrl?: string;
-  coverImage: string;
+  /** Omitted for in-progress builds, which render a redacted cover instead */
+  coverImage?: string;
   challenge: string;
   solution: string;
   features: string[];
@@ -12,123 +18,185 @@ export interface Project {
   result?: string;
 }
 
+export const isInProgress = (project: Project) => project.status === "in-progress";
+
 /**
- * NOTICE: The items below are structured DEMO / PLACEHOLDER projects designed to enable
- * full case study testing across /work and /work/[slug]. They are clearly marked for replacement
- * once genuine RageByte client projects and assets are provided.
+ * Selected work. Live projects link out to the production site; in-progress builds are
+ * deliberately anonymous (no client, URL, stack or imagery) until they launch.
  */
 export const projects: Project[] = [
   {
-    slug: "nexus-e-commerce",
-    name: "Nexus Storefront [Demo Project]",
+    slug: "mlj-media",
+    name: "MLJ Media",
+    status: "live",
     description:
-      "A headless e-commerce experience built for lightning-fast catalog navigation, sub-second checkout transitions, and real-time inventory synchronization.",
-    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "Shopify Storefront API", "Zustand"],
-    liveUrl: "https://example.com/demo/nexus",
-    coverImage: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
+      "The website for MLJ Media, a Christian songs production and marketing studio founded by Amalan Jerome, independent audio production since 2000, presenting worship songs, hymns and devotional videos in one browsable catalog.",
+    industry: "Music & Ministry",
+    scope: "Website Design & Development",
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://mljmedia.in",
+    coverImage: "/images/work/mlj-media-desktop.png",
     challenge:
-      "The client suffered from severe page-load latency (4.8s avg) on a legacy monolithic platform, resulting in a 42% cart drop-off rate on mobile devices.",
+      "MLJ Media publishes a steady stream of worship, Lent, Christmas and ordination songs, mostly on YouTube. The brief was a cinematic home for the studio that tells its story and lets listeners browse releases by album and video, not just by upload date.",
     solution:
-      "Architected a Next.js App Router frontend with Incremental Static Regeneration (ISR) for high-traffic product catalog pages, paired with edge caching and optimistic UI updates for instant cart modifications.",
+      "We built a cinematic, content-led site with a bold MLJ / MEDIA wordmark hero, a Recent Releases feed, dedicated Albums and Videos sections and bilingual Tamil / English titles, all prerendered for fast loading on any connection.",
     features: [
-      "Sub-second page transitions via Next.js App Router and server prefetching",
-      "Instant faceted search and multi-attribute filtering without full page reloads",
-      "Optimistic UI updates for immediate cart modifications and drawer state",
-      "Mobile-first responsive layout tailored for high conversion on handheld devices",
-      "Automated edge image optimization via WebP/AVIF compression",
+      "Recent Releases feed surfacing the newest worship, Lent and Christmas songs first",
+      "Dedicated Albums and Videos sections for browsing the full catalog",
+      "Bilingual Tamil and English song titles, credits and descriptions",
+      "About and Contact pages that tell the ministry's story and open collaboration enquiries",
+      "Statically prerendered pages served from Vercel's edge for quick loads on mobile data",
     ],
     screenshots: [
       {
-        desktop: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-        mobile: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=600&q=80",
-      },
-      {
-        desktop: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-        mobile: "https://images.unsplash.com/photo-1526406915894-7bcd65f60845?auto=format&fit=crop&w=600&q=80",
+        desktop: "/images/work/mlj-media-desktop.png",
+        mobile: "/images/work/mlj-media-mobile.png",
       },
     ],
-    result:
-      "Reduced Core Web Vitals LCP from 4.8s to 0.7s, achieving a 98 Lighthouse Performance score and a 34% increase in completed mobile checkouts during initial load testing.",
   },
   {
-    slug: "strata-cloud-platform",
-    name: "Strata Analytics [Demo Project]",
+    slug: "natiya-siragugal",
+    name: "Natiya Siragugal",
+    status: "live",
     description:
-      "A real-time metrics and cloud telemetry dashboard engineered for telemetry visualization, customizable widgets, and team access delegation.",
-    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "Tremor", "Server-Sent Events"],
-    liveUrl: "https://example.com/demo/strata",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "The official portfolio of Angeline Sheril A J, folk and classical dancer, choreographer and founder of Natiya Siragugal Kalaikoodam, Cuddalore, with 28 world records and 3000+ performances.",
+    industry: "Performing Arts",
+    scope: "Portfolio & Academy Website",
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://natiyasiragugal.com",
+    coverImage: "/images/work/natiya-siragugal-desktop.png",
     challenge:
-      "High-frequency time-series datasets caused browser thread freezing and severe UI sluggishness on traditional client-side rendering setups.",
+      "An artist with 28 world records, international performances and her own academy needed a presence that matched that stature, one that serves audiences, event organisers and prospective students at the same time.",
     solution:
-      "Employed React Server Components to offload compute-heavy aggregations, streaming rendered charts directly to the client while keeping client bundle footprint minimal.",
+      "We designed an editorial portfolio that tells her story from first performance to world stages, with dedicated pages for records, legacy and gallery, the art forms she teaches, and a booking flow for performances.",
     features: [
-      "Real-time streaming telemetry charts updating every 500ms without lag",
-      "Role-based permission architecture with granular team workspace switches",
-      "Custom dark-mode glassmorphic interface with accessible contrast tokens",
-      "Export capabilities supporting high-res PDF reports and raw CSV exports",
+      "Story-driven home page covering her journey, records, art forms and academy",
+      "Art form showcases for Bharatanatyam, Parai, Karagattam, Oyilattam and Silambam",
+      "International performance highlights across Kuwait City, Kuala Lumpur, Port Louis and Victoria",
+      "Records, Legacy and Gallery pages documenting achievements",
+      "Booking page for performance and event enquiries",
+      "Structured data (schema.org) so the artist is correctly understood by search engines",
     ],
     screenshots: [
       {
-        desktop: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-        mobile: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=600&q=80",
+        desktop: "/images/work/natiya-siragugal-desktop.png",
+        mobile: "/images/work/natiya-siragugal-mobile.png",
       },
     ],
-    result:
-      "Zero client CPU thrashing under continuous data streams; reduced initial JavaScript bundle size by 62% using Server Component architecture.",
   },
   {
-    slug: "vanguard-fintech-site",
-    name: "Vanguard Capital [Demo Project]",
+    slug: "focus1-media",
+    name: "Focus1 Media",
+    status: "live",
     description:
-      "A sleek corporate web presence and institutional investor portal delivering bank-grade security, interactive portfolio visualizers, and lead qualification.",
-    tech: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Motion"],
-    liveUrl: "https://example.com/demo/vanguard",
-    coverImage: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+      "A cinematic single-page site for a media production company specialising in storytelling, multi-camera live telecast and digital promotions.",
+    industry: "Media Production",
+    scope: "Company Website",
+    tech: ["Next.js", "React", "Vercel"],
+    liveUrl: "https://focus1media.org",
+    coverImage: "/images/work/focus1-media-desktop.png",
     challenge:
-      "The client needed to convey utmost institutional credibility while avoiding generic corporate templates that failed to engage high-net-worth visitors.",
+      "Focus1 Media's work spans state-level cultural coverage, education programmes and live broadcasts. The brief was a site that sells that production capability as confidently as the footage itself.",
     solution:
-      "Crafted a bespoke, dark-toned visual aesthetic with subtle micro-interactions, bold display typography, interactive yield calculators, and an end-to-end validated enquiry workflow.",
+      "We built a bold, cinematic one-page experience that leads with their three pillars, backs them up with major projects and equipment, and funnels every section toward a single contact call to action.",
     features: [
-      "Interactive asset allocation simulator with dynamic return modeling",
-      "Institutional-grade typography system leveraging Space Grotesk and Inter",
-      "Strict WCAG AA accessibility compliance across all interactive elements",
-      "Multi-step qualified investor inquiry funnel with encrypted dispatch",
+      "Hero built around the three service pillars: cinematic storytelling, multi-camera live setups and digital promotions",
+      "Major Projects showcase including Kalai Thiruvizha and Kalviyil Sirantha Tamilnadu coverage",
+      "Media Equipment & Team section that demonstrates production capacity",
+      "Why Focus 1 Media section and repeated contact calls to action",
+      "Anchor-linked single-page navigation for quick scanning",
     ],
     screenshots: [
       {
-        desktop: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-        mobile: "https://images.unsplash.com/photo-1526406915894-7bcd65f60845?auto=format&fit=crop&w=600&q=80",
+        desktop: "/images/work/focus1-media-desktop.png",
+        mobile: "/images/work/focus1-media-mobile.png",
       },
     ],
-    result:
-      "Earned an Awwwards Site of the Day nomination and delivered a 55% boost in qualified institutional lead submissions.",
   },
   {
-    slug: "pulse-landing-page",
-    name: "Pulse AI Platform [Demo Project]",
+    slug: "jollo-experiences",
+    name: "Jollo Experiences",
+    status: "live",
     description:
-      "An ultra-fast, high-converting product launch page built for a developer-first AI infrastructure company, featuring interactive code demos and benchmark visualizers.",
-    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "Motion", "lucide-react"],
-    liveUrl: "https://example.com/demo/pulse",
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "A premium multi-page site for a brand experience and growth company delivering branding, M.I.C.E., celebrations, digital engineering and growth strategy.",
+    industry: "Events & Brand Experience",
+    scope: "Multi-page Company Website",
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://jolloexp.com",
+    coverImage: "/images/work/jollo-experiences-desktop.png",
     challenge:
-      "Needed an impactful, zero-bloat product launch site with custom code playground previews and high conversion for developer signups.",
+      "Jollo Experience offers six very different services, from corporate M.I.C.E. to celebrations to digital engineering. The brief was to present them as one premium brand without diluting any of them.",
     solution:
-      "Developed a custom single-page showcase utilizing Tailwind CSS design tokens, dynamic code syntax highlighting, and lightweight Framer Motion reveals.",
+      "We built a premium multi-page site with a 'six ways we build your brand' services system, proof points, a work and gallery archive, and two contact routes: a full enquiry form and a quick 'we'll call you' callback request.",
     features: [
-      "Interactive code snippet previewer with one-click copy and tabbed languages",
-      "Live latency benchmark comparisons against competing APIs",
-      "Staggered entrance animations tuned for optimal 60fps rendering",
-      "Instant email waitlist form with server-side validation",
+      "Services system presenting six offerings under one brand story",
+      "Headline proof points (200+, 15+, 10+) to build trust quickly",
+      "Work and Gallery pages for past experiences",
+      "Dual conversion paths: contact form and callback request",
+      "Privacy and Terms pages, plus schema.org structured data for search",
     ],
     screenshots: [
       {
-        desktop: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
-        mobile: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=600&q=80",
+        desktop: "/images/work/jollo-experiences-desktop.png",
+        mobile: "/images/work/jollo-experiences-mobile.png",
       },
     ],
-    result:
-      "Achieved a 100/100 Lighthouse Performance score on mobile and desktop with zero layout shift (CLS: 0.00).",
+  },
+  {
+    slug: "inbavanam",
+    name: "Inbavanam",
+    status: "live",
+    description:
+      "A website for Inbavanam in Karamadai, Coimbatore: a place to stay, a space to connect and a community with purpose, hosting retreats, camps, weddings and corporate gatherings.",
+    industry: "Hospitality & Community",
+    scope: "Multi-page Website",
+    tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://inbavanam.vercel.app",
+    coverImage: "/images/work/inbavanam-desktop.png",
+    challenge:
+      "Inbavanam is part retreat, part venue and part community programme. Visitors arrive with very different intentions, whether that's to stay, host an event or get involved, and the brief was a clear path for each.",
+    solution:
+      "We structured the site around those intentions: dedicated Stay, Experiences, Events and Community pages, a values-led story of the land and its climate-responsive architecture, and a contact form that is pre-routed by enquiry type.",
+    features: [
+      "Stay, Experiences, Events, Community and Our Work pages for each type of visitor",
+      "Storytelling on the land: natural cooling, heavy stone and climate-responsive design",
+      "Offerings for retreats, group stays, camps, weddings and corporate gatherings",
+      "Contact flow pre-filled by intent (stay or event) via query parameters",
+      "Skip-to-content link and structured data for accessibility and search",
+    ],
+    screenshots: [
+      {
+        desktop: "/images/work/inbavanam-desktop.png",
+        mobile: "/images/work/inbavanam-mobile.png",
+      },
+    ],
+  },
+  {
+    slug: "classified-build-06",
+    name: "Classified Build 06",
+    status: "in-progress",
+    description:
+      "An active engagement currently in development. Client, scope and visuals stay under wraps until launch.",
+    industry: "Undisclosed",
+    scope: "In Development",
+    tech: [],
+    challenge: "",
+    solution: "",
+    features: [],
+    screenshots: [],
+  },
+  {
+    slug: "classified-build-07",
+    name: "Classified Build 07",
+    status: "in-progress",
+    description:
+      "A new build on our workbench right now. Details will be revealed once it ships.",
+    industry: "Undisclosed",
+    scope: "In Development",
+    tech: [],
+    challenge: "",
+    solution: "",
+    features: [],
+    screenshots: [],
   },
 ];

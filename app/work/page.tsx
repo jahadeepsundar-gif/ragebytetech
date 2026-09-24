@@ -1,33 +1,36 @@
 import React from "react";
 import { Metadata } from "next";
-import { projects } from "@/data/projects";
+import { projects, isInProgress } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CTA } from "@/components/CTA";
-import { Sparkles } from "lucide-react";
+import { Lock } from "lucide-react";
 import {
   ScrollReveal,
-  TextReveal,
   ScaleIn,
   StaggerContainer,
   StaggerItem,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export const metadata: Metadata = {
   title: "Selected Work & Engineering Case Studies",
   description:
-    "Explore our archive of production Next.js web applications, headless e-commerce storefronts, and real-time cloud dashboards.",
+    "Case studies of live websites Kaatchi Productions has designed and built for clients across music, performing arts, media production, events and hospitality.",
   openGraph: {
-    title: "Selected Work & Engineering Case Studies | RageByte",
+    title: "Selected Work & Engineering Case Studies | Kaatchi Productions",
     description:
-      "Explore our archive of production Next.js web applications, headless e-commerce storefronts, and real-time cloud dashboards.",
+      "Case studies of live websites Kaatchi Productions has designed and built for clients across music, performing arts, media production, events and hospitality.",
   },
 };
 
 export default function WorkPage() {
+  const liveCount = projects.filter((project) => !isInProgress(project)).length;
+  const inProgressCount = projects.length - liveCount;
+
   return (
-    <div className="flex flex-col bg-[#070709]">
+    <div className="flex flex-col bg-background">
       {/* Editorial Page Header */}
-      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-background overflow-hidden">
         {/* Background mesh */}
         <div 
           aria-hidden="true" 
@@ -39,26 +42,26 @@ export default function WorkPage() {
             {/* Editorial Section Marker */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
               <div className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+                <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  [01] // ARCHIVE INDEX
+                  ARCHIVE INDEX
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [SYS.CASE_STUDIES // {projects.length} ACTIVE]
+                [SYS.CASE_STUDIES // {liveCount} LIVE]
               </span>
             </div>
 
             <div className="max-w-4xl">
-              <TextReveal delay={0.1}>
+              <HeadingReveal delay={0.1}>
                 <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
                   SELECTED WORK &amp;{" "}
-                  <span className="text-[#F42C1D]">ARCHITECTURE.</span>
+                  <span className="text-accent">ARCHITECTURE.</span>
                 </h1>
-              </TextReveal>
+              </HeadingReveal>
 
               <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
-                Every build is a study in sub-second speed, end-to-end type safety, and architectural discipline. Explore our archive of production web applications, performance overhauls, and headless systems.
+                Every project here is live in production. Explore how we approached each brief, what we shipped, and how it looks on desktop and mobile.
               </p>
 
               {/* Filter / Meta Pills */}
@@ -66,14 +69,11 @@ export default function WorkPage() {
                 <span className="rounded-lg border border-accent bg-accent/15 px-3 py-1.5 text-white font-bold">
                   [ALL PROJECTS ({projects.length})]
                 </span>
-                <span className="rounded-lg border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
-                  [HEADLESS E-COMMERCE]
+                <span className="rounded-lg border border-white/10 bg-surface px-3 py-1.5 text-zinc-400">
+                  [LIVE ({liveCount})]
                 </span>
-                <span className="rounded-lg border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
-                  [CLOUD DASHBOARDS]
-                </span>
-                <span className="rounded-lg border border-white/10 bg-[#0C0C0E] px-3 py-1.5 text-zinc-400">
-                  [FINTECH PORTALS]
+                <span className="rounded-lg border border-white/10 bg-surface px-3 py-1.5 text-zinc-400">
+                  [IN DEVELOPMENT ({inProgressCount})]
                 </span>
               </div>
             </div>
@@ -82,19 +82,19 @@ export default function WorkPage() {
       </section>
 
       {/* Projects Grid Section */}
-      <section className="py-20 sm:py-28 bg-[#070709] relative">
+      <section className="py-20 sm:py-28 bg-background relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Demo Testing Disclosure Note */}
           <ScaleIn delay={0.1}>
-            <div className="mb-12 rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="mb-12 rounded-2xl border border-white/[0.08] bg-surface/80 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3 text-xs text-zinc-400">
-                <Sparkles className="h-4 w-4 text-accent shrink-0" />
+                <Lock className="h-4 w-4 text-accent shrink-0" />
                 <span>
-                  <strong className="text-white font-mono uppercase tracking-wider">Interactive Reference Studies:</strong> Architectural reference implementations designed to test case study layouts, performance benchmarks, and dynamic routes.
+                  <strong className="text-white font-mono uppercase tracking-wider">Currently building:</strong> {inProgressCount} client projects are in development. Their details stay confidential until launch.
                 </span>
               </div>
               <span className="shrink-0 rounded-md border border-white/15 bg-black px-2.5 py-1 text-[11px] font-mono text-accent">
-                [RSC &amp; ISR ENABLED]
+                [{liveCount} LIVE // {inProgressCount} IN PROGRESS]
               </span>
             </div>
           </ScaleIn>

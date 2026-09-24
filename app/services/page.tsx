@@ -8,27 +8,27 @@ import { CTA } from "@/components/CTA";
 import { ArrowUpRight } from "lucide-react";
 import {
   ScrollReveal,
-  TextReveal,
   StaggerContainer,
   StaggerItem,
 } from "@/components/motion/MotionPrimitives";
 
+import { HeadingReveal } from "@/components/motion/Premium";
 export const metadata: Metadata = {
   title: "Services & Full-Stack Capabilities",
   description:
-    "Explore RageByte's 6 core engineering services: Next.js Website Dev, High-Conversion Landing Pages, Business Sites, Headless E-commerce, UI/UX Systems, and Retainer Support.",
+    "Explore Kaatchi Productions' 6 core engineering services: Next.js Website Dev, High-Conversion Landing Pages, Business Sites, Headless E-commerce, UI/UX Systems, and Retainer Support.",
   openGraph: {
-    title: "Services & Full-Stack Capabilities | RageByte",
+    title: "Services & Full-Stack Capabilities | Kaatchi Productions",
     description:
-      "Explore RageByte's 6 core engineering services: Next.js Website Dev, High-Conversion Landing Pages, Business Sites, Headless E-commerce, UI/UX Systems, and Retainer Support.",
+      "Explore Kaatchi Productions' 6 core engineering services: Next.js Website Dev, High-Conversion Landing Pages, Business Sites, Headless E-commerce, UI/UX Systems, and Retainer Support.",
   },
 };
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col bg-[#070709]">
+    <div className="flex flex-col bg-background">
       {/* Editorial Header */}
-      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-[#070709] overflow-hidden">
+      <section className="relative py-24 sm:py-32 border-b border-white/10 bg-background overflow-hidden">
         {/* Background mesh */}
         <div 
           aria-hidden="true" 
@@ -40,9 +40,9 @@ export default function ServicesPage() {
             {/* Editorial Section Marker */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
               <div className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+                <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  [01] // DISCIPLINE DIRECTORY
+                  DISCIPLINE DIRECTORY
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
@@ -51,19 +51,19 @@ export default function ServicesPage() {
             </div>
 
             <div className="max-w-4xl">
-              <TextReveal delay={0.1}>
+              <HeadingReveal delay={0.1}>
                 <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.035em] text-white leading-[0.88]">
                   ENGINEERED FOR SPEED.{" "}
-                  <span className="text-[#F42C1D]">BUILT TO SCALE.</span>
+                  <span className="text-accent">BUILT TO SCALE.</span>
                 </h1>
-              </TextReveal>
+              </HeadingReveal>
 
               <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed font-sans max-w-2xl">
                 We specialize in custom Next.js App Router engineering. Whether you need a high-converting campaign page or an enterprise digital product, our architecture delivers sub-second load times, strict TypeScript type-safety, and zero bloatware.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-                <span className="text-[#F42C1D] font-bold">[06 CORE DISCIPLINES]</span>
+                <span className="text-accent font-bold">[06 CORE DISCIPLINES]</span>
                 <span className="text-zinc-600">{"//"}</span>
                 <span>NEXT.JS APP ROUTER</span>
                 <span className="text-zinc-600">{"//"}</span>
@@ -77,13 +77,13 @@ export default function ServicesPage() {
       </section>
 
       {/* 6 Comprehensive Service Breakdowns */}
-      <section className="py-20 sm:py-28 bg-[#070709] relative">
+      <section className="py-20 sm:py-28 bg-background relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {services.map((service, idx) => (
               <StaggerItem key={service.title}>
-                <div
-                  className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-12 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] hover:border-accent/50 hover:bg-[#0e0a0b] h-full"
+                <div data-spotlight
+                  className="lift group relative flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-surface/80 p-8 sm:p-12 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] hover:border-accent/50 hover:bg-background-secondary h-full"
                 >
                   <div>
                     <div className="flex items-center justify-between border-b border-white/10 pb-5">
@@ -116,13 +116,13 @@ export default function ServicesPage() {
                     {/* Included Deliverables */}
                     {service.deliverables && (
                       <div className="mt-8 border-t border-white/10 pt-6">
-                        <h3 className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#F42C1D] mb-4">
+                        <h3 className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">
                           STANDARD PHASE DELIVERABLES
                         </h3>
                         <ul className="space-y-3 font-sans">
                           {service.deliverables.map((item, dIdx) => (
                             <li key={dIdx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300">
-                              <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-1.5" />
+                              <span className="h-1.5 w-1.5 bg-accent shrink-0 mt-1.5" />
                               <span>{item}</span>
                             </li>
                           ))}
@@ -153,14 +153,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Engagement Models Banner */}
-      <section className="py-24 sm:py-32 border-y border-white/10 bg-[#070709] relative overflow-hidden">
+      <section className="py-24 sm:py-32 border-y border-white/10 bg-background relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-10">
               <div className="flex items-center gap-3">
-                <span className="h-1.5 w-1.5 bg-[#F42C1D]" />
+                <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  [02] // COMMERCIAL STRUCTURES
+                  COMMERCIAL STRUCTURES
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
@@ -169,11 +169,11 @@ export default function ServicesPage() {
             </div>
 
             <div className="max-w-3xl mb-14">
-              <TextReveal delay={0.1}>
+              <HeadingReveal delay={0.1}>
                 <h2 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[0.92]">
                   FLEXIBLE ENGAGEMENT FRAMEWORKS
                 </h2>
-              </TextReveal>
+              </HeadingReveal>
               <p className="mt-4 text-base text-zinc-400 font-sans">
                 Two straightforward collaboration models engineered to fit your operational cadence with transparent milestones.
               </p>
@@ -183,7 +183,7 @@ export default function ServicesPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Model 1: Fixed-Scope Milestone */}
             <StaggerItem>
-              <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+              <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                 <div className="flex items-center justify-between font-mono text-xs text-zinc-400 mb-6 border-b border-white/10 pb-4">
                   <span className="text-accent font-bold">[MODEL 01]</span>
                   <span>FIXED TIMELINE &amp; SCOPE</span>
@@ -213,7 +213,7 @@ export default function ServicesPage() {
 
             {/* Model 2: Dedicated Weekly Sprint */}
             <StaggerItem>
-              <div className="rounded-2xl border border-white/[0.08] bg-[#090607]/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.6)] h-full">
+              <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
                 <div className="flex items-center justify-between font-mono text-xs text-zinc-400 mb-6 border-b border-white/10 pb-4">
                   <span className="text-accent font-bold">[MODEL 02]</span>
                   <span>DEDICATED CAPACITY</span>
@@ -226,15 +226,15 @@ export default function ServicesPage() {
                 </p>
                 <ul className="mt-6 space-y-3 text-xs sm:text-sm text-zinc-300 font-sans">
                   <li className="flex items-start gap-3">
-                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-1.5" />
+                    <span className="h-1.5 w-1.5 bg-accent shrink-0 mt-1.5" />
                     <span>Direct pair-programming and technical review sessions</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-1.5" />
+                    <span className="h-1.5 w-1.5 bg-accent shrink-0 mt-1.5" />
                     <span>Weekly staged deployments and continuous GitHub integration</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="h-1.5 w-1.5 bg-[#F42C1D] shrink-0 mt-1.5" />
+                    <span className="h-1.5 w-1.5 bg-accent shrink-0 mt-1.5" />
                     <span>Pause or cancel anytime with two weeks written notice</span>
                   </li>
                 </ul>

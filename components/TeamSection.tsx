@@ -68,7 +68,7 @@ export function TeamSection() {
   return (
     <section 
       id="team" 
-      className="py-24 border-t border-surface-border bg-background relative overflow-hidden"
+      className="theme-dark py-24 border-t border-surface-border bg-background relative overflow-hidden"
     >
       <div 
         aria-hidden="true" 
@@ -81,7 +81,7 @@ export function TeamSection() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>[07] // TECHNICAL LEADERSHIP</span>
+              <span>TECHNICAL LEADERSHIP</span>
             </div>
             <TextReveal delay={0.1}>
               <h2 className="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-[-0.03em] text-foreground leading-[0.92]">
@@ -191,7 +191,7 @@ export function TeamSection() {
                         <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono font-medium mb-1">
                           <span>{selectedMember.shortRole}</span>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-extrabold text-foreground tracking-tight truncate">
+                        <h3 className="font-display uppercase text-2xl sm:text-3xl font-black text-foreground tracking-tight truncate">
                           {selectedMember.name}
                         </h3>
                         <p className="text-xs font-mono text-muted-foreground mt-0.5">
