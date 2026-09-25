@@ -70,26 +70,26 @@ export function CTA() {
               <div className="lg:col-span-5 rounded-2xl border border-white/[0.06] bg-black/40 p-6 sm:p-8 flex flex-col justify-between space-y-6">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 block mb-6">
-                    {"//"} INTAKE PROTOCOL &amp; SLA
+                    What to expect
                   </span>
 
                   <div className="space-y-4 font-mono text-xs">
                     <div className="rounded-xl border border-accent/30 bg-accent/[0.04] p-4 transition-colors duration-200 hover:border-accent">
-                      <span className="text-accent text-[10px] uppercase font-bold block">SLA_01 // 24-HOUR RESPONSE</span>
+                      <span className="text-accent text-[10px] uppercase font-bold block">Reply within 24 hours</span>
                       <span className="text-zinc-300 font-sans text-xs mt-1 block leading-relaxed">
                         Direct technical feedback and timeline estimates from senior software architects.
                       </span>
                     </div>
 
                     <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 transition-colors duration-200 hover:border-accent/50 hover:bg-accent/[0.02] group">
-                      <span className="text-zinc-400 group-hover:text-accent transition-colors text-[10px] uppercase font-bold block">SLA_02 // ZERO SALES FILTERS</span>
+                      <span className="text-zinc-400 group-hover:text-accent transition-colors text-[10px] uppercase font-bold block">No sales middlemen</span>
                       <span className="text-zinc-400 font-sans text-xs mt-1 block leading-relaxed">
                         No aggressive sales reps or account managers. Strictly engineering-led scoping.
                       </span>
                     </div>
 
                     <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 transition-colors duration-200 hover:border-accent/50 hover:bg-accent/[0.02] group">
-                      <span className="text-zinc-400 group-hover:text-accent transition-colors text-[10px] uppercase font-bold block">SLA_03 // MUTUAL NDA READY</span>
+                      <span className="text-zinc-400 group-hover:text-accent transition-colors text-[10px] uppercase font-bold block">NDA on request</span>
                       <span className="text-zinc-400 font-sans text-xs mt-1 block leading-relaxed">
                         We routinely execute mutual non-disclosure agreements before technical architecture audits.
                       </span>
@@ -98,10 +98,10 @@ export function CTA() {
                 </div>
 
                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between font-mono text-[10px] text-zinc-500 uppercase">
-                  <span>STATUS: ACCEPTING Q3/Q4 PROJECTS</span>
+                  <span>Now booking Q3 &amp; Q4 projects</span>
                   <span className="text-accent flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                    ACTIVE
+                    Open
                   </span>
                 </div>
               </div>

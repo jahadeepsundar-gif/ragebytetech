@@ -122,6 +122,29 @@ const W2G = k => { const e = EMPH[k];
   const g = Math.max(0, Math.min(255, Math.round(e[1]*B)));
   return 'rgb('+r+','+g+',0)'; };
 
+/* ---- nameplate: the studio name on the card window ------------------- */
+const NAMEPLATE = [
+  // embers: whether the row's edges feed the ember emitters (small type is
+  // left to the streak texture alone, or the fringe swallows the letters)
+  { text: 'KAATCHI', y: 0.482, h: 0.064, spacing: 0.06, embers: true },
+  { text: 'PRODUCTIONS', y: 0.548, h: 0.034, spacing: 0.16, embers: false },
+];
+const NAMEPLATE_FONT = '"Arial Narrow", "Roboto Condensed", "Helvetica Neue", Arial, sans-serif';
+const nameFont = size => '700 ' + size.toFixed(1) + 'px ' + NAMEPLATE_FONT;
+// fit a row to the window: `unit` is pixels per art unit in the target context
+function fitName(c, row, unit){
+  let size = row.h * unit / 0.72;                     // cap height -> font size
+  c.font = nameFont(size);
+  c.letterSpacing = (size * row.spacing).toFixed(2) + 'px';
+  const w = c.measureText(row.text).width, maxW = 0.27 * unit;
+  if (w > maxW){
+    size *= maxW / w;
+    c.font = nameFont(size);
+    c.letterSpacing = (size * row.spacing).toFixed(2) + 'px';
+  }
+  return size;
+}
+
 function buildMasks(){
   const solid = document.createElement('canvas'); solid.width = MW; solid.height = MH;
   const emph  = document.createElement('canvas'); emph.width  = MW; emph.height  = MH;
@@ -390,8 +413,9 @@ function buildMasks(){
     R: 0.50, A: 0.56, G: 0.54, E: 0.42, B: 0.48, Y: 0.54, T: 0.50,
     K: 0.50, C: 0.52, H: 0.52, I: 0.16, P: 0.46, O: 0.56, D: 0.52, U: 0.50, S: 0.46, N: 0.52
   };
-  const glyph = (ch, x, y, h) => {
-    const w = h * GLYPH_WIDTHS[ch];
+  // sx condenses a letter horizontally (1 = the authored width)
+  const glyph = (ch, x, y, h, sx = 1) => {
+    const w = h * GLYPH_WIDTHS[ch] * sx;
     ge.strokeStyle = W2G('edition');
     both(c => {
       c.beginPath();
@@ -498,21 +522,20 @@ function buildMasks(){
     return w;
   };
   (() => {
-    // two lines sized to the window: the name large, "PRODUCTIONS" beneath it
-    const rows = [
-      { str: 'KAATCHI', h: 0.056*S, gap: 0.16, gm: 0.0058*S, ge: 0.014*S },
-      { str: 'PRODUCTIONS', h: 0.038*S, gap: 0.14, gm: 0.0046*S, ge: 0.011*S },
-    ];
-    const lead = 0.018*S, cx = 0.500*S, cy = 0.510*S;
-    const total = rows[0].h + lead + rows[1].h;
-    let y = cy - total/2;
-    rows.forEach((row) => {
-      gm.lineWidth = row.gm; ge.lineWidth = row.ge;
-      const gap = row.h*row.gap;
-      let tot = 0; for (const ch of row.str) tot += row.h*GLYPH_WIDTHS[ch] + gap; tot -= gap;
-      let x = cx - tot/2;
-      for (const ch of row.str) x += glyph(ch, x, y, row.h) + gap;
-      y += row.h + lead;
+    // The name's silhouette joins the mask, so embers fur the letter edges like
+    // every other printed element on the card. Its faces are painted separately
+    // (drawNameplate) because ember-only type dissolves at this size.
+    key('meta');
+    both(c => {
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      for (const row of NAMEPLATE){
+        if (!row.embers) continue;
+        fitName(c, row, S);
+        c.fillText(row.text, 0.5*S, row.y*S);
+      }
+      c.restore();
     });
   })();
 
@@ -925,6 +948,8 @@ function render(){
   for (let i = 0; i < NW; i++) strand(WAT, i, 2);
   flush();
 
+  drawNameplate();
+
   // and the rest in front, so falling lines cross the figure too
   for (let i = 0; i < NB; i++) paths[i] = new Path2D();
   for (let i = 0; i < NR; i++) if (RAIN.pin[i]) strand(RAIN, i, 1);
@@ -951,6 +976,93 @@ function frame(ts){
     if (avg > 0.022){ slowRun++; if (slowRun >= 2){ NF = Math.max(1100, (NF*0.85)|0); NR = Math.max(240, (NR*0.9)|0); NW = Math.max(260, (NW*0.9)|0); slowRun = 0; } }
     else slowRun = 0;
   }
+}
+
+/* ------------------------------------------------------------------ *
+ *  nameplate faces: the letters are filled with the scene's own light —
+ *  short streaks drifting along the wind — over a faint base and bloom, with
+ *  a slow flicker. Same art-space transform as buildMasks() (card scale +
+ *  tilt), so it sits exactly in the window at every viewport size.
+ * ------------------------------------------------------------------ */
+let NP = null;
+function buildNameplate(){
+  const SC = 1.12, px = ART.s * SC;
+  const m = new DOMMatrix()
+    .translate(ART.x, ART.y).scale(ART.s)
+    .translate(0.5, 0.862).scale(SC).translate(-0.5, -0.862)
+    .translate(0.5, 0.3).rotate(-0.048 * 180 / Math.PI).translate(-0.5, -0.3);
+  const centre = m.transformPoint(new DOMPoint(0.5, 0.515));
+  const bw = Math.ceil(0.36 * px), bh = Math.ceil(0.24 * px);
+  const ox = Math.round(centre.x - bw/2), oy = Math.round(centre.y - bh/2);
+
+  const mask = document.createElement('canvas'); mask.width = bw; mask.height = bh;
+  const mc = mask.getContext('2d');
+  mc.fillStyle = '#fff';
+  mc.textAlign = 'center';
+  mc.textBaseline = 'middle';
+  for (const row of NAMEPLATE){
+    const p = m.transformPoint(new DOMPoint(0.5, row.y));
+    mc.save();
+    mc.translate(p.x - ox, p.y - oy);
+    mc.rotate(-0.048);
+    fitName(mc, row, px);
+    mc.fillText(row.text, 0, 0);
+    mc.restore();
+  }
+
+  // streak tile: short ticks along the wind, like the rain and ember marks
+  const T = Math.max(24, Math.round(22 * LW));
+  const tile = document.createElement('canvas'); tile.width = T; tile.height = T;
+  const tc = tile.getContext('2d');
+  const R = mulberry32(0x4B41);
+  tc.strokeStyle = '#fff';
+  tc.lineWidth = Math.max(1, LW);
+  tc.lineCap = 'butt';
+  for (let k = 0; k < 26; k++){
+    const x = R()*T, y = R()*T, len = (0.18 + R()*0.3) * T;
+    const a = WANG + (R() - 0.5) * 0.35;
+    tc.globalAlpha = 0.45 + R()*0.55;
+    for (const dx of [-T, 0, T]) for (const dy of [-T, 0, T]){  // wrap so the tile is seamless
+      tc.beginPath();
+      tc.moveTo(x + dx, y + dy);
+      tc.lineTo(x + dx + Math.cos(a)*len, y + dy + Math.sin(a)*len);
+      tc.stroke();
+    }
+  }
+
+  const tex = document.createElement('canvas'); tex.width = bw; tex.height = bh;
+  NP = { key: ART.x + ':' + ART.y + ':' + ART.s, ox, oy, bw, bh, px, mask, tex,
+         tctx: tex.getContext('2d'), pattern: tex.getContext('2d').createPattern(tile, 'repeat') };
+}
+
+function drawNameplate(){
+  if (!NP || NP.key !== ART.x + ':' + ART.y + ':' + ART.s) buildNameplate();
+  const { ox, oy, bw, bh, px, mask, tex, tctx, pattern } = NP;
+
+  // streaks drift with the wind, clipped to the letter shapes
+  const drift = CT * ART.s * 0.035;
+  pattern.setTransform(new DOMMatrix().translate(WIND.x * drift, WIND.y * drift));
+  tctx.globalCompositeOperation = 'source-over';
+  tctx.clearRect(0, 0, bw, bh);
+  tctx.fillStyle = pattern;
+  tctx.fillRect(0, 0, bw, bh);
+  tctx.globalCompositeOperation = 'destination-in';
+  tctx.drawImage(mask, 0, 0);
+
+  // slow, uneven flicker shared by the whole plate
+  const flicker = 0.84 + 0.16 * (0.5 + 0.5 * Math.sin(CT * 2.1) * Math.sin(CT * 0.73 + 1.3));
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.globalAlpha = 0.20 * flicker;                   // bloom
+  ctx.filter = 'blur(' + (px * 0.007).toFixed(1) + 'px)';
+  ctx.drawImage(mask, ox, oy);
+  ctx.filter = 'none';
+  ctx.globalAlpha = 0.42 * flicker;                   // faint body so it always reads
+  ctx.drawImage(mask, ox, oy);
+  ctx.globalAlpha = 0.95 * flicker;                   // the ember-streak face
+  ctx.drawImage(tex, ox, oy);
+  ctx.restore();
 }
 
 function flush(){

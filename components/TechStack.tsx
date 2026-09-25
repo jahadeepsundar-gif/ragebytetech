@@ -15,7 +15,7 @@ export function TechStack() {
     {
       number: "01",
       name: "NEXT.JS",
-      sysLabel: "SYS.RUNTIME // V14+",
+      sysLabel: "Framework · Version 14+",
       role: "Application Architecture",
       subRole: "React Server Components & Streaming",
       description:
@@ -25,7 +25,7 @@ export function TechStack() {
     {
       number: "02",
       name: "TYPESCRIPT",
-      sysLabel: "SYS.LANGUAGE // STRICT",
+      sysLabel: "Language · Strict mode",
       role: "Type-Safe Systems",
       subRole: "End-to-End Schema Integrity",
       description:
@@ -35,7 +35,7 @@ export function TechStack() {
     {
       number: "03",
       name: "TAILWIND CSS",
-      sysLabel: "SYS.DESIGN // TOKENS",
+      sysLabel: "Styling · Design tokens",
       role: "Zero-Runtime Tokens",
       subRole: "Atomic Design Token Architecture",
       description:
@@ -45,7 +45,7 @@ export function TechStack() {
     {
       number: "04",
       name: "REACT 18",
-      sysLabel: "SYS.RENDER // CONCURRENT",
+      sysLabel: "Rendering · Concurrent",
       role: "Concurrent Rendering",
       subRole: "Selective Hydration Engine",
       description:
@@ -107,7 +107,7 @@ export function TechStack() {
 
           <div className="max-w-md space-y-2 lg:text-right">
             <div className="inline-block font-mono text-[10px] text-accent uppercase tracking-[0.25em] rounded-full border border-accent/30 bg-accent/5 px-3 py-1">
-              FOUNDATION: ZERO RUNTIME OVERHEAD
+              Built for speed &amp; stability
             </div>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
               Every technology is selected strictly for execution speed, developer velocity, and long-term architectural stability. Zero speculative dependencies.
@@ -138,7 +138,7 @@ export function TechStack() {
                     <span className="uppercase tracking-widest text-[11px] text-zinc-400">{tech.sysLabel}</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-widest text-zinc-600 hidden sm:inline">
-                    CORE INFRASTRUCTURE
+                    Core stack
                   </span>
                 </div>
 
@@ -187,9 +187,9 @@ export function TechStack() {
         <ScaleIn className="mt-10 rounded-3xl border border-white/[0.08] bg-surface/80 p-6 sm:p-8 shadow-xl">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
             <span className="font-mono text-xs font-semibold text-zinc-400 uppercase tracking-widest">
-              [ SUPPORTING INFRASTRUCTURE &amp; PROTOCOLS ]
+              Supporting tools
             </span>
-            <span className="font-mono text-[10px] text-zinc-500 uppercase">TIER-02 SPECIFICATIONS</span>
+            <span className="font-mono text-[10px] text-zinc-500 uppercase">Also in our stack</span>
           </div>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -200,8 +200,8 @@ export function TechStack() {
                   className="rounded-xl border border-white/5 hover:border-accent/30 focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent focus-visible:outline-none p-5 group hover:bg-surface/60 transition-all duration-300 ease-out hover:-translate-y-0.5 cursor-default"
                 >
                   <div className="flex items-baseline justify-between font-mono text-[11px] mb-2">
-                    <span className="text-accent font-bold">[{item.code}]</span>
-                    <span className="text-zinc-500 uppercase tracking-wider text-[10px]">VERIFIED</span>
+                    <span className="text-accent font-bold">{item.code}</span>
+                    <span className="text-zinc-500 uppercase tracking-wider text-[10px]">In production</span>
                   </div>
                   <div className="font-display text-xl font-black uppercase text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 tracking-tight">
                     {item.name}

@@ -34,23 +34,12 @@ export function Hero() {
             <MaskLine play={ready} delay={0.29} className="mt-1 sm:mt-2 text-accent">Built to Perform.</MaskLine>
           </h1>
 
-          {/* 2. Subcopy: resolves from a soft blur */}
-          <motion.p
-            initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-            animate={ready ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
-            transition={{ duration: 0.9, delay: 0.55, ease: STUDIO_EASE }}
-            className="mt-8 text-sm sm:text-base lg:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto font-sans font-normal"
-          >
-            Bespoke Next.js web applications, headless storefronts, and high-throughput edge systems.
-            Direct access to senior architects — zero templates, zero account-manager layers.
-          </motion.p>
-
-          {/* 3. Actions: magnetic, arrive last */}
+          {/* 2. Actions: magnetic, arrive last */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={ready ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.7, delay: 0.72, ease: STUDIO_EASE }}
-            className="pointer-events-auto mt-10 flex flex-wrap items-center justify-center gap-4"
+            transition={{ duration: 0.7, delay: 0.55, ease: STUDIO_EASE }}
+            className="pointer-events-auto mt-12 flex flex-wrap items-center justify-center gap-4"
           >
             <Magnetic>
               <Link

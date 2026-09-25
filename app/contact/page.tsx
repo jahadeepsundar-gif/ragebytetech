@@ -43,11 +43,11 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  INTAKE PROTOCOL
+                  New projects
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [SYS.ACTIVE_INTAKE // 2026]
+                Now booking 2026
               </span>
             </div>
 
@@ -64,11 +64,11 @@ export default function ContactPage() {
                 Planning a new website, landing page, online store or redesign? Tell us about it. We&apos;ll read your brief and reply within 24 hours on working days with honest next steps.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-                <span className="text-accent font-bold">[REPLY WITHIN 24H]</span>
-                <span className="text-zinc-600">{"//"}</span>
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                <span className="text-accent font-bold">Reply within 24 hours</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>TALK DIRECTLY TO THE BUILDERS</span>
-                <span className="text-zinc-600">{"//"}</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>YOU OWN THE CODE</span>
               </div>
             </div>

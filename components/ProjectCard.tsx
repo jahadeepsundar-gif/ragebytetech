@@ -194,7 +194,7 @@ export function ProjectCard({ project, priority = false, index }: ProjectCardPro
 }
 
 /** Stand-in artwork for builds that can't be shown yet */
-export function RedactedCover({ label = "Under NDA // Currently Building" }: { label?: string }) {
+export function RedactedCover({ label = "Under NDA · Currently building" }: { label?: string }) {
   return (
     // Always a black block (like the reference's dark image tiles), never a pale haze
     <div className="theme-dark absolute inset-0 bg-background">

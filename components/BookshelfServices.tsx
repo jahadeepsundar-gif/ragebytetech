@@ -103,7 +103,7 @@ export function BookshelfServices() {
             const idx = Math.min(num - 1, services.length - 1);
             setHoveredIndex(idx);
 
-            const specLabel = `SPEC [0${idx + 1}]`;
+            const specLabel = `Volume 0${idx + 1}`;
             const serviceTitle = services[idx]?.title || "";
 
             if (pointerLabelIndex.textContent !== specLabel) {
@@ -185,7 +185,7 @@ export function BookshelfServices() {
   // Current active service (guaranteed 0 to 5)
   const safeIndex = Math.min(Math.max(0, selectedIndex), services.length - 1);
   const currentService = services[safeIndex];
-  const currentSpecCode = `SPEC [0${safeIndex + 1}]`;
+  const currentSpecCode = `Volume 0${safeIndex + 1}`;
   const IconComponent = iconMap[currentService.icon] || Globe;
 
   return (
@@ -245,20 +245,20 @@ export function BookshelfServices() {
 
         {/* 2. Top Subtle Telemetry Status */}
         <div className={`pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between p-4 sm:p-6 ${isInspecting ? styles.quietStatus : ""}`}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-muted-foreground backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-muted-foreground backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            <span>STUDIO VOLUMES // 6 CORE SPECIFICATIONS</span>
+            <span>Six services, one shelf</span>
           </div>
 
-          <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] text-zinc-400 backdrop-blur-md">
+          <div className="hidden sm:inline-flex items-center gap-2 rounded-full border border-surface-border/70 bg-background/70 px-3 py-1 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-zinc-400 backdrop-blur-md">
             <Rotate3d className="h-3.5 w-3.5 text-accent" />
             <span>
               {isInspecting
-                ? "INSPECTION MODE · CLICK BOOK TO OPEN"
-                : "DRAG TO ROTATE · CLICK BOOK TO INSPECT"}
+                ? "Click the book to open it"
+                : "Drag to rotate · Click a book to look closer"}
             </span>
           </div>
         </div>
@@ -271,7 +271,7 @@ export function BookshelfServices() {
               {services.map((service, idx) => {
                 const isActive = safeIndex === idx;
                 const isHovered = hoveredIndex === idx;
-                const code = `SPEC [0${idx + 1}]`;
+                const code = `0${idx + 1}`;
 
                 return (
                   <button
@@ -280,7 +280,7 @@ export function BookshelfServices() {
                     onClick={() => handleSelectVolume(idx)}
                     onMouseEnter={() => setHoveredIndex(idx)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] transition-colors duration-200 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black active:scale-[0.98] ${
+                    className={`group relative flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[11px] uppercase tracking-wider transition-colors duration-200 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-black active:scale-[0.98] ${
                       isActive
                         ? "border border-accent bg-surface-subtle text-white shadow-[0_0_16px_rgba(17,17,17,0.158)]"
                         : isHovered
@@ -322,11 +322,11 @@ export function BookshelfServices() {
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 font-mono text-[10px] text-accent font-bold">
+                  <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-accent font-bold">
                     <span>{currentSpecCode}</span>
-                    <span className="text-zinc-600">{"//"}</span>
+                    <span className="text-zinc-600" aria-hidden="true">·</span>
                     <span className="text-zinc-400 uppercase tracking-wider">
-                      Active Volume
+                      Now viewing
                     </span>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">

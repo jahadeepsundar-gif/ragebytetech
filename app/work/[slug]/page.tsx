@@ -82,7 +82,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <span className="text-accent uppercase truncate">{project.name}</span>
             </div>
             <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-              {inProgress ? "[SYS.CASE_SPEC // LOCKED]" : "[SYS.CASE_SPEC // ARCHIVE]"}
+              {inProgress ? "Confidential" : "Case study"}
             </span>
           </div>
 
@@ -141,7 +141,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="rounded-md border border-white/10 bg-black px-2.5 py-1 font-mono text-xs text-zinc-300"
+                  className="rounded-md border border-white/10 bg-black px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-zinc-300"
                 >
                   {t}
                 </span>
@@ -178,7 +178,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             <div className="rounded-3xl border border-white/[0.08] bg-surface/80 p-8 sm:p-14">
               <div className="flex items-center gap-2 text-accent font-mono text-xs font-bold uppercase tracking-widest">
                 <Lock className="h-4 w-4" />
-                <span>[CASE STUDY LOCKED]</span>
+                <span>Case study coming soon</span>
               </div>
               <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
                 Revealed at launch
@@ -228,7 +228,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="max-w-2xl mb-12">
                 <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
-                  [DELIVERABLE SPEC]
+                  What we delivered
                 </span>
                 <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
                   KEY DELIVERABLES
@@ -258,12 +258,12 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="max-w-2xl mb-14">
                   <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">
-                    [VIEWPORT AUDIT]
+                    Screenshots
                   </span>
                   <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">
                     DESKTOP &amp; MOBILE
                   </h2>
-                  <p className="mt-2 text-sm text-zinc-400 font-mono">Captured from the live production site.</p>
+                  <p className="mt-2 text-sm text-zinc-400 font-sans">Captured from the live production site.</p>
                 </div>
 
                 <div className="space-y-20">
@@ -272,9 +272,9 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                       <div className="lg:col-span-8 overflow-hidden rounded-2xl border border-white/15 bg-black">
                         <div className="flex items-center gap-2 border-b border-white/10 bg-black/90 px-4 py-3">
                           <div className="h-2 w-2 bg-accent" />
-                          <span className="ml-2 font-mono text-[11px] text-zinc-400 flex items-center gap-1">
+                          <span className="ml-2 font-mono text-[11px] uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
                             <Terminal className="h-3.5 w-3.5 text-accent" />
-                            DESKTOP VIEWPORT // 1440x900
+                            Desktop view
                           </span>
                         </div>
                         <div className="relative aspect-[16/10] w-full">
@@ -291,7 +291,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
                       <div className="lg:col-span-4 flex justify-center">
                         <div className="w-[280px] overflow-hidden rounded-2xl border border-white/15 bg-black">
                           <div className="border-b border-white/10 bg-black/90 px-4 py-2 font-mono text-[10px] text-zinc-500 uppercase tracking-wider text-center">
-                            MOBILE VIEWPORT // 390x844
+                            Mobile view
                           </div>
                           <div className="relative aspect-[390/844] w-full">
                             <Image
@@ -316,7 +316,7 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
             <section className="py-20 border-t border-white/10 bg-background">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="rounded-3xl border border-white/[0.08] bg-surface/80 p-8 sm:p-14 relative shadow-2xl">
-                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">[OUTCOME]</span>
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">Outcome</span>
                   <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl font-black text-white">THE RESULT</h2>
                   <p className="mt-4 text-sm sm:text-lg text-zinc-300 font-sans leading-relaxed max-w-3xl">
                     {project.result}
@@ -330,20 +330,20 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
 
       {/* Next / Previous Project Navigation */}
       <section className="border-t border-white/10 bg-background py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-xs">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-xs uppercase tracking-widest">
           <Link
             href={`/work/${prevProject.slug}`}
             className="flex items-center gap-2 text-zinc-400 hover:text-accent focus-visible:outline-none focus-visible:text-accent transition-colors duration-200"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>PREV: {prevProject.name.toUpperCase()}</span>
+            <span>Previous · {prevProject.name}</span>
           </Link>
 
           <Link
             href={`/work/${nextProject.slug}`}
             className="flex items-center gap-2 text-zinc-400 hover:text-accent focus-visible:outline-none focus-visible:text-accent transition-colors duration-200"
           >
-            <span>NEXT: {nextProject.name.toUpperCase()}</span>
+            <span>Next · {nextProject.name}</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -363,11 +363,11 @@ function MetaStrip({ project }: { project: Project }) {
     { label: "Status", value: isInProgress(project) ? "In Development" : "Live", accent: true },
   ];
   return (
-    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-8 font-mono text-xs">
+    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-8">
       {items.map((item) => (
         <div key={item.label}>
-          <span className="text-zinc-500 block mb-1 uppercase tracking-wider">{item.label}</span>
-          <span className={`font-bold ${item.accent ? "text-accent" : "text-white"}`}>{item.value}</span>
+          <span className="font-mono text-[11px] text-zinc-500 block mb-1.5 uppercase tracking-wider">{item.label}</span>
+          <span className={`font-sans text-sm sm:text-base font-semibold leading-snug ${item.accent ? "text-accent" : "text-white"}`}>{item.value}</span>
         </div>
       ))}
     </div>

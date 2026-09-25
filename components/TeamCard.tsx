@@ -100,13 +100,13 @@ export function TeamCard({ member }: TeamCardProps) {
       {/* Engineering Skills / Specializations */}
       <div className="mt-6 border-t border-white/10 pt-4">
         <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.2em] block mb-2">
-          [SPECIALIZATIONS]
+          Specializations
         </span>
         <div className="flex flex-wrap gap-1.5">
           {member.skills.map((skill) => (
             <span
               key={skill}
-              className="rounded-md border border-white/10 bg-black/60 px-2 py-0.5 font-mono text-[10px] text-zinc-300"
+              className="rounded-md border border-white/10 bg-black/60 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-zinc-300"
             >
               {skill}
             </span>

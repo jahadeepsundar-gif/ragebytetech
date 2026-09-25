@@ -38,7 +38,7 @@ const tenets: Tenet[] = [
   {
     number: "03",
     title: "Zero-Bloat Bespoke Code",
-    tagline: "NO PAGE BUILDERS // NO VULNERABLE PLUGINS",
+    tagline: "NO PAGE BUILDERS, NO RISKY PLUGINS",
     statement:
       "Every single component is purpose-written for your product. We eliminate bulky visual builders and fragile third-party plugin ecosystems in favor of clean, maintainable modular code.",
     specs: ["100% CLIENT REPO OWNERSHIP", "AUDITED CSS TOKEN BUNDLE", "HANDCRAFTED MODULAR ARCHITECTURE"],
@@ -54,7 +54,7 @@ const tenets: Tenet[] = [
   {
     number: "05",
     title: "Direct Senior Engineer Access",
-    tagline: "ZERO MIDDLEMEN // DIRECT COMMIT COLLABORATION",
+    tagline: "NO MIDDLEMEN, DIRECT COLLABORATION",
     statement:
       "No account managers, junior handoffs, or administrative bureaucracy. You communicate directly with the senior engineers architecting and executing your production platform.",
     specs: ["DIRECT SLACK & GITHUB CADENCE", "24-HOUR TECHNICAL SLA", "TRANSPARENT SPRINT PREVIEWS"],
@@ -99,9 +99,9 @@ export function WhyRageByte() {
               <div>
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
                   <span className="font-mono text-xs font-semibold text-zinc-500 uppercase tracking-widest">
-                    [ ANTI-PATTERN // DEPRECATED ]
+                    The usual way
                   </span>
-                  <span className="font-mono text-[10px] text-zinc-600 uppercase">SYS_LEGACY</span>
+                  <span className="font-mono text-[10px] text-zinc-600 uppercase">Traditional agency</span>
                 </div>
                 <h3 className="mt-5 font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-zinc-400">
                   The Traditional Agency Dilemma
@@ -112,25 +112,25 @@ export function WhyRageByte() {
 
                 <div className="mt-6 space-y-4 font-mono text-xs text-zinc-500">
                   <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
-                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_01 // THE TELEPHONE GAME</span>
+                    <span className="text-zinc-600 block text-[10px] uppercase">The telephone game</span>
                     <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
                       Account managers act as translation filters between you and outsourced junior developers.
                     </span>
                   </div>
                   <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
-                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_02 // THEME RECYCLING</span>
+                    <span className="text-zinc-600 block text-[10px] uppercase">Recycled templates</span>
                     <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
                       Heavily reliant on off-the-shelf WordPress templates, brittle visual builders, and fragile plugins.
                     </span>
                   </div>
                   <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
-                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_03 // SCHEDULE DILUTION</span>
+                    <span className="text-zinc-600 block text-[10px] uppercase">Slow timelines</span>
                     <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
                       Sluggish 3 to 6-month delivery cycles inflated with administrative meetings and scope bloat.
                     </span>
                   </div>
                   <div className="border-l-2 border-zinc-800 pl-3.5 py-0.5">
-                    <span className="text-zinc-600 block text-[10px] uppercase">FAIL_04 // RUNTIME DEGRADATION</span>
+                    <span className="text-zinc-600 block text-[10px] uppercase">Slow, heavy sites</span>
                     <span className="text-zinc-400 font-sans text-xs sm:text-sm mt-0.5 block">
                       Performance treated as an afterthought; poor Core Web Vitals and sluggish mobile responsiveness.
                     </span>
@@ -144,7 +144,7 @@ export function WhyRageByte() {
               <div>
                 <div className="flex items-center justify-between border-b border-accent/20 pb-3">
                   <span className="font-mono text-xs font-semibold text-accent uppercase tracking-widest">
-                    [ PRODUCTION STANDARD // ACTIVE ]
+                    Our way
                   </span>
                   <span className="font-mono text-[10px] text-accent uppercase">Kaatchi Productions</span>
                 </div>
@@ -157,25 +157,25 @@ export function WhyRageByte() {
 
                 <div className="mt-6 space-y-4 font-mono text-xs">
                   <div className="border-l-2 border-accent pl-3.5 py-0.5">
-                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_01 // DIRECT SENIOR COMMIT</span>
+                    <span className="text-accent block text-[10px] uppercase font-bold">Work directly with senior engineers</span>
                     <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
                       Direct collaboration with the senior engineers architecting, testing, and deploying your code.
                     </span>
                   </div>
                   <div className="border-l-2 border-accent pl-3.5 py-0.5">
-                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_02 // 100% BESPOKE CODEBASE</span>
+                    <span className="text-accent block text-[10px] uppercase font-bold">Fully custom code</span>
                     <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
                       Zero visual page builders. Pure Next.js 14 App Router, Server Components, and Tailwind design tokens.
                     </span>
                   </div>
                   <div className="border-l-2 border-accent pl-3.5 py-0.5">
-                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_03 // 7-DAY DELIVERY CADENCE</span>
+                    <span className="text-accent block text-[10px] uppercase font-bold">Progress every week</span>
                     <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
                       Fast agile sprints with live staged preview deployment URLs delivered every milestone.
                     </span>
                   </div>
                   <div className="border-l-2 border-accent pl-3.5 py-0.5">
-                    <span className="text-accent block text-[10px] uppercase font-bold">EXEC_04 // PERFORMANCE INVARIANT</span>
+                    <span className="text-accent block text-[10px] uppercase font-bold">Fast from day one</span>
                     <span className="text-zinc-300 font-sans text-xs sm:text-sm mt-0.5 block">
                       Engineered from day one for sub-second page loads, accessible contrast ratios, and zero layout shift.
                     </span>
@@ -217,7 +217,7 @@ export function WhyRageByte() {
                       {tenet.title}
                     </h3>
                     <p className="mt-2.5 font-mono text-xs font-semibold text-accent uppercase tracking-wider">
-                      [ {tenet.tagline} ]
+                      {tenet.tagline}
                     </p>
                   </div>
 

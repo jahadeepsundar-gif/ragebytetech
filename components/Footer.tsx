@@ -48,7 +48,7 @@ export function Footer() {
         <ScrollReveal className="pb-16 sm:pb-20">
           <div className="flex items-center gap-2.5 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest mb-6 sm:mb-8">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            <span>FINALE — STUDIO DISPATCH</span>
+            <span>Start a conversation</span>
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 lg:gap-14">
@@ -93,7 +93,7 @@ export function Footer() {
             {/* Left Side: Large Editorial Navigation Index (6 cols) */}
             <div className="lg:col-span-6 flex flex-col">
               <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-500 mb-6 block">
-                {"//"} INDEX
+                Explore
               </span>
 
               <nav aria-label="Footer navigation" className="divide-y divide-white/[0.06]">
@@ -105,7 +105,7 @@ export function Footer() {
                   >
                     <div className="flex items-baseline gap-4 sm:gap-6">
                       <span className="font-mono text-xs text-zinc-600 transition-colors duration-200 group-hover:text-accent">
-                        [{item.num}]
+                        {item.num}
                       </span>
                       <span className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-zinc-300 transition-all duration-200 group-hover:text-white group-hover:translate-x-1">
                         {item.label}
@@ -113,7 +113,7 @@ export function Footer() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <span className="hidden sm:inline font-mono text-[11px] text-zinc-500 transition-colors duration-200 group-hover:text-zinc-400">
+                      <span className="hidden sm:inline font-sans text-xs text-zinc-500 transition-colors duration-200 group-hover:text-zinc-400">
                         {item.description}
                       </span>
                       <ArrowUpRight className="h-5 w-5 text-zinc-600 transition-all duration-200 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -151,25 +151,25 @@ export function Footer() {
                 </p>
 
                 {/* Live Availability Status Pill */}
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-mono text-zinc-300">
+                <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-300">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
                   </span>
-                  <span>Accepting Select Inquiries // Q3-Q4 2026</span>
+                  <span>Taking on new projects for Q3 &amp; Q4 2026</span>
                 </div>
               </div>
 
               {/* Focus Areas (Editorial Tags, not rigid boxes) */}
               <div className="space-y-3 pt-2">
                 <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-500 block">
-                  {"//"} CAPABILITIES
+                  What we do
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {focusAreas.map((area) => (
                     <span
                       key={area}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[11px] text-zinc-400"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-zinc-400"
                     >
                       <span className="h-1 w-1 rounded-full bg-accent/70" />
                       <span>{area}</span>
@@ -179,9 +179,9 @@ export function Footer() {
               </div>
 
               {/* Studio Coordinates & SLA */}
-              <div className="pt-2 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-zinc-400">
+              <div className="pt-2 border-t border-white/[0.06] grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-sans text-zinc-400">
                 <div>
-                  <span className="text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
+                  <span className="font-mono text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
                     Direct Contact
                   </span>
                   <Link
@@ -192,7 +192,7 @@ export function Footer() {
                   </Link>
                 </div>
                 <div>
-                  <span className="text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
+                  <span className="font-mono text-[10px] text-zinc-600 block uppercase tracking-wider mb-1">
                     Engineering Intake
                   </span>
                   <span className="text-zinc-300">Reply within 24 hours on working days</span>
@@ -205,12 +205,12 @@ export function Footer() {
         {/* =================================================== */}
         {/* BOTTOM: Minimal Editorial Utility Row */}
         {/* =================================================== */}
-        <div className="mt-16 sm:mt-24 flex flex-col sm:flex-row items-center justify-between border-t border-white/[0.08] pt-8 gap-4 font-mono text-xs text-zinc-500">
+        <div className="mt-16 sm:mt-24 flex flex-col sm:flex-row items-center justify-between border-t border-white/[0.08] pt-8 gap-4 font-mono text-[11px] uppercase tracking-wider text-zinc-500">
           <p>
             &copy; {currentYear} Kaatchi Productions. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 text-[11px]">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 text-[10px] uppercase tracking-wider">
             <span className="flex items-center gap-1.5 text-zinc-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Edge Deployed</span>

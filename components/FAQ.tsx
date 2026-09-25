@@ -71,11 +71,11 @@ export function FAQ({
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 bg-accent" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                [TRANSPARENCY PROTOCOL]
+                Questions &amp; answers
               </span>
             </div>
             <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-              [SYS.FAQ // VERIFIED]
+              Straight answers
             </span>
           </div>
 
@@ -110,7 +110,7 @@ export function FAQ({
                 >
                   <div className="flex items-baseline gap-4 sm:gap-6 pr-6">
                     <span className="font-mono text-xs sm:text-sm font-bold text-accent shrink-0">
-                      [{qCode}]
+                      {qCode}
                     </span>
                     <span className="font-display uppercase text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
                       {item.question}

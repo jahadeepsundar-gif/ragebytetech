@@ -88,7 +88,7 @@ export function TeamSection() {
                 The Engineering Collective
               </h2>
             </TextReveal>
-            <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 font-mono leading-relaxed">
+            <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
               Direct access to our senior architects, engineers, and creative technologists. Zero account managers, zero junior buffers.
             </p>
           </div>
@@ -222,7 +222,7 @@ export function TeamSection() {
                   {/* Professional Overview */}
                   <div>
                     <h4 className="text-[11px] font-mono font-semibold uppercase text-accent tracking-wider mb-2">
-                      {"// PROFESSIONAL OVERVIEW"}
+                      Profile
                     </h4>
                     <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                       {selectedMember.bio}
@@ -233,7 +233,7 @@ export function TeamSection() {
                   {selectedMember.specializations && selectedMember.specializations.length > 0 && (
                     <div>
                       <h4 className="text-[11px] font-mono font-semibold uppercase text-accent tracking-wider mb-2.5">
-                        {"// SPECIALIZATIONS"}
+                        Specializations
                       </h4>
                       <ul className="space-y-1.5">
                         {selectedMember.specializations.map((spec) => (
@@ -253,13 +253,13 @@ export function TeamSection() {
                   {selectedMember.skills && selectedMember.skills.length > 0 && (
                     <div>
                       <h4 className="text-[11px] font-mono font-semibold uppercase text-accent tracking-wider mb-2.5">
-                        {"// SKILLS / TECHNOLOGIES"}
+                        Skills &amp; tools
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
                         {selectedMember.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="rounded border border-surface-border/80 bg-background/60 px-2 py-0.5 text-[11px] font-mono text-zinc-300"
+                            className="rounded border border-surface-border/80 bg-background/60 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-zinc-300"
                           >
                             {skill}
                           </span>

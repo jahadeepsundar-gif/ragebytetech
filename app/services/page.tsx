@@ -42,11 +42,11 @@ export default function ServicesPage() {
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  DISCIPLINE DIRECTORY
+                  Our services
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [SYS.ACTIVE_SERVICES // 06]
+                Six core services
               </span>
             </div>
 
@@ -62,13 +62,13 @@ export default function ServicesPage() {
                 We specialize in custom Next.js App Router engineering. Whether you need a high-converting campaign page or an enterprise digital product, our architecture delivers sub-second load times, strict TypeScript type-safety, and zero bloatware.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-                <span className="text-accent font-bold">[06 CORE DISCIPLINES]</span>
-                <span className="text-zinc-600">{"//"}</span>
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                <span className="text-accent font-bold">6 core services</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>NEXT.JS APP ROUTER</span>
-                <span className="text-zinc-600">{"//"}</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>TYPESCRIPT STRICT</span>
-                <span className="text-zinc-600">{"//"}</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>VERCEL EDGE PRODUCTION</span>
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function ServicesPage() {
                   <div>
                     <div className="flex items-center justify-between border-b border-white/10 pb-5">
                       <span className="font-mono text-xs font-bold text-accent uppercase tracking-[0.2em]">
-                        SPEC [0{idx + 1}]
+                        Service 0{idx + 1}
                       </span>
                       <span className="rounded-md border border-white/15 bg-black px-2.5 py-0.5 font-mono text-[11px] text-zinc-400 uppercase tracking-wider">
                         FULL-STACK DELIVERY
@@ -107,7 +107,7 @@ export default function ServicesPage() {
                     {service.idealFor && (
                       <div className="mt-6 rounded-xl border border-accent/30 bg-black/40 p-4 text-xs font-sans text-zinc-400 leading-relaxed">
                         <span className="font-mono text-accent font-bold uppercase tracking-wider block mb-1">
-                          [TARGET PROFILE]
+                          Best for
                         </span>
                         <span className="text-zinc-300">{service.idealFor}</span>
                       </div>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
                     {service.deliverables && (
                       <div className="mt-8 border-t border-white/10 pt-6">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">
-                          STANDARD PHASE DELIVERABLES
+                          What's included
                         </h3>
                         <ul className="space-y-3 font-sans">
                           {service.deliverables.map((item, dIdx) => (
@@ -160,11 +160,11 @@ export default function ServicesPage() {
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  COMMERCIAL STRUCTURES
+                  Ways to work with us
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [AGREEMENT // TERMS]
+                Clear terms
               </span>
             </div>
 
@@ -184,8 +184,8 @@ export default function ServicesPage() {
             {/* Model 1: Fixed-Scope Milestone */}
             <StaggerItem>
               <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
-                <div className="flex items-center justify-between font-mono text-xs text-zinc-400 mb-6 border-b border-white/10 pb-4">
-                  <span className="text-accent font-bold">[MODEL 01]</span>
+                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-zinc-400 mb-6 border-b border-white/10 pb-4">
+                  <span className="text-accent font-bold">Option 01</span>
                   <span>FIXED TIMELINE &amp; SCOPE</span>
                 </div>
                 <h3 className="font-display uppercase text-2xl sm:text-3xl font-black text-white">
@@ -214,8 +214,8 @@ export default function ServicesPage() {
             {/* Model 2: Dedicated Weekly Sprint */}
             <StaggerItem>
               <div data-spotlight className="rounded-2xl border border-white/[0.08] bg-surface/80 p-8 sm:p-10 relative hover:border-accent/40 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-8px_rgba(17,17,17,0.18)] h-full">
-                <div className="flex items-center justify-between font-mono text-xs text-zinc-400 mb-6 border-b border-white/10 pb-4">
-                  <span className="text-accent font-bold">[MODEL 02]</span>
+                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-zinc-400 mb-6 border-b border-white/10 pb-4">
+                  <span className="text-accent font-bold">Option 02</span>
                   <span>DEDICATED CAPACITY</span>
                 </div>
                 <h3 className="font-display uppercase text-2xl sm:text-3xl font-black text-white">

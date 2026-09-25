@@ -382,7 +382,7 @@ export function ContactForm() {
               aria-describedby="projectDetails-hint"
               className={`${inputClass(Boolean(errors.projectDetails))} resize-y`}
             />
-            <div id="projectDetails-hint" className="mt-1.5 flex items-center justify-between gap-4 font-mono text-[11px] text-zinc-500">
+            <div id="projectDetails-hint" className="mt-1.5 flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-wider text-zinc-500">
               <span>
                 {errors.projectDetails ? (
                   <span className="text-red-400">{errors.projectDetails}</span>

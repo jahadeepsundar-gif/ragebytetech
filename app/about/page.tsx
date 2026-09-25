@@ -49,7 +49,7 @@ export default function AboutPage() {
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [SYS.PHILOSOPHY // 2026]
+                Est. 2026
               </span>
             </div>
 
@@ -65,13 +65,13 @@ export default function AboutPage() {
                 Kaatchi Productions was founded on a simple conviction: businesses don&apos;t need generic templates, bureaucracy, or account-management overhead. They need senior engineers who understand modern web architecture, write clean TypeScript, and ship code that converts.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400">
-                <span className="text-accent font-bold">[ENGINEERING FIRST]</span>
-                <span className="text-zinc-600">{"//"}</span>
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                <span className="text-accent font-bold">Engineering first</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>ZERO ACCOUNT MANAGERS</span>
-                <span className="text-zinc-600">{"//"}</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>100% REPO OWNERSHIP</span>
-                <span className="text-zinc-600">{"//"}</span>
+                <span className="text-zinc-600" aria-hidden="true">·</span>
                 <span>STRICT TYPESCRIPT</span>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
             <ScrollReveal className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-3 border-b border-white/10 pb-3">
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                  [OPERATIONAL DISCIPLINE]
+                  How we operate
                 </span>
               </div>
               <h2 className="font-display uppercase text-3xl sm:text-5xl font-black text-white leading-[0.92]">
@@ -159,7 +159,7 @@ export default function AboutPage() {
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [COLLECTIVE // ACTIVE ARCHITECTS]
+                The people behind the work
               </span>
             </div>
 

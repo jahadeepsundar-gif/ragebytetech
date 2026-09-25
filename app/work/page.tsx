@@ -44,11 +44,11 @@ export default function WorkPage() {
               <div className="flex items-center gap-3">
                 <span className="h-1.5 w-1.5 bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/70">
-                  ARCHIVE INDEX
+                  Our work
                 </span>
               </div>
               <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                [SYS.CASE_STUDIES // {liveCount} LIVE]
+                {liveCount} live projects
               </span>
             </div>
 
@@ -65,15 +65,15 @@ export default function WorkPage() {
               </p>
 
               {/* Filter / Meta Pills */}
-              <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-mono">
+              <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-mono uppercase tracking-wider">
                 <span className="rounded-lg border border-accent bg-accent/15 px-3 py-1.5 text-white font-bold">
-                  [ALL PROJECTS ({projects.length})]
+                  All projects ({projects.length})
                 </span>
                 <span className="rounded-lg border border-white/10 bg-surface px-3 py-1.5 text-zinc-400">
-                  [LIVE ({liveCount})]
+                  Live ({liveCount})
                 </span>
                 <span className="rounded-lg border border-white/10 bg-surface px-3 py-1.5 text-zinc-400">
-                  [IN DEVELOPMENT ({inProgressCount})]
+                  In development ({inProgressCount})
                 </span>
               </div>
             </div>
@@ -93,8 +93,8 @@ export default function WorkPage() {
                   <strong className="text-white font-mono uppercase tracking-wider">Currently building:</strong> {inProgressCount} client projects are in development. Their details stay confidential until launch.
                 </span>
               </div>
-              <span className="shrink-0 rounded-md border border-white/15 bg-black px-2.5 py-1 text-[11px] font-mono text-accent">
-                [{liveCount} LIVE // {inProgressCount} IN PROGRESS]
+              <span className="shrink-0 rounded-md border border-white/15 bg-black px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-accent">
+                {liveCount} live · {inProgressCount} in progress
               </span>
             </div>
           </ScaleIn>

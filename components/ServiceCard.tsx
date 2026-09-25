@@ -51,7 +51,7 @@ export function ServiceCard({
             <IconComponent className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
           </div>
           <span className="font-mono text-xs font-bold tracking-wider text-muted-foreground group-hover:text-accent transition-colors">
-            SPEC [{specCode}]
+            Service {specCode}
           </span>
         </div>
 

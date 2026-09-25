@@ -24,7 +24,7 @@ export function TrustStats() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>ARCHITECTURAL SPECIFICATION</span>
+              <span>Why clients choose us</span>
             </div>
             <HeadingReveal delay={0.1}>
               <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
@@ -36,7 +36,7 @@ export function TrustStats() {
 
           <div className="max-w-md space-y-2 lg:text-right">
             <div className="inline-block font-mono text-[10px] text-accent uppercase tracking-[0.25em] rounded-full border border-accent/30 bg-accent/5 px-3 py-1">
-              STATUS: DEPLOYED // ZERO COMPROMISE
+              No shortcuts, no compromises
             </div>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
               Rigorous full-stack discipline. Every line purpose-engineered for sub-second edge execution, total type safety, and zero administrative overhead.
@@ -54,7 +54,7 @@ export function TrustStats() {
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-                    REF: KP-CORE-PHILOSOPHY
+                    Our approach
                   </span>
                   <span className="font-mono text-[10px] text-accent">01 / 04</span>
                 </div>
@@ -73,23 +73,23 @@ export function TrustStats() {
               {/* Live Telemetry Readout */}
               <div className="mt-10 pt-6 border-t border-white/[0.08] space-y-2.5 font-mono">
                 <span className="text-[10px] uppercase tracking-[0.25em] text-zinc-500 block mb-2">
-                  {"//"} BENCHMARK TELEMETRY
+                  By the numbers
                 </span>
-                <div className="flex items-center justify-between text-[11px] pb-2 border-b border-white/5">
-                  <span className="text-zinc-400">[01] TARGETED LCP</span>
-                  <span className="text-accent font-bold">SUB-1.0S</span>
+                <div className="flex items-center justify-between gap-3 pb-2 border-b border-white/5">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">Page load target</span>
+                  <span className="font-sans text-sm font-semibold text-accent">Under 1 second</span>
                 </div>
-                <div className="flex items-center justify-between text-[11px] pb-2 border-b border-white/5">
-                  <span className="text-zinc-400">[02] TYPE INTEGRITY</span>
-                  <span className="text-white font-bold">100% STRICT TS</span>
+                <div className="flex items-center justify-between gap-3 pb-2 border-b border-white/5">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">Type safety</span>
+                  <span className="font-sans text-sm font-semibold text-white">Strict TypeScript</span>
                 </div>
-                <div className="flex items-center justify-between text-[11px] pb-2 border-b border-white/5">
-                  <span className="text-zinc-400">[03] ADMIN LAYERS</span>
-                  <span className="text-zinc-300 font-bold">0 MIDDLEMEN</span>
+                <div className="flex items-center justify-between gap-3 pb-2 border-b border-white/5">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">Middlemen</span>
+                  <span className="font-sans text-sm font-semibold text-zinc-300">None</span>
                 </div>
-                <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-zinc-400">[04] CODEBASE IP</span>
-                  <span className="text-accent font-bold">100% CLIENT OWNED</span>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">Code ownership</span>
+                  <span className="font-sans text-sm font-semibold text-accent">100% yours</span>
                 </div>
               </div>
             </div>
@@ -114,20 +114,20 @@ export function TrustStats() {
                           / 04
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">METRIC // LATENCY</span>
+                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Speed</span>
                     </div>
                     <h3 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 leading-none tracking-tight">
                       {trustQualities[0].label}
                     </h3>
                     <p className="mt-2 font-mono text-xs font-semibold text-accent/90 uppercase tracking-wider">
-                      [ {trustQualities[0].sublabel} ]
+                      {trustQualities[0].sublabel}
                     </p>
                     <p className="mt-4 text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
                       {trustQualities[0].description}
                     </p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[10px] text-zinc-500 uppercase">
-                    <span>SPEC // LCP &lt; 1000MS</span>
+                    <span>Loads in under 1 second</span>
                     <span className="text-accent group-hover:text-white transition-colors duration-200">VERIFIED</span>
                   </div>
                 </div>
@@ -148,20 +148,20 @@ export function TrustStats() {
                           / 04
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">STACK // ARCHITECTURE</span>
+                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Technology</span>
                     </div>
                     <h3 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 leading-none tracking-tight">
                       {trustQualities[1].label}
                     </h3>
                     <p className="mt-2 font-mono text-xs font-semibold text-accent/90 uppercase tracking-wider">
-                      [ {trustQualities[1].sublabel} ]
+                      {trustQualities[1].sublabel}
                     </p>
                     <p className="mt-4 text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
                       {trustQualities[1].description}
                     </p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[10px] text-zinc-500 uppercase">
-                    <span>SPEC // NEXT 14 + RSC</span>
+                    <span>Next.js 14 &amp; React</span>
                     <span className="text-accent group-hover:text-white transition-colors duration-200">VERIFIED</span>
                   </div>
                 </div>
@@ -185,20 +185,20 @@ export function TrustStats() {
                           / 04
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">DEVICE // ERGONOMICS</span>
+                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Devices</span>
                     </div>
                     <h3 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 leading-none tracking-tight">
                       {trustQualities[2].label}
                     </h3>
                     <p className="mt-2 font-mono text-xs font-semibold text-accent/90 uppercase tracking-wider">
-                      [ {trustQualities[2].sublabel} ]
+                      {trustQualities[2].sublabel}
                     </p>
                     <p className="mt-4 text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
                       {trustQualities[2].description}
                     </p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[10px] text-zinc-500 uppercase">
-                    <span>SPEC // 48PX+ TOUCH TARGETS</span>
+                    <span>Thumb-friendly on every screen</span>
                     <span className="text-accent group-hover:text-white transition-colors duration-200">VERIFIED</span>
                   </div>
                 </div>
@@ -219,20 +219,20 @@ export function TrustStats() {
                           / 04
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">CODEBASE // INTEGRITY</span>
+                      <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Craft</span>
                     </div>
                     <h3 className="mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white group-hover:text-accent group-focus-visible:text-accent transition-colors duration-200 leading-none tracking-tight">
                       {trustQualities[3].label}
                     </h3>
                     <p className="mt-2 font-mono text-xs font-semibold text-accent/90 uppercase tracking-wider">
-                      [ {trustQualities[3].sublabel} ]
+                      {trustQualities[3].sublabel}
                     </p>
                     <p className="mt-4 text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
                       {trustQualities[3].description}
                     </p>
                   </div>
                   <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-[10px] text-zinc-500 uppercase">
-                    <span>SPEC // 0% CMS DEPENDENCY</span>
+                    <span>No page builders</span>
                     <span className="text-accent group-hover:text-white transition-colors duration-200">VERIFIED</span>
                   </div>
                 </div>

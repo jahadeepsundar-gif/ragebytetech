@@ -112,7 +112,7 @@ export function Process() {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[11px] font-semibold text-accent uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span>SYSTEMATIC DELIVERY PROTOCOL</span>
+              <span>How we work</span>
             </div>
             <HeadingReveal delay={0.1}>
               <h2 className="mt-4 font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-[-0.035em] text-foreground leading-[0.88]">
@@ -124,7 +124,7 @@ export function Process() {
 
           <div className="max-w-md space-y-2 lg:text-right">
             <div className="inline-block font-mono text-[10px] text-accent uppercase tracking-[0.25em] rounded-full border border-accent/30 bg-accent/5 px-3 py-1">
-              CADENCE: 6-WEEK CONTINUOUS SPRINT
+              Six weeks, start to launch
             </div>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
               Predictable weekly sprint cadence, working staged preview environments, and transparent milestones. Zero scope drift, zero administrative bureaucracy.
@@ -158,7 +158,7 @@ export function Process() {
                     </div>
                     <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[10px] text-accent uppercase tracking-wider">
                       <span className="h-1 w-1 rounded-full bg-accent" />
-                      <span>TIMELINE: {step.duration}</span>
+                      <span>{step.duration}</span>
                     </div>
                   </div>
 
@@ -168,7 +168,7 @@ export function Process() {
                       {step.stageName}
                     </h3>
                     <div className="font-mono text-xs font-semibold text-accent uppercase tracking-wider">
-                      [ {step.subtitle} ]
+                      {step.subtitle}
                     </div>
                     <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-sans pt-1">
                       {step.description}
@@ -178,7 +178,7 @@ export function Process() {
                   {/* Deliverables Manifest (Cols 8-12) */}
                   <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-white/10 pt-5 lg:pt-0 lg:pl-8">
                     <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 block mb-3">
-                      {"//"} DELIVERABLE MANIFEST [PHASE {step.stepNumber}]
+                      What you receive
                     </span>
                     <div className="space-y-2.5 font-mono">
                       {step.deliverables.map((item, dIdx) => (
@@ -187,7 +187,7 @@ export function Process() {
                           className="flex items-start gap-2.5 pb-2.5 border-b border-white/5 last:border-b-0 last:pb-0"
                         >
                           <span className="text-[10px] text-accent font-bold mt-0.5 shrink-0">
-                            OUT_0{dIdx + 1} &rarr;
+                            0{dIdx + 1}
                           </span>
                           <span className="text-xs text-zinc-300 font-sans leading-relaxed">
                             {item}

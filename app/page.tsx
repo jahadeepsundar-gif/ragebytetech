@@ -50,7 +50,7 @@ export default function HomePage() {
                   Selected Work
                 </h2>
               </HeadingReveal>
-              <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+              <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
                 Live websites we have designed and built for clients across music, performing arts,
                 media, events and hospitality, plus the builds on our workbench right now.
               </p>
@@ -95,7 +95,7 @@ export default function HomePage() {
                   Engineered Services
                 </h2>
               </HeadingReveal>
-              <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-mono">
+              <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
                 From high-conversion landing pages to full-scale web applications. Six core volume capabilities, zero generic templates.
               </p>
             </div>
