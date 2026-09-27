@@ -117,7 +117,7 @@ export default function ServicesPage() {
                     {service.deliverables && (
                       <div className="mt-8 border-t border-white/10 pt-6">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4">
-                          What's included
+                          What&apos;s included
                         </h3>
                         <ul className="space-y-3 font-sans">
                           {service.deliverables.map((item, dIdx) => (

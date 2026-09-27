@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "Tailwind CSS",
     "frontend studio",
   ],
-  metadataBase: new URL("https://ragebyte.tech"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ragebyte.tech"),
   openGraph: {
     title: "Kaatchi Productions — Web Development Studio",
     description:
